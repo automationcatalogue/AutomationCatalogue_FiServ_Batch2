@@ -1,0 +1,426 @@
+What is Java?
+--------------
+1. Java is a Programming Language
+2. Operating System
+
+==> Java is called as programming language because by using Java, we can write the programs.
+==> Programs are divided into two categories
+	1. Applications
+	2. Services
+	
+	
+1995 --> Sun Microsystems -> 5 members
+James Gosling, Patrick Naughton, Ed Prank, Chris Warth, Mike Sheridan
+
+==> Java is a Platform Independet Programming language
+
+
+==> Translation Softwares
+1. Compilers
+2. Interpreters
+Both Compiler and Interpreter are called Translation software
+
+Compiler													Interpreter
+1. Compiler converts the whole program at one time			1. Interpreter converts line by line
+2. Compiler is fast											2. Interpreter is slow
+3. Compiler produces a file									3. Interpreter does not produces any file
+
+
+					C										Java
+	------------------------------------------------------------------------------
+				Demo.c(unicode)								Demo.java (unicode)
+					|											|
+					C compiler									Java Compiler
+					|											|
+				Demo.exe (bit code)							Demo.class (byte code)
+					|											|
+					O/P								-------------------------------------
+													|				|				|
+												Windows JVM			Linux JVM		Mac JVM
+													|				|				|
+													windows			Linux			Mac
+													|				|				|
+													O/P				O/P				O/P
+													
+												
+					
+JVM (Java Virtual Machine)
+--------------------------
+==>It is a interpreter, It  converts byte code into the bit code
+==> JVM is platform dependent
+
+
+JRE (Java Runtime Environment):
+-------------------------------
+JRE is called as a Java platform and it contains Java API and JVM
+
+Java API:
+---------
+==> It is called as Java Library and it is included in the Java Program at run-time
+
+JDK: (Java Development Kit)
+---------------------------
+==> Complete Java Software is nothing but JDK
+==> JDK contains, JRE (Java API+JVM), OS, Java Program
+
+
+JIT Compiler (Just In time Compiler):
+------------------------------------
+==> JIT compiler is introduced in java to increase the performance of JVM
+==> JIT compiler identifies the repeated code instructions, those instructions converts byte code into the bit code, puts in the cache memory and loads several times as needed
+
+
+==> JIT Compiler is a part of JVM, JVM is a part of JRE, JRE is a part of JDK
+
+IDEs:
+-----
+IntelliJ Idea, Eclipse, Net beans, Visual Studio etc.,
+
+1. Identifiers:
+---------------
+==> Identifier is a word and it is used to identify variables, methods, classes, Interfaces etc.,
+1. Identifiers can be formed by using alphabets (a to z),(A to Z),(0 to 9), Underscore _ and Dollar Symbol $
+2. It must begin with Alphabet, Underscore, Dollar Symbol
+3. length of the Identifier is unlimited.
+4. It should not contains any special characters other than Underscore and Dollar symbols
+5. It should not contains any wide space characters (like spacebar,tab and enter keys) 
+
+Examples:
+---------
+1. demo (valid)							6. net-income (Invalid)			11. _#_ (Invalid)
+2. 5args (Invalid)						7. net_income (valid)			12. net*income (Invalid)
+3. args5 (Valid)						8. #args (Invalid)				13. _args (valid)
+4. DEMO (valid)							9. $args (Valid) 				
+5. net income (Invalid)					10. _$_ (valid)
+
+2. Keywords:
+------------
+==> A set of keywords reserved by language itself and these words are called as Keywords
+
+==> Keywords can not be used as an Identifier
+==> There are 50 keywords available in Java
+==> All keywords must be written in lowercase alphabets
+
+Examples:
+---------
+public, static, if, else, for,int, float etc.,
+
+	int x=5; (Valid)
+	int public=5; (Invalid)
+	
+3. Literals:
+-------------
+==> A Literal is a source of code representation of a fixed value.
+==> In Java, Literals are divided into 6 categories
+
+	1. Integer Literals (100, 5, 22, -2, 0, -680...etc.,)
+	2. String Literals ("A", "Hello", "Demo")
+	3. Floating point Literals(5.2,3.14,-0.08....etc.,)
+	4. character Literal ('a', 'D', 'x','X' etc.,)
+	5. Boolean Literals (true, false)
+	6. Object Literals(null)
+	
+4. Data Types:
+---------------
+==> A Data type that determines what value a variable can hold and what are the operations can be performed on a variable.
+
+==> In Java, Data types are divided into two categories
+	1. Primitive Data types
+	2. Reference Data types
+	
+Primitive Data types:
+---------------------
+==> Primitive data types are predefined keywords and these are all named by keywords.
+
+==>There are 8 Primitive data types in Java and these are divided into 4 sub categories
+1. Integers
+2. Floating point numbers
+3. characters
+4. Boolean
+
+Data type						Memory size							Range
+Integers:
+1. byte							8 bits (1 byte)						-2^7 to 2^7-1 ==> -128 to +127
+2. short						16 bits (2 bytes)					-2^15 to 2^15-1 ==> -32,268 to +32,267
+3. int							32 bits (4 bytes)					-2^31 to +2^31-1 ==> -2147483648 to +2147483647
+4. long							64 bits (8 bytes)					-2^63 to +2^63-1
+==> Integer DataTypes (byte, short, int, long) will accept only Integer literals data, character data and the outcome is always Integer number only
+
+Floating point numbers:
+5. float						32 bits(4 bytes)					-3.4*10^-38 to +3.4*10^38
+6. double						64 bits (8 bytes)					-1.7*10^-308 to 1.7*10^308
+==> Floating Pint Number DataTypes (float, double) will accept only 
+	Decimal Data
+	Integer literals data, 
+	character data 	
+	and the outcome is always Decimal number only
+	
+characters:
+7. char							16 bits (2 bytes)					0 to 65,535
+
+Boolean
+8. boolean						1 bit								true/false
+==> boolean data type will allows only boolean Literals
+
+
+a to z ==> 97 to 122
+A to Z ==> 65 to 90
+0 to 9 ==> 47 to 58
+
+0 to 47, 58 to 64, 91 to 96 and 123 to 255 -->special character symbols
+256 to 65,535 --> It contains Unicode, decimals, hexadecimals, octal values etc.,
+
+Reference Data types:
+---------------------
+examples: Arrays, Strings, classes ....etc.,
+
+byte a = 5; (valid)
+byte b =130; (Invalid) -->because out of range
+short c=130; (valid)
+short d = 40000; (Invalid) -->because out of range
+int e = 40000; (valid)
+int f=4000000000; (Invalid) -->because out of range
+
+long g = 4000000000; (Invalid)
+long data type must be suffixed with 'l' (or) 'L'
+
+long h = 400L;
+==> This will not give the error, even though 'l' or 'L' is not suffixed
+==> Reason, In Integer category data type default one is int
+
+==> Long literals must be fixed with 'l' or 'L', because default type is int in Integers category
+
+==>Every floating point number must be suffixed with 'f' or 'F', because default is double
+float a=5.2; (Invalid)
+float b=5.2f; (Valid)
+double c=5.2;
+
+								Operators:
+							====================
+-Operator in java is a symbol that is used to perform operations.
+There are many types of operators in java which are given below:
+1. Assignment Operators
+2. Arithmetic Operators
+3. Increment/Decrement Operators
+4. Relational Operators
+5. Logical Operators
+6. Ternary Operator
+
+Operator Type									Precedence
+1. Assignment 									=, +=, -=, *=, /=, %=
+2. Arithmetic									+, -, *, /, % [/ ==> quotient value ; % ==> reminder]
+3. Increment/Decrement Operators				++, --
+	
+	
+	int x=100;
+	
+	==> Increment (++) ==> Value of the variable will be increased by +1
+		1. Pre-Increment	==> (++x) ==> (x=x+1) ==> Value of the variable first increases and then action/operation will be performed
+		2. Post-Increment	==> (x++) ==> (x=x+1) ==> First action/operation will be performed and then value of variable is increases
+	
+	
+	==> Decrement (--) ==> Value of the variable will be decreased by -1
+		1. Pre-Decrement	==> (--x) ==> (x=x-1) ==> Value of the variable first decreases and then action/operation will be performed
+		2. Post-Decrement	==> (x--) ==> First action/operation will be performed and then value of variable is decrases
+		
+4. Relational Operators						<, >, <=, >=, ==, !=
+Output of the relational operators is always boolean value
+
+5. Logical Operators						&& ||
+Output of the logical operators is always boolean value
+
+AND (&&)
+
+	Condition1				Condition2				Result
+	-------------------------------------------------------
+	true					true					true
+	true					false					false
+	false					true					false
+	false					false					false
+
+OR (||)
+
+	Condition1				Condition2				Results
+	----------------------------------------------------------
+	true					true					true
+	true					false					true
+	false					true					true
+	false					false					false
+	
+6. Ternary Operator       ?:
+------------------------------
+	result=Condition? Value1: Value2	
+	==> In the above statement ==> If condition is true ==> result will become Value1
+							   ==> If condition is false ==> result will become Value2
+
+Statements:
+-----------
+1. Conditional Statements
+2. Iterative Statements
+3. Jump Statements
+
+Conditional Statements:
+------------------------
+1. If Statement
+2. If Else Statement
+3. If ElseIf Statement
+4. Nested If Statement
+
+If Statement:
+-------------
+==> Syntax:
+	
+	if(condition){
+		----------
+		----------
+		----------
+	}
+	==> In the above condition, If block of code will be executed only when the condition is true
+	==> If the condition is false, If block of code will be ignored
+	
+If Else Statement:
+------------------
+==> Syntax:
+	if(condition){
+		--------
+		--------
+		--------
+	}else{
+		--------
+		--------
+		--------
+	}
+	==> If the condition is true --> If block code will execute
+	==> If the condition is false --> else block code will execute
+	==> At any point of time, there is no possibility to execute both the If block and else block code executes together
+	
+If elseif Condition:
+----------------------
+==> if(condition1){
+		----------------
+		----------------
+	}else if(condition2){
+		----------------
+		----------------
+	}else if(condition3){
+		----------------------
+		---------------------
+	}
+	
+	==> In the IfelseIf blocks, at any given point only one condition block code will execute i.e., wherever first condition block code is true (and remaining blocks of code will be ignored)
+	==> If all condition blocks are false --> else block code will execute
+	==> else  block code is optional
+	
+Debugging Code:
+--------------
+==> User is going to take the control to execute the code
+	breakpoint: This will break the execution and control will be given to the end user
+	To insert the breakpoint, Identify the line of code from where you want to debug and them click before the line in IntelliJ --> Red dot symbol will be inserted
+	
+	Once breakpoint is inserted, Execute the program in debug mode
+	Once program is executed in debug mode, program will be executed till the breakpoint
+
+	
+	By doing the step over (F8), we can execute the block of code line by line --> we can seee what values are taking in every step
+	
+Nested If Condition:
+--------------------
+==> If condition within the another If condition is called as NestedIf condition
+
+if(condition1){//Outer If condition
+	----------------
+	----------------
+	----------------
+	if(condition2){//Inner If condition
+		------------
+		------------
+		------------
+	}
+}
+==> If the Outer condition is true, then only Inner condition will be verified
+
+Iterative Statements:
+---------------------
+1. While Loop
+2. Do While Loop
+3. For Loop
+4. Advaned For Loop/Enhanced For Loop/For Each Loop
+5. Nested Loops
+
+While Loop:
+-----------
+Syntax:
+	
+	initialization;
+	
+	while(condition){
+		-----------
+		-----------
+		-----------
+		
+		increment/decrement;//optional
+	}
+	
+	==> The above while block code executed again and again till condition is true
+	==> whenever condition is false, program will come out from the loop
+	
+Do While Loop:
+--------------
+
+	Syntax:
+	-------
+
+	Initialization;
+	
+	do{
+		-----------
+		-----------
+		-----------
+		
+		Increment/Decrement;		
+	}while(condition);
+	
+For Loop:
+---------
+	Syntax:
+	
+	for(Initialization;condition;Increment/Decrement){
+		--------------
+		--------------
+		--------------
+	}
+	==> Initialization will be executed only once i.e., very first time
+	==> For Loop will be repeated until condition is true
+	==> Increment/Decrement operators will be executed at the end of each iteration
+
+Nested Loops:
+--------------
+==> Loop within a Loop is called as Nested Loop
+
+	Syntax:
+	-------
+		for(Initialization;condition;Increment/Decrement){//Outer loop
+			--------------
+			--------------
+			--------------
+			
+			for(Initialization;condition;Increment/Decrement){//inner loop
+				--------------
+				--------------
+				--------------
+			}	
+		}
+		
+Jump Statements:
+----------------
+1. Break Statement
+2. Continue Statement
+3. Return Statement
+
+Break Statement:
+---------------
+	It is going to terminate/break the nearest enclosing loop
+
+Continue Statement:
+-------------------
+	It passes  the control to the next iteration of a loop i.e., the current iteration block of code will be skipped

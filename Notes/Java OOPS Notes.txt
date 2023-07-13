@@ -1,0 +1,115 @@
+OOPS - Object Oriented Programming Structure:
+--------------------------------------------
+==> Java, Python, C++, JavaScript, C#, Scala, Ruby .... etc.,
+
+OOPS Principles:
+----------------
+1. Inheritance
+2. Polymorphism
+3. Abstraction
+4. Encapsulation
+
+==> To understand the above 4 principles we should know the language constructs they are
+	1. Class
+	2. Object
+	
+CLASS:
+------
+==> Class is a collection of variables and method
+
+	Syntax:
+	-------
+	
+		class <className>{
+		
+			public static void test(){
+				-----------
+				-----------
+				-----------
+			}
+		
+			public static void main(String args[]){
+				-----------
+				-----------
+				-----------
+			}
+			
+			public static void qa(){
+				----------
+				----------
+				----------
+			}
+		
+		}
+		
+	Examples:
+	---------
+	
+		class Emp{
+			int empNo;
+			float empSalary;
+			char empSurName;
+			
+			void addEmployee(){
+				--------
+				-------
+				-------
+			}
+			
+			void deleteEmployee(){
+				-------
+				-------
+				-------
+			}
+		
+		}
+		
+		//className: --> Emp
+		//methodNames: addEmployee(), deleteEmployee()
+		//Variables: empNo, empSalary, empSurName
+		
+Object:
+-------
+==> Object is a instance of class
+
+	Syntax:
+	-------
+		className objectReference = new Constructor();
+		
+	Example:
+	-------
+		Emp ob1 = new Emp();
+		
+		//ob1 --> ObjectReference --> contains the hashcode --> reference of your data
+		//new Emp(); --> Object --> Contains the data
+		
+		new Emp();--> Anonymous Object
+		
+Variables:
+---------
+==> Variable is a container which contains some data
+
+1. Instance Variables
+2. Class Variables
+3. Local Variables
+
+
+Instane Variables:
+------------------
+==> A variable i.e., declared as a member of a class is known as Instance variable
+==> Instance variables memory allocation happens whenever object is created
+==> Instance variables are stored in heap are memory
+
+Class Variables:
+----------------
+==> A variable i.e., declared as a static member of a class is known as class variable
+==> Class variables memory allocation happens whenever class is loaded
+==> class variables are stored in method area memory
+
+Local Variables:
+----------------
+==> A variable i.e., defined inside a method is called as Local Variable
+==> Local variable memory allocation happens whenever method is called
+==> Local variables are stored in Stack area memory
+
+
