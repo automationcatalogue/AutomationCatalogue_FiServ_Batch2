@@ -66,3 +66,41 @@ Assignment-4:
 	Strong number is --> sum of the Factorial of Individual digits
 	==> 1 ! + 4! 5 !
 	==> 1 + 24 + 120 ==> 145
+
+======================================================================================================
+Assignment-5:
+1. Write a class "Test", create instance variable
+    int x=456;//instance variable
+    static int m=90, e=85, sc=65,so=40, h=74;//class variables
+
+2. Write the another class ReverseDemo
+    Print the reverse of a number of Test class x variable
+    output should be --> 654
+
+3. Write the another class AvgDemo
+    Print the sum of all student marks and then get the avg
+    if(avg>70){
+    		System.out.println("Distinction");
+    	}
+
+    	==>avg 60 to 70 --> First class
+    	if(){
+    		System.out.println("First class");
+    	}
+
+    	==> avg 50 to 60 --> Second class
+    	if(){
+    		System.out.println("Second class");
+    	}
+
+    	==> avg 40 to 50 --> Third class
+    	if(){
+    		System.out.println("Third class");
+    	}
+
+    	==> avg<40 --> Failed
+    	if(){
+    		System.out.println("Failed");
+    	}
+======================================================================================================
+

@@ -112,4 +112,82 @@ Local Variables:
 ==> Local variable memory allocation happens whenever method is called
 ==> Local variables are stored in Stack area memory
 
+Execution Priority:
+-------------------
+1. Class Variables
+2. main method
+
+In Java, To access the instance variable there are '2' ways
+1. By using Object
+2. By using ObjectReference
+
+
+==> Use Object to access an instance variable if it is required only one time
+==> User Object Reference to access an instance variable if it required more than one time
+
+In Java, To access the class variable there are '4' ways
+1. Directly
+2. By using ClassName
+3. By using Object
+4. By using ObjectReference
+
+	==> Both Object & ObjectReference are not recommended to use
+
+==>Use className to access class variable whenever both class variable and Local variable names are same
+
+==>Access the class Variable directly if it is present in the same class
+==>use classname to access class variable if it is present in different class
+
+==> There is only one way to access local variables i.e., directly
+	1. Directly
+	
+==> Only one copy of class variables exists for all Objects
+==> Separate copy of instance variables exists for every object
+
+public class VarDemo {
+    int x=5;//instance variable
+    static int y=10;//class variable
+
+    public static void main(String[] args) {
+        VarDemo ob1 = new VarDemo();
+        VarDemo ob2 = new VarDemo();
+
+        ob1.x = ob1.x+2;
+        ob1.y = ob1.y+2;
+
+        System.out.println(ob1.x);
+        System.out.println(ob1.y);
+        System.out.println(ob2.x);
+        System.out.println(ob2.y);
+    }
+}
+
+
+class Emp{													class Emp{
+	int empNo;													int empNo;							
+	float empSalary;											static float empSalary;
+}															}
+
+															empSalary --> 4 bytes
+Emp ob1 = new Emp();										Emp ob1 = new Emp();										
+ob1 --> empNo, empSalary --> 8 bytes						ob1 --> empNo --> 4 bytes
+
+Emp ob2 = new Emp();										Emp ob2 = new Emp();
+ob2 --> empNo, empSalary --> 8 bytes						ob2 --> empNo --> 4 bytes
+
+Emp ob3 = new Emp();										Emp ob3 = new Emp();
+ob3 --> empNo, empSalary --> 8 bytes						ob3 --> empNo --> 4 bytes
+
+------------------------									---------------------
+------------------------									---------------------
+------------------------									---------------------
+
+Emp ob100 = new Emp();										Emp ob100 = new Emp();
+ob100 --> empNo, empSalary --> 8 bytes						ob100 --> empNo --> 4 bytes
+
+==> 800 bytes												400 + 4 bytes ==404 bytes
+
+==> Use the Instance variable, if value is getting changed for every object
+==> Use the Class variables, if value is same for all objects
+==> Use the local variables, if you want to perform some action
 
