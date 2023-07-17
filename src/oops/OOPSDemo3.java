@@ -12,5 +12,7 @@ public class OOPSDemo3 {
         System.out.println(ob1.a);//by using object reference
 
         System.out.println(new OOPSDemo3().a);//by using Object
+
+        System.gc();
     }
 }

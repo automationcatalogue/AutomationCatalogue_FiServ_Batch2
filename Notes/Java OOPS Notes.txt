@@ -191,3 +191,175 @@ ob100 --> empNo, empSalary --> 8 bytes						ob100 --> empNo --> 4 bytes
 ==> Use the Class variables, if value is same for all objects
 ==> Use the local variables, if you want to perform some action
 
+Garbage:
+--------
+==> Garbage means unused objects
+
+//Garbage Collector:
+--------------------
+==> It is the JVM component and it collects the garbage whenever CPU gets free time. because garbage collector priority is least priority
+==> priority number is '1'
+
+==> It is also possible to call garbage collector explicitly by using gc() method of java.lang.System class
+
+
+class Demo{
+	int x=5; 
+	int y=10;
+	public static void main(String args[]){
+		Demo ob1 = new Demo();
+		Demo ob2 = new Demo();
+		Demo ob3 = new Demo();
+		
+		---------------
+		---------------
+		---------------
+		ob1=null;
+		
+		--------------
+		--------------
+		--------------
+		ob2=ob3;
+	}
+}
+
+int x;//Declaration
+x=10;//Assignment
+int x=10;//Initialization
+
+
+ARRAYS:
+--------
+==> An array is a collection of similar data elements
+==> An array index always strts  with '0' and ends with size-1
+
+1. Declaration:
+---------------
+
+	Syntax:
+		DataType arrayRef[] = new DataType[size];
+		
+	Example:
+		int a[] = new int[10];
+		
+2. Assignment:
+--------------
+	Syntax:
+		arrayRef[index] = literal;
+		
+	Examples:
+	---------
+		a[0]=72;
+		a[2]=98;
+		
+
+3. Initialization:
+------------------
+	Syntax:
+		Datatype arrayRef[]={literal1, literal2, literal3, literal4,......};
+		
+	Examples:
+		
+		int a[] = {72,45,500,68,95};
+		
+Advanced For Loop/Enhanced For Loop/For Each Loop:
+---------------------------------------------------
+	Syntax:
+		for(DataType varName: arrayRef){
+			
+		}
+		
+	Example:
+	--------
+		for(int b:a){
+			----------
+			----------
+			----------
+		}
+	
+METHODS:
+--------
+==> A method is a group of statements into a single logical unit
+
+Advantages:
+-----------
+1. Reusability
+2. Modularity
+
+==> There are '2' types of methods in Java
+1. Instance Methods
+2. Class Methods
+
+
+Instance Methods:
+----------------
+==> A method i.e., defines as a member of a class is known as Instance method
+
+==> There are '2' ways to access the instance methods
+	1. By using Object
+	2. By using ObjectReference
+	
+Class Methods:
+--------------
+==> A method i.e., defined as a static member of a class is known as Class method
+
+==> There are '4' ways to access the class variables
+	1. Directly
+	2. By using Class Name
+	3. By using Object
+	4. By using Object Reference
+	
+1. Method Definition --> Actual Logic will be called
+2. Method Call Statement --> This is a statement to execute your block of code
+
+==> Both Instance Method and Class Methods are divided into '4' categories
+1. Method without return type and without arguments
+2. Method without return type and with arguments
+3. Method with return type and without arguments
+4. Method with return type and with arguments
+
+1. Method without return type and without arguments:
+---------------------------------------------------
+
+	Syntax:
+	------
+		void methodName(){
+			-----------
+			-----------
+			-----------
+		}
+		
+	Examples:
+	---------
+		//instance method - Method Definition
+		//method without return type and without arguments
+		void addEmployee(){
+			-----------
+			-----------
+			-----------			
+		}
+		
+		ob1.addEmployee();--> method call statement
+		
+2. Method without return type and with arguments:
+-------------------------------------------------
+
+	Syntax:
+	-------
+		void methodName(DataType var1, DataType var2, DataType var3,........ DataType varN){
+			------------
+			------------
+			-----------
+		}
+		
+		Examples:
+		---------
+		void print(int x, float y, char ch){
+			-----------
+			-----------
+			-----------
+		}
+		
+		
+
+	

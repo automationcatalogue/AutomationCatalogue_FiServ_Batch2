@@ -2,42 +2,42 @@ Assignment-1:
 ------------
 Take any five subject marks
  maths=70, english =75, science = ... etc.,
- 
+
  1. Print the total of all 5 subject marks
  2. Average of all 5 subject marks
 	==> Based on Condition, print whether student is Distinction/First Class/Second Class/Third Class/Failed
 	==>avg>70 --> Distinction
-	
+
 	if(avg>70){
 		System.out.println("Distinction");
 	}
-	
+
 	==>avg 60 to 70 --> First class
 	if(){
 		System.out.println("First class");
 	}
-	
+
 	==> avg 50 to 60 --> Second class
 	if(){
 		System.out.println("Second class");
 	}
-	
+
 	==> avg 40 to 50 --> Third class
 	if(){
 		System.out.println("Third class");
 	}
-	
+
 	==> avg<40 --> Failed
 	if(){
 		System.out.println("Failed");
 	}
-	
+
 2. Calculate the Simple Interest by using below formula
 	SI = ptr/100
 	p--> principal amount take --> 1000
 	t--> time --> 2 years
 	r--> rate of Interest --> 0.85
-	
+
 3. To calculate the algebric expression z=ax+b/ax-b.
 z=ax+b/ax-b.
 
@@ -46,33 +46,32 @@ a=10, b=20, x=5
 Assignment-2
 1. Write a Java Program for the below requirements
 	Take any '3' values and print all these values in descending order
-	
+
 2. Take some number and print the factorial of a number using While Loop
 	n=5==> 5!==> (5*4*3*2*1)==> 120
 	n=6==> 6!==> (6*5*4*3*2*1)==> 720
-	
+
 3. Take some number n=469 and print reverse of a number ==> 964
 ===================================================================================================
 Assignment-3
 1. Take number n=371 and check whether given number is Armstong number or not [implement this logis using DOWHILE and FOR LOOPS]
-	
+
 	Armstrong number is --> sum of the cubes of Individual digits
 	==> 3^3 + 7^3+ 1^3
 	==> 27 + 343 + 1 = 371
 =====================================================================================================
 Assignment-4:
 1. Take number n=145 and check whether given number is Strong number or not [implement this logis using  Nested FOR LOOPS]
-	
+
 	Strong number is --> sum of the Factorial of Individual digits
 	==> 1 ! + 4! 5 !
 	==> 1 + 24 + 120 ==> 145
 
-======================================================================================================
+===========================================================================================================
 Assignment-5:
 1. Write a class "Test", create instance variable
     int x=456;//instance variable
     static int m=90, e=85, sc=65,so=40, h=74;//class variables
-
 2. Write the another class ReverseDemo
     Print the reverse of a number of Test class x variable
     output should be --> 654
@@ -103,4 +102,18 @@ Assignment-5:
     		System.out.println("Failed");
     	}
 ======================================================================================================
+Assignment-6:
 
+Take the array int a[]={7, 12, 15, 17, 9,21};
+1. By using regular for loop --> print sum of all Prime numbers
+
+2. By using advanced for loop --> print sum of all Prime numbers
+
+3. Write a Test2 class and then define '4' method
+	1. Instance method --> factorial number logic
+	2. class method --> prime number logic
+	3. Instance method --> reverse of a number logic
+	4. class method --> Write the logic of 5 subject student marks
+
+	Write a class Demo2 --> write the main method here
+	and call all '4' methods of Test2 and then execute it
