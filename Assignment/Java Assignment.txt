@@ -117,3 +117,11 @@ Take the array int a[]={7, 12, 15, 17, 9,21};
 
 	Write a class Demo2 --> write the main method here
 	and call all '4' methods of Test2 and then execute it
+=====================================================================================================
+Assignment-7:
+
+1. Take '3' numbers in Test class
+    triangle() method
+    If all '3' numbers --> Equilateral triangle --> sum of all the three number(Separate method)
+    If any '2' numbers --> Bilateral triangle --> Print the unique number (Separate method)
+    If all'3'sides of a triangle --> Scalen triangle --> print the highest number (separate method)

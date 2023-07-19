@@ -360,6 +360,70 @@ Class Methods:
 			-----------
 		}
 		
-		
+3. Method with return type and without arguments:
+-------------------------------------------------	
+	
+	Syntax:
+	--------
+		DataType methodName(){
+			-----------
+			-----------
+			-----------
+			
+			return value;
+			
+		}
 
 	
+4. Method with return type and with arguments:
+----------------------------------------------
+	Syntax:
+		DataType methodName(DataType var1, DataType var2, DataType var3,........ DataType varN){
+			-----------
+			-----------
+			-----------
+			
+			return value;
+			
+		}
+==>In Method definition, if there is a return value, then that method must return it, otherwise compilation Error will come
+==>If Method definition is returning some value, method call statement may take the value or not. there will be no compilation Error even if it don't take
+==> However method is defined with some arguments, same way we must pass the number of arguments in method call statement.
+
+this keyword:
+-------------
+==> this keyword is called as objectReference, because it refers the object
+==>It always refers the current object and it is implicitly present in Instance method
+
+
+public class Demo {
+    int x=5;
+
+    public static void main(String[] args) {
+        Demo ob1 = new Demo();
+        ob1.show();
+    }
+
+    void show(){
+        System.out.println(x);
+    }
+}
+
+public class Demo {
+    int x=5;
+
+    public static void main(String[] args) {
+        Demo ob1 = new Demo();
+        Demo ob2 = new Demo();
+        ob1.x = ob1.x+2;
+        ob1.show();
+        ob2.show();
+    }
+
+    void show(){
+        System.out.println(this.x);
+    }
+}
+
+=>this keyword explicitly required to access an instance variable whenever both instance variable name and local variable names are same
+==>Static method doesn't refer 'this' keyword in anyway (explicitly and Implicitly)
