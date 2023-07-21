@@ -427,3 +427,237 @@ public class Demo {
 
 =>this keyword explicitly required to access an instance variable whenever both instance variable name and local variable names are same
 ==>Static method doesn't refer 'this' keyword in anyway (explicitly and Implicitly)
+
+CONSTRUCTORS:
+-------------
+==> Constructor is a special method which has the same name as a class name and which has no retun type
+==> constructor is called automatically whenever an object is created
+==> Constructors are used to initialise the instance variables
+
+==> Constructors are '2' types
+	1. Default constructor [without arguments]
+	2. Parameterized constructor [with arguments]
+	
+1. 
+class Demo{
+	Demo(){//valid constructor
+		-------
+		-------
+		-------
+	}
+}
+
+2. 
+class Demo{
+	demo(){//error, Not valid constructor
+		-------
+		-------
+		-------
+	}
+}
+
+3. 
+class Demo{
+	void Demo(){//Valid method, but it is not following java standards
+		-------
+		-------
+		-------
+	}
+}
+ 
+4. 
+class Demo{
+	void demo(){//valid method
+		-------
+		-------
+		-------
+	}
+}
+
+==> this() --> It calls default constructor of current class
+==> this(DataType1 var1, DataType2 var2,.....) --> It calls Parameterized constructor of a current class
+
+Note:
+==> this(); or this(arg1, arg2, arg3,.....argN); --> must be a first statement in the constructor
+
+==> Constructors are used to initialise the instance variables
+
+==> Whenever object is created, memory allocation happening to instance variables
+==> Constructor will be automatically whenever object is created
+
+
+int x=10;//initialization
+
+int x;//definition
+x=10;//Assignment
+
+Difference b/w Methods and Constructors:
+-----------------------------------------
+		Constructors											Methods
+1. constructor is not having any return type					1. method must have return type [without return type means void should be written]
+2. Constructor is a special method, which has same name			2. Methods is a group of statements into a sing - Any name can be given
+as the className
+3. Constructors are automatically wheneverobject is created		3. Methods must be called explicitly after creating the object
+4. Constructors are used to initialize the instance variables	4. Methods are used to perform some task
+5. Constructor is called only one time for one object			5. Methods can be called any number of time for one object
+
+Note:
+==> If the class does not contain any constructor, then only system will provides one default constructor implicitly
+
+1. 
+class Demo{//Valid
+	//Demo(){} --> System provided default constructor implicitly
+	public static void main(String args[]){
+		Demo ob1 = new Demo();
+	}
+}
+
+2. 
+class Demo{
+	//Demo(){} --> System provided default constructor implicitly
+	public static void main(String args[]){
+		Demo ob1 = new Demo(5); // Error will come as there is no Parameterized constructor is written
+	}
+	
+}
+
+3. 
+class Demo{//Valid
+
+	Demo(int x){
+		-------
+		-------
+		-------
+	}
+	public static void main(String args[]){
+		Demo ob1 = new Demo(5);
+	}
+}
+
+4. 
+class Demo{
+	Demo(int x){
+		-------
+		-------
+		-------
+	}
+	public static void main(String args[]){
+		Demo ob1 = new Demo();
+	}
+}
+OOPS Principles:
+----------------
+1. Inheritance
+2. Polymorphism
+3. Encapsulation
+4. Abstraction
+
+Inheritance:
+------------
+==> Creating a new class from an existing class is called as Inheritance
+==> Newly created class is called as 'Sub Class' (or) 'Child Class'
+==> Existing class is called as 'Super Class' (or) 'Parent Class'
+
+class Student{		//Existing Class --> Super Class
+
+	int rollNo;
+	String name;
+	char gender;
+	long landlineNo;
+	
+	--------------
+	--------------
+	--------------
+}
+
+class Student1 extends Student{ //New Class - Sub Class
+	long mobileNo;
+	String emailId;
+	
+	--------------
+	--------------
+	--------------
+}
+==> 'extends' is a keyword to make a relationship between two different classes
+
+==> Whenever object is created for super class, memory allocation happens for only super class members
+==> Whenever object is created for sub class, memory allocation happens for both super class members and sub class members
+
+Types of Inheritance:
+---------------------
+1. Single Inheritance
+2. Multiple Inheritance
+3. Multilevel Inheritance
+4. Hierarchial Inheritance
+5. Multipath Inheritance
+6. Hybrid Inheritance
+
+Single Inheritance:
+-------------------
+==>Derivation of a class from only one super class is known as Single Inheritance
+		A//Super class
+		|
+		B//sub class
+		
+Multiple Inheritance:
+----------------------
+==>Derivation of a class from more than one super class is known as Multiple Inheritance
+
+		A           B
+		|			|
+		-------------
+			|
+			C
+			
+Multilevel Inheritance:
+-----------------------
+==> Derivation a class from Sub class is called as Multilevel Inheritance
+		A
+		|
+		B
+		|
+		C
+
+Hierarchial Inheritance:
+------------------------
+==> Derivation of several classes from only super class is called as Hierarchial Inheritance
+			A//Super class
+			|
+		---------
+		|	|	|
+		B	C	D//sub classes
+		
+Multipath Inheritance:
+----------------------
+==> Derivation a class from more than one sub class and these subclasses are derived from same super class is called as Multipath Inheritance
+						A
+						|
+					----------
+					|		|
+					B		C
+					---------
+						|
+						D
+Hybrid Inheritance:
+-------------------
+==> Derivation of a class involving more than one form of Inheritance is called as Hybrid Inheritance
+			A
+			|
+			B	C
+			|	|
+			-----
+			  |
+			  D
+	Note: Multipath Inheritance can also example of Hybrid Inheritance
+	
+Note: Java doesn't support Multiple Inheritance, Multipath Inheritance and Hybrid Inheritance
+
+		A show()          B show()
+		|		          |
+		-------------------
+			|
+			C 
+			
+			C ob1 = new C();
+			ob1.show();
+==>Java doesn't support multipath Inheritance and Hybrid Inheritance because both types contains multiple Inheritance

@@ -125,3 +125,40 @@ Assignment-7:
     If all '3' numbers --> Equilateral triangle --> sum of all the three number(Separate method)
     If any '2' numbers --> Bilateral triangle --> Print the unique number (Separate method)
     If all'3'sides of a triangle --> Scalen triangle --> print the highest number (separate method)
+	
+=====================================================================================================
+Assignment-8:
+
+//Constructors
+1. Create a "PrimeDemo Class" --> Write the Parameterized Constructor --> take the argument as one integere variable 'x' --> check whether this 'x' is a prime number or not
+2. Create a "SumEvenDemo" Class --> write the Default constuctor --> Take the array of Integers inside the default constuctor --> write a program to calculate the sum of All numbers using Enhanced for loop
+3. Create a "Demo" Class --> write a main method --> Create objects for PrimeDemo class and SumEvenDemo class --> verify whether Constructors of the "PrimeDemo" and "SumEvenDemo" class are executed whenever object is created
+
+//Inheritance
+1. create a class "A" --> //super class (or) parent class
+		write the instance variable called 
+		int test=99;
+		
+		write the instance method
+		//method with arguments and with return type
+		int factDemo(int x){
+			
+		}
+		
+2. Create a class "B" extends A --> //sub class (or) child class
+		write the instance variable called 
+		int sample=55;
+		
+		write the instance method
+		//method with arguments and without return type
+		void primeDemo(int x){
+			
+		}
+		
+		
+3. Create a class "Demo"
+		1. write a main method
+		2. Create a object for parent class --> check whether you are able to access only parent class members
+		3. above step is performed, comment the second step code
+		4. Create a object for child class --> check whether you are able to access both parent class members and child class members
+
