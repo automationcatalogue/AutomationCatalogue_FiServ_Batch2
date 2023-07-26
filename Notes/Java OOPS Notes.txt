@@ -661,3 +661,86 @@ Note: Java doesn't support Multiple Inheritance, Multipath Inheritance and Hybri
 			C ob1 = new C();
 			ob1.show();
 ==>Java doesn't support multipath Inheritance and Hybrid Inheritance because both types contains multiple Inheritance
+
+Super:
+------
+==> Super is a keyword in Java, it is called as Object Reference because it refers the Super class memory
+==>It is explicitly required to access the super class member, whenever both super class and sub class member names are same.
+
+Note:
+-----
+	Static method does not refer this and super keywords in anyway either implicitly or explicitly
+	
+super(); (or) super(arg1, arg2, arg3, arg3......);
+
+Super();
+	--> this statement calls default constructor of super class, it is implicitly present as a first statement in every constructor.
+
+public class X {
+    //Default Constructor
+    X(){
+        this(10,20);
+        System.out.println("Core Java!!!");
+    }
+
+    //Parameterized Constructor
+    X(int a, int b){
+        int c=a+b;
+        System.out.println("Addition of a,b is :"+c);
+    }
+}
+
+public class Y extends X{
+    //Default Constructor
+    Y(){
+        System.out.println("Advanced Java!!!");
+    }
+
+    //Parameterized Constructor
+    Y(int a, int b){
+        this();
+        int c=a*b;
+        System.out.println("Multiplication of a,b is :"+c);
+    }
+}
+
+public class Test2 {
+    public static void main(String[] args) {
+        Y ob = new Y(20,30);
+    }
+}
+
+Final Keyword:
+--------------
+==> final keyword is called as modifier, because it modifies the behaviour of a variable,class and method.
+==> By using final keyword we can prevent the value of a variable, method over riding and Inheritance
+final int x=5;	
+		x++;-->Error because final values can not be changed
+		
+==> final keyword is applicable for all variables (Instance variable, class variable, local variable)
+==> final variable must be initialized, otherwise compile time error occurs.
+
+
+class Demo{
+	final int x;
+	Demo(){
+		x=10;
+	}
+	public static void main(String args[]){
+		System.out.println(new Demo().x);
+	}
+}
+
+Access Modifiers (or) Access Specifiers:
+----------------------------------------
+==> Access modifiers are also called as Access specifiers, because they specify the permissions for a variables, methods, classes, interfaces, packages etc.,
+
+==> There are '4' types access modifiers in Java
+1. public		    --> Visibility of Variables, methods in entire project
+2. private			--> Visibility of Variables and Methods only with in a class
+3. protected		--> Visibility of Variables and Methods with in a package and classes which are inherited outside the package
+4. No Name[Default]  --> Visibility of Variables and Methods only with in a package
+
+Order of More restrictive to less restrictive:
+----------------------------------------------
+private --> No Name --> Protected --> Public

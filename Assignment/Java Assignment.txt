@@ -161,4 +161,74 @@ Assignment-8:
 		2. Create a object for parent class --> check whether you are able to access only parent class members
 		3. above step is performed, comment the second step code
 		4. Create a object for child class --> check whether you are able to access both parent class members and child class members
+		
+========================================================================================================================================
+Assignment-9:
+
+1. Write a Program for Multievel inheritance with A, B, C --> write instance variables, class variables, instance method, class methods, constructors
+	Creates A, B, C and observe the behavior
+
+2. Write a Program for Hierarchial inheritance with D, E, F --> write instance variables, class variables, instance method, class methods, constructors
+	Creates D, E, F and observe the behavior
+
+3. Write two different classes Test & Sample and write some instance variable and instance methods in both the classes
+		Test --> parent class
+		Sample --> child class
+
+		Test ob1 = new Test();
+		Sample ob2 = new Sample();
+		Test ob3 = new Sample();
+		Sample ob4 = new Test();
+
+4. Create a class Demo--> In this class create instance variable, class variable, instance method, class method --> with access modifiers combination
+	Ex:
+	public int x=10;
+	public static int y=20;
+
+	private int a=30;
+	private static int b=40;
+
+	int i=50;
+	static int j=60;
+
+	protected int m=70
+	protected int n=80;
+
+	public void primeDemo(){
+
+	}
+
+	private void armstrongDemo(){
+
+	}
+
+	protected void evenOdd(){
+
+	}
+
+	void cube(){
+
+	}
+
+	public static void checkNumber(){
+
+	}
+
+	private static void addNumbers(){
+
+	}
+
+	protected static void multiplicationDemo(){
+
+	}
+
+	static void divisionNumbers(){
+
+	}
+
+
+1) Now access all these variables and methods within the same class --> All variables and methos should be able to access
+2) within the same package create another class "Test" --> public, no name and protected variables and methods should be able to access (private memebers should not be allowed)
+3) Create a class "Sample" outside the package --> public and protected (class must be inherited) --> (private members and no name members should not be accessible)
+
 
