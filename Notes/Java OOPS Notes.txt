@@ -744,3 +744,323 @@ Access Modifiers (or) Access Specifiers:
 Order of More restrictive to less restrictive:
 ----------------------------------------------
 private --> No Name --> Protected --> Public
+
+Polymorphism:
+--------------
+==> Ability to take more than one form is called as Polymorphism
+==> Here poly means 'many' and morphism means 'forms'
+
+==> In Java, Polymorphism can be implemented in '2' ways
+1. Compiletime Polymorphism
+2. Runtime Polymorphism
+
+Compiletime Polymorphism:
+-------------------------
+==> Binding of method call statement with medthod definition is done at compile time is known as 'compile time polymorphism'
+Example: Method Overloading
+
+Method Overloading:
+------------------
+==> If two (or) more methods with same name and with different parameters list, then it is said to be method overloading
+==> There are '3' ways to overload the methods
+
+1. Different in Number of Arguments
+	void add(int a){
+	
+	}
+	void add(int a, int b){
+	
+	}
+
+2. Different in Datatypes
+	void add(int a, int b){
+	
+	}
+	
+	void add(float a, float b){
+	
+	}
+
+3. Different in Order of arguments
+	void add(int a, float b){
+	
+	}
+	
+	void add(float a, int b){
+	
+	}
+	
+Runtime Polymorphism:
+----------------------
+==> Binding of method call statement with medthod definition is done at Runtime is known as 'Runtime polymorphism'
+Ex: Method Overriding
+
+Method Overriding:
+------------------
+==> If two (or) more methods with same name and same parameters list, then it is said to be method overriding.
+Note: 1. Method Overriding is not possible within the same class
+2. Method overriding is possible only within the Inheritance
+
+=> Whenever object is created for sub class, subclass method is going to replace in super class during the runtime, when both superclass and subclass method names are same.
+
+public class A {
+    void print(int x){
+        if(x%2==0){
+            System.out.println("Given number x is Even!!! "+x);
+        }else{
+            System.out.println("Given number x is Odd!!! "+x);
+        }
+    }
+
+    void cube(int x){
+        int y=x*x*x;
+        System.out.println("Cube of the given number is :"+y);
+    }
+}
+
+public class B extends A{
+    void print(int x){
+        int count=0;
+        for(int i=1;i>=x;++i){
+            if(x%i==0){
+                ++count;
+            }
+        }
+        if(count==2){
+            System.out.println("Given number is Prime !!! "+x);
+        }else{
+            System.out.println("Given number is Not Prime !!! "+x);
+        }
+    }
+
+    void fact(int x){
+        int fact=1;
+        for(int i=x;i>=1;--i){
+            fact = fact*i;
+        }
+        System.out.println("Factorial of a given number is :"+fact);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+
+    }
+}
+
+Differences between Method Overloading and Method Overriding:
+--------------------------------------------------------------
+		Method Overloading										Method Overriding
+1. If two (or) more methods having same name and 				1. If two (or) more methods having same name and same 
+different parameters list is known as method overloading		parameters list is known as Method Overriding
+
+2. Method Overloading can be possible within same class			2. Method Overriding is not possible within same class
+3. It is a compile time polymorphism							3. It is a Runtime Polymorphism
+4. Methods can be overloaded without Inheritance also			4. Method Overriding is possible only in the presence 
+																of 	Inheritance
+5. In Method Overloading, return type can be same 				5. In Method Overriding, return type must be same (or)
+or different													except co-variant return type
+6. In Method Overloading, access modifiers can be same 			6. In Method overriding, access modifiers must be same (or)
+or different													less restrictive
+7. Final Methods can be overloaded								7. Final Methods cannot be overridden, because final keyword
+																prevents method overriding
+8. Static methods can be overloaded								8. Static methods cannot be overridden, because static keyword
+																is not dependent on object creation
+9. Private methods can be overloaded							9. Private methods cannot be overridden, because visibility is 
+																restricted to the class
+																
+1. 																1. 
+class Demo{
+	void add(int a, int b){ //valid method overloading
+		---------
+		---------
+	}	
+	
+	void add(int a, int b, int c){
+		---------
+		---------
+	}
+}
+
+2. 
+class Demo(){
+	void add(int a, int b){	//valid method overloading
+		--------
+		--------
+	}		
+}
+class Test extends Demo{
+	float add(float a, float b){
+		--------
+		--------
+	}
+}
+
+3. 
+class Demo(){			
+	void add(int a, int b){	//valid method overriding
+		--------
+		--------
+	}		
+}
+class Test extends Demo{
+	void add(int a, int b){
+		-------
+		-------
+	}
+}
+
+4. 
+class Demo{			//Invalid Methodoverriding, because return type must be same (or) co-variant return type
+	void get(){ 
+		-------
+		-------
+	}						
+}
+class Test extends Demo{
+	int get(){
+		-------
+		-------
+	}
+}
+
+Co-Variant Return type:
+----------------------
+==> Java permits subclass type as a return type while overriding a method. This is known as co-variant return type
+
+
+class Demo(){
+	Demo get(){
+		-------
+		-------
+	}
+}								
+class Test extends Demo{
+	Test get(){
+		--------
+		--------
+	}
+}
+
+6.
+class Demo{
+	protected void show(){	//valid method overriding
+		-------------
+	}
+}
+class Test extends Demo{
+	public void show(){
+		--------------
+	}
+}
+
+7. 
+class A{
+	final void show(){//Invalid method overriding
+	
+	}
+}
+class B extends A{
+	void show(){
+	
+	}
+}
+
+8.
+class A{
+	final void show(){//Invalid Method overriding
+	
+	}
+}
+class B extends A{
+	final void show(){
+	
+	}
+}
+
+9.
+class A{
+	void show(){//valid method overriding
+	
+	}
+class B extends A{
+	final void show(){
+	
+	}
+}
+
+10.
+class A{
+	void show(){	//Invalid method overriding
+		----------
+		----------
+	}
+}
+class B extends A{
+	static void show(){
+		---------
+		---------
+	}
+}
+
+11.
+class A{
+	static void show(){ //valid, but not the concept of overriding. It is called as method hiding
+		----------
+		----------
+	}
+}
+class B extends A{
+	static void show(){
+		---------
+		---------
+	}
+}
+
+Method overriding					Vs					Method Hiding
+-------------------------------------------------------------------------
+class A{												class A{
+	void show(){											static void show(){
+		s.o.p("Core Java");										s.o.p("Core Java");
+	}														}
+															
+															static void print(){
+																-------------
+															}
+}														}
+class B extends A{										class B extends A{
+	void show(){											static void show(){
+		s.o.p("Advanced Java");									s.o.p("Advanced Java");
+	}														}
+															
+															static	void display(){
+																-------------
+															}											
+	
+	
+	public static void main(String args[]){					public static void main(String args[]){
+		A ob = new B();											B ob = new B();
+		ob.show();												ob.display();
+																ob.print();
+																ob.show();
+	}														}
+}														}
+
+o/p: Advanced Java										o/p: Core Java
+
+In the above example 'A' class show() method			In the above example one show() method is available for object reference and one more show() method 	
+overidden by 'B' class show() method					is hidden. This is known as Method Hiding
+
+
+class A{
+	private void show(){//Invalid Method overriding
+		----------
+		----------
+	}
+}
+class B extends A{
+	void show(){
+		----------
+		----------
+	}
+}
