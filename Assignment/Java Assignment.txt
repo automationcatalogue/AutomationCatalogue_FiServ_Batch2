@@ -230,5 +230,61 @@ Assignment-9:
 1) Now access all these variables and methods within the same class --> All variables and methos should be able to access
 2) within the same package create another class "Test" --> public, no name and protected variables and methods should be able to access (private memebers should not be allowed)
 3) Create a class "Sample" outside the package --> public and protected (class must be inherited) --> (private members and no name members should not be accessible)
+=================================================================================================================================
+Assignment-10:
+Method Overloading
+1. Create a class called "Demo" --> 
+	1. print() --> write the block of code for even odd number logic
+	2. print(int x) --> write the block of code whether x is a prime number or not
+	3. print(int x, int y) --> write the block of code sum of the numbers between x & y . under condition is when x is less than y
+	4. print(int x, float y) --> write the block of code multiplication of x & y
+	
+	
+	Create a object for a class --> and then call these methods
 
+1. Create an abstract class "Test1" --> write one abstract method and one non-abstract method
+	abstract method --> abstract void print();
+	non-abstract method --> 
+	void show(){
+		//factorial number logic
+	}
+3. Create a normal class "Test2" --> inherit this class with "Test1" --> check the behavior whether 
+it is asking you to implement the print() method implementation in the Test2 class
+	
+	implement the logic for print() method
+	void print(){
+		//prime number logic
+	}
+34. Crete a normal class "Test3" --> inherit this class with "Test1" --> check the behavior whether 
+it is asking you to implement the print() method implementation in the Test2 class
+	
+	implement the logic for print() method
+	void print(){
+		//sum of the first 20 even numbers logic
+	}
+5. Create a demo class and write main method 
+	write the below codes and check the behavior and output
+		a) Test1 ob1 = new Test2(); --> check the output of ob1.print();
+		a) Test1 ob1 = new Test3(); --> check the output of ob1.print();
+
+6. Create a Interface called A --> write only one abstract method 
+	void show();
+
+7. Create a class B implements A
+	void show(){
+		//prime number logic
+	}
+8. Create a class C implements A
+	void show(){
+		//factorial number logic
+	}
+	
+9. Create a class D implement A
+	void show(){
+		//armstrong number logic
+	}
+10. Create a class Demo--> write a main method
+	//A ob = new B(); --> ob.show()
+	//A ob = new C();--> ob.show();
+	//A ob = new D();--> ob.show();
 
