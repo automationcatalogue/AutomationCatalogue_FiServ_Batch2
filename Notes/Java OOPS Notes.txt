@@ -1451,3 +1451,113 @@ public class A {
 	----
 		A ob1 = new A();
 		A.B ob2 = ob1.new B();
+		
+2. Static Member class (Nested top level class):
+-------------------------------------------------
+==>A class i.e., defined as a static member of another class is known as static member class
+Syntax:
+	
+	OuterClass.InnerClass ObjectReference = new OuterClass.InnerClass();
+	
+	public class X {//Outer Class
+    int a=10;
+    static int b=20;
+
+    void show(){
+        System.out.println("CoreJava!!!");
+    }
+    static void display(){
+        System.out.println("AdvancedJava!!!");
+    }
+
+    static class Y{//Inner Class
+        int c=30;
+        static int d=40;
+
+        void print(){
+            System.out.println("JavaScript!!!!");
+        }
+        static void test(){
+            System.out.println("Python!!!");
+        }
+    }
+}
+
+public class Test1 {
+    public static void main(String[] args) {
+        X ob1 = new X();
+        System.out.println(ob1.a);
+        ob1.show();
+        System.out.println(X.b);
+        X.display();
+
+        X.Y ob2 = new X.Y();
+        System.out.println(ob2.c);
+        ob2.print();
+
+        X.Y.test();
+        System.out.println(X.Y.d);
+    }
+}
+
+3. Local Class:
+---------------
+==> A class i.e., defined inside a method is known as Local class
+public class Z {
+	
+	public static void main(String[] args) {
+		
+		class Test{//Local class
+			
+			void show(){
+				System.out.println("Hello World...!!! and this is local class demo");
+			}
+			
+		}
+
+		Test ob = new Test();
+		ob.show();
+	}
+	
+}
+
+4. Anonymous class (It is one type of other class):
+----------------------------------------------------
+==> It is one type of local class which has no name.
+==> It is always sub class of a class (or) interface
+
+
+public interface C {
+    void show();//public abstract void show();
+
+    void display();
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        C ob1 = new C(){
+            public void show(){
+                System.out.println("Core Java");
+            }
+            
+            public void display(){
+                System.out.println("Advanced Java");
+            }
+        };
+
+        ob1.show();
+    }
+}
+	
+	
+		C ob1 = new C(){														class  ________ implements C{
+            public void show(){														public void show(){
+                System.out.println("Core Java");										System.out.println("Core Java");
+            }															<==>		}
+            
+            public void display(){													public void display(){
+                System.out.println("Advanced Java");									System.out.println("Advanced Java");
+            }																		}
+        };																		};
+		
+		ob.show();														<==>	C ob1 = new _____();

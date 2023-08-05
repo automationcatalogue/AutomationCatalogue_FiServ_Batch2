@@ -2,7 +2,7 @@ package innerclasses;
 
 public class A {
     int x=10;
-
+    static int y=20;
     void show(){
         System.out.println("Core Java!!!");
     }
@@ -13,6 +13,8 @@ public class A {
         void display(){
             System.out.println("Advanced Java!!!");
         }
+
+
     }
 
 
