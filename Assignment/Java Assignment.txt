@@ -287,4 +287,9 @@ it is asking you to implement the print() method implementation in the Test2 cla
 	//A ob = new B(); --> ob.show()
 	//A ob = new C();--> ob.show();
 	//A ob = new D();--> ob.show();
+====================================================================================================
+Assignment-11:
+1. String s1 ="Automation Catalogue";
+  Write a java program to print the reverse of a String
+  O/P: eugolataC noitamotuA
 
