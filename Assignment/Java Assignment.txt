@@ -292,4 +292,9 @@ Assignment-11:
 1. String s1 ="Automation Catalogue";
   Write a java program to print the reverse of a String
   O/P: eugolataC noitamotuA
+====================================================================================================
+Assignment-12:
+1. String str="Java Programming testing";
+    Write a Java Program to print the reverse of a String with preserving the spaces
+    o/p: gnit setgnmmarg orPavaJ
 
