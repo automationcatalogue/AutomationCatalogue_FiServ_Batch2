@@ -1609,7 +1609,7 @@ There are '3' String related classes to handle the Strings
   public String toLowerCase();--> This method is used to convert the given String into lowercase alphabets
   public String toUpperCase();--> This method is used to convert the given String into uppercase alphabets
   public String trim(); --> This method is used to remove the extra spaces in the begining and ending
-  public String toString();
+  public String toString(); --> This method will give the content of the String
   public char[] toCharArray(); --> This method is used to conver the given String into Char array
   public static String valueOf(boolean); --> This method is used to convert the boolean value to String
   public static String valueOf(char); --> This method is used to convert the char value to String
@@ -1622,3 +1622,122 @@ There are '3' String related classes to handle the Strings
 	1. String s1 = new String("Hello India");
 		(or)
 	2. String s1 ="Hello India";
+	
+==> Every String literal itself is a object in String class
+
+==> java.lang.Object is a super class for all java classes
+==> java.lang.Object is implicitly inherited in every class
+
+1. 
+class Demo extends Object{//Implicitly presents
+	--------
+	--------
+	--------
+}
+
+2. 
+Class A extends Object{//Implicitly Present
+	---------
+	---------
+	---------
+}
+Class B extends A{
+	---------
+	---------
+	---------
+}
+
+String s1="Hello India";
+	This statement create a Object in String Constant Pool
+	
+String s1 = new String("Hello India");
+	This statement create a Object in String Constant Pool and another object outside the String constant pool
+	
+String Constant Pool:
+---------------------
+==> It is one of the memory segment in the RAM
+==> In String Constant Pool, Only String related data will be stored
+==> For better performance of the execution, this memory point will be used
+==> It is going to take less memory Usage as it does not allow duplicate values
+
+
+public class Demo15 {
+    public static void main(String[] args) {
+       String s1 = "Hello India";
+       String s2 = "Hello India";
+       System.out.println(s1.equals(s2));
+       System.out.println(s1==s2);
+
+       String s3 = new String("Hello India");
+       String s4 = new String("Hello India");
+       System.out.println(s3.equals(s4));
+       System.out.println(s3==s4);
+    }
+}
+
+==> Equals method of String class compares contents of String Object
+==> Equals operator compares the hashcode
+==> Equals method of Object class compares hashcode
+
+==> Whenever Object (or) Object reference is passed as a parameter in a method, then implicitly "toString()" method is called
+==> String class "toString()", method always returns the content of the String
+==> Object class "toString()", method is always returns the classname@hashcode-in hexa decimal format
+
+
+Difference b/w String, String Buffer, String Builder:
+----------------------------------------------------
+String													StringBuffer												StringBuilder
+1. The object of String class is immutable				1. the object of StringBuffer class is mutable				1. The object of StringBuilder class is mutable
+2. The methods of String class are not synchronized		2. The methods of StringBuffer class are synchronized		2. The methods of StringBuilder class is not synchronized
+
+Immutable:
+----------
+==> It means value of the object can not be changed by it self
+
+Mutable:
+----------
+==> It means value of the object can be changed by it self
+
+Wrapper Classes:
+----------------
+==> Each of Java's 8 primitive datatypes as a class and those classes are called Wrapper classes. because they wrap the data to an object
+Primitive DataType					Reference DataType[Wrapper class]
+---------------------------------------------------------------------
+1. byte				--->            Byte
+2. short			--->			Short
+3. int				--->			Integer
+4. long				--->			Long
+5. float			--->			Float
+6. double			---> 			Double
+7. char				---> 			Character
+8. boolean			--->			Boolean
+
+==> The above wrapper classes are part of java.lang package
+
+
+Constructor:
+-----------
+	public Integer(int); --> It is used to convert int to Integer
+	
+Method:
+------
+	public int intValue(); --> It is used to convert Integer to int
+	public static String toHexString(int) --> It is used to convert decimal integer to HexaDecimal String
+	public static String toOctalString(int) --> It is used to convert decimal integer to Octal String
+	public static String toBinaryString(int) --> It is used to convert decimal integer to Binary String
+	
+	public static int parseInt(String) throws NumberFormatException;--> It is used to convert String into the integer format
+	
+Primitive type to Reference type								Reference type to Primitive type
+--------------------------------------------------------------------------------------------------
+int x=5;														Inetger ob =new Integer(5);
+Integer ob1 = new Integer(x);									int x=ob.intValue();
+s.o.p(ob1);
+
+Auto boxing:
+-----------
+==> The process of converting from primitive type to corresponding reference type is known as Auto boxing
+
+Auto Unboxing:
+--------------
+==> The process of converting reference type to corresponding primitive typ is known as Auto Unboxing
