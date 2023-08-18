@@ -1741,3 +1741,155 @@ Auto boxing:
 Auto Unboxing:
 --------------
 ==> The process of converting reference type to corresponding primitive typ is known as Auto Unboxing
+
+To Convert the String into int:
+--------------------------------
+Integer:
+
+	public static int parseInt(String str) throws NumberFormatException;
+	
+Exception Handling:
+-------------------
+==> Errors are divided into '3' types
+	1. Compiletime errors
+	2. Runtime errors
+	3. Logical errors
+	
+Exception means Runtime errors
+(or)
+only runtime errors are called as exceptions
+
+==> In Java, exceptions can be handled by using below '5' keywords
+1. try
+2. catch
+3. throw
+4. throws
+5. finally
+
+==> The syntax of try & catch block:
+------------------------------------
+try{
+	-----------
+	-----------	//task code
+	-----------
+}catch(ExceptionClassName ObjectReference){
+	----------
+	---------- //error message
+	----------
+}
+
+==> try block must be associated with atleast one catch block (or) finally block
+==> All exceptions are classes in Java
+==> Whenever exception occurred in a program, then JVM creates an object of related exception class, passed to exception handler (catch block) and catch block code is executed.
+
+Types of exceptions:
+-------------------
+1. Checked exceptions
+2. UnChecked exceptions
+
+Checked exceptions:
+-------------------
+1. The exception classes that are derived from "java.lang.Exception" class are called as Checked Exceptions
+2. They donot include "java.lang.RuntimeException" class and it's subclasses
+3. All Checked exceptions must be handled by the programmer explicitly, other wise compile time error occurs
+4. The java compiler checks for try & catch block (or) throws clause for this kind of exceptions
+
+UnChecked Exceptions:
+---------------------
+1. The exception classes that are derived from "java.lang.RuntimeException" class are called as UnChecked Exceptions
+2. Handling UnChecked exceptions are optional, because these exceptions handled by the programmer to display user friendly error messages only
+3. The java compiler doesnot checks for try & catch bocks (or) throws clause for this kind of exceptions
+
+Hierarchy of Exception classes:
+-------------------------------
+
+													Object		
+														|
+													Throwable
+														|
+													Exception
+														|
+	-------------------------------------------------------------------------------------------------
+	|					|					|						|								|								
+	IO Exception		SQL Exception		InterruptedException	-----------						RuntimeException
+																									|
+																	--------------------------------------------------------------------------
+																	|							|						|						|	
+																	IndexOutOfBoundsException	Arithmetic Exception	NumberFormatException	-------
+													
+throw:
+------
+==> It is used to throw an object of exception class to a catch block
+
+throws
+------
+==> It is used to apply an exception to a method and also used to handle the exception
+
+// finally block
+==> It is used to perform the cleanup activities
+==> cleanup activities are closing a file, closing a socket connection, closing database connection,.... etc.,
+==> finally block is executed even exception occurred in a program
+
+
+1. 
+try{
+	----------
+	----------
+	----------
+}catch(RuntimeException re){
+	----------
+	----------
+	----------
+}
+==> This catch blocks handles RuntimeException class and all it's subclasses
+
+2. 
+try{
+	----------
+	----------
+	----------
+}catch(IOException ie){
+	----------
+	----------
+	----------
+}
+==> This catch block handles IOException and it's subclasses
+
+3. 
+try{
+	----------
+	----------
+	----------
+}catch(SQLException se){
+	----------
+	----------
+	----------
+}
+==> This catch block handles SQLException class and all it's subclasses  
+
+4. 
+try{
+	----------
+	----------
+	----------
+}catch(Exception e){
+	----------
+	----------
+	----------
+}	
+==> This catch block handles Exception class and all it's subclasses  
+
+5. 
+try{
+	----------
+	----------
+	----------
+}catch(IOException|SQLException e){
+	----------
+	----------
+	----------
+}
+  
+==> This catch block handles IOException class & SQLException and all it's subclasses of IOException and SQLException.
+
+
