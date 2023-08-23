@@ -1892,4 +1892,231 @@ try{
   
 ==> This catch block handles IOException class & SQLException and all it's subclasses of IOException and SQLException.
 
+Java Collection Framework:
+--------------------------
+Need of Collections:
+
+
+int a[]= new int[5];
+
+Limitations of Array:
+----------------------
+1. Arrays will hold Homogeneous data
+2. Arrays concept is not implemented based on some standard data structure. Hence ready made method support is not available
+Note: For every requirement, we have to write the the code explicitly, which is complexity of programming.
+3. Arrays are fixed in Size. i.e., once we create the array with some size,  there is no chance of increasing or decreasing its size based on our requirement.
+
+==> To overcome the above limitations of arrays, we should go for collections
+1. Collections can hold both homogeneous and heterogeneous elements
+2. Every collection class is implemented based on some standard data structure, hence ready made method support is available
+3. Collections are growable in nature. i.e., Based on our requirement we can increase (or) decrease the size
+
+Differences between Arrays vs Collections:
+==========================================
+Arrays																		Collections
+------																		------------
+1. Arrays are fixed in size													1. Collections are growable in nature
+2. w.r.t memory arrays are not recommended to use							2. w.r.t memory collections are recommended to use
+3. w.r.t performance arrays are recommended to use							3. w.r.t performace collections are not recommended to use
+4. Arrays can hold only homogeneous data elements							4. Collections can hold both homogeneous and heterogeneous elements
+5. There is no underlying Datastructures for arrays, hence readymade		5. Every collection class is implemented based on some standard data structure. hence
+method support is not available												readymade method support is available.
+6. Arrays can hold both primitive data types and reference data type		6. Collections can hold only objects [reference datatypes], but not primitives
+
+Collection:
+-----------
+==> If we want to represent a group of individual objects as a single entity, then we should go for collection
+
+Collection Framework:
+--------------------
+==> It defines several classes and interfaces which can be used a group of objects as a single entity
+==> There are '9' key interfaces in the collection framework
+1. Collection (I)
+2. List (I)
+3. Set(I)
+4. SortedSet (I)
+5. NavigableSet (I)
+6. Queue(I)
+7. Map (I)
+8. SortedMap(I)
+9. NavigableMap (I)
+
+
+Collection (I):
+---------------
+==> If we want to represent a group of individual objects as a single entity, then we should go for collection
+
+Difference between Collection and Collections:
+----------------------------------------------
+==> Collection is an interface which can be used to represent a group of individual objects as a single entity
+==> Collections is an utility class which presents in java.util package to define several utility methods like sorting, searchin for collection objects
+
+List (I):
+---------
+==> List is a child interface of collection
+==> If we want to represent a group of individual objects as a single entity, where duplicates are allowed and insertion order is preserved, then we should go for list
+
+Set (I):
+---------
+==> It is the child interface of collection
+==> If we want to represent a group of individual objects as a single entity, where duplicates are not allowed and insertion is not preserved, then we should go for set
+
+SortedSet (I):
+--------------
+==> SortedSet is the Child interface of Set interface
+==> If we want to represent a group of objects as a single entity where duplicated are not allowed, but all objects should be implemented according to some sorting order then we should go for SortedSet
+
+NavigableSet (I):
+-----------------
+==> NavigableSet interface is the child interface of SortedSet interface
+==> It defines several utility methods for navigation purposes
+
+Queue(I):
+---------
+==> It is the child interface of collection
+==> If we want to represent a group of individual objects prior to the processing then we should go for Queue
+Ex: 
+Before sending a mail, all mail ID’s  we have to store somewhere and which order we saved in the same order mailID’s should be delivered (FIFO), for this requirement, Queue concept is the best choice.
+
+==> All the above interfaces (Collection, List, Set, SortedSet, NavigableSet, Queue)meant for representing the group of individual objects
+
+7. Map (I):
+------------
+==> Map is not the child interface of collection
+==> If we want to represent a group of objects as key value pairs, then we should go for Map Interface
+
+==> Both Key and Values are Objects. Duplicate keys are not allowed and values can be duplicated
+Ex: Roll No 	Name
+	101			sagar
+	102			Krishna
+	103 		sagar
+	
+8. SortedMap(I):
+-----------------
+==> It is the child interface of a Map Interface
+==> If we want to represent a group of key value pairs according to some sorting order of keys, then we should go for SortedMap
+
+9. Navigable Map (I):
+---------------------
+==> It is the child interface of SortedMap
+==> It defines the several utility methods for navigation purposes
+
+Sorting:
+---------
+1.	Comparable (I) -->  It is used to get the default natural sorting order
+2.	Comparator (I) -->  It is used to get the customized sorting order
+
+Cursors:
+--------
+1.	Enumeration (I)
+2.	Iterator (I)
+3.	List Iterator(I)
+
+
+Utilities:
+---------
+1.	Collections
+2.	Arrays
+
+
+Collection (I):
+--------------
+==> If we want to represent a group of individual objects as a single entity, then we should go for collection
+==> In general collection Interface is considered as a root interface
+==> Collection Interfaces having the most common methods which are applicable to any collection object
+
+  public abstract int size(); --> To get the size of the collection
+  public abstract boolean isEmpty(); --> To check whether collection is empty or not
+  public abstract boolean contains(Object); --> To check specific collection object is present or not
+  public abstract iterator<E> iterator(); --> To get the collection objects one by one
+  public abstract Object[] toArray(); --> --> To get the collection objects one by one
+  public abstract boolean add(E); --> To add a single object
+  public abstract boolean remove(Object); --> To remove a single object
+  public abstract boolean containsAll(Collection<?>); --> To check specific group of objects available or not
+  public abstract boolean addAll(Collection<? extends E>); --> To add group of objects
+  public abstract boolean removeAll(Collection<?>); --> To remove group of objects
+  public abstract boolean retainAll(Collection<?>);  --> Except the collection c, remaining all other objects are removed
+  public abstract void clear(); --> To remove all objects
+  public abstract boolean equals(Object);
+  
+  Note:
+Collection interface doesn’t contain any method to retrieve objects as there is no concrete class which implements collection interface directly
+
+List (I):
+---------
+==> It is a child interface of Collection
+==> If we want to represent a group of individual objects as a single entity where duplicates are allowed and insertion order is preserved, then we should go with List
+==> List interface can differentiate duplicates by index
+==> List interface can preserve the insertion order by using index. Hence index plays very important role in the List Interface.
+
+  public abstract int size(); --> To get the size of the List
+  public abstract boolean isEmpty(); --> To check whether List is empty or not
+  public abstract boolean contains(java.lang.Object); --> To check specific List object is present or not
+  public abstract Iterator<E> iterator(); --> To get the List objects one by one
+  public abstract Object[] toArray(); --> To Convert List interface to Arrays
+  public abstract boolean add(E); --> To add a single object
+  public abstract boolean remove(Object); --> To remove a single object
+  public abstract boolean containsAll(Collection<?>); --> To check specific group of objects available or not
+  public abstract boolean addAll(Collection<? extends E>); --> To add group of objects  
+  public abstract boolean removeAll(Collection<?>);  --> To remove group of objects
+  public abstract boolean retainAll(Collection<?>); --> --> Except the collection c, remaining all other objects are removed
+  public void replaceAll(java.util.function.UnaryOperator<E>); -->To replace the specific group of objects with the given data
+  public void sort(Comparator<? super E>); --> To get the sorted data in the List
+  public abstract void clear(); --> To remove all the objects
+  public abstract boolean equals(Object); 
+  public abstract E get(int); --> To get the specific object from a given index position
+  public abstract E set(int, E); --> To Update the object in a specific index position
+  public abstract void add(int, E); --> To add the object in a specific index position
+  public abstract E remove(int); -->To remove the object in a specific index position
+  public abstract int indexOf(Object); -->  To get the index position of a specific object of first occurance
+  public abstract int lastIndexOf(Object); -->  To get the index position of a specific object of last occurance
+  public abstract ListIterator<E> listIterator(); --> To get the List objects one by one
+
+
+ArrayList (C):
+--------------
+==> The Underlying datastructure is Resizable Array (or) Growable Array
+==> Duplicates are allowed
+==> Insertion order is Preserved
+==> Heterogeneous objects are allowed [except TreeSet & TreeMap everywhere heterogeneous objects is allowed]
+==> Null insertion is possible
+
+	Constructors:
+	--------------
+	1. new ArrayList();
+	==> It creates an empty arrayList with default initial capacity is 10, once ArrayList reaches max capacity, a new array list will be created with
+	  NewCapacity = (currentCapacity*3/2)+1
+	  
+	2. public ArrayList(int);
+    ==> It create an ArrayList with initical capacity size, once it reaches max capacity a new Array List will be created with below formula
+	NewCapacity = (currentCapacity*3/2)+1
+	
+	  
+	3. public ArrayList(Collection<? extends E>);
+	==> To convert Collection object to equivalent ArrayList
+  
+  
+//methods  
+  public boolean add(E);
+  public boolean addAll(Collection<? extends E>);
+  public boolean addAll(int, Collection<? extends E>);
+  public int size();
+  public void clear();
+  public boolean isEmpty();
+  public boolean contains(Object);
+  public int indexOf(Object);
+  public int lastIndexOf(Object);
+  public Object[] toArray();
+  public E get(int);
+  public E set(int, E); --> This method is used to replace the data in the given index position and this method returns the previous/existing data
+  public void add(int, E); --> This method is used to add the oject based on the index position and all other objects in ArrayList will be increased by +1 position
+  public E remove(int); --> This method is used to remove the data from a given index position and returns the removed object
+  public boolean remove(Object); --> This method remove the first occurance data from a arrayList. If data presents returns true, if not retuns false
+  public boolean removeAll(Collection<?>);
+  public boolean retainAll(Collection<?>);
+  public List<E> subList(int, int); --> This methos is used to get the List of Objects from starting position to end position-1
+  public ListIterator<E> listIterator(int);
+  public Iterator<E> iterator();
+  public void sort(java.util.Comparator<? super E>);
+
 
