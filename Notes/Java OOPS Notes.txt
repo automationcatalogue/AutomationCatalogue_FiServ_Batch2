@@ -2118,5 +2118,72 @@ ArrayList (C):
   public ListIterator<E> listIterator(int);
   public Iterator<E> iterator();
   public void sort(java.util.Comparator<? super E>);
+  
+==> ArrayList and Vector are implemented with RandomAccessInterface, so that we can access any Random element with the same speed. 
+==> Hence If our frequent operation is retrieval, ArrayList is the best choice
+
+RandomAccess (I):
+------------------
+==> It presents in the java.util package
+==> It doesn't contain any method and it is a Marker interface
+
+
+==> ArrayList is best choice if our frequent operation is retrieval operation (because ArrayList implements RandomAccessInterface)
+==> ArrayList is the worst choice if our frequent operation is insertion (or) deletion in the middle (because several shift operations are required)
+
+LinkedList (C):
+---------------
+1. Underlying data structure is Double LinkedList
+2. Duplicates are allowed
+3. Insertion order is preserved
+4. Heterogeneous data is allowed
+5. Null insertion is possible
+
+==> LinkedList is the best choice if our frequent operation is insertion (or) deletion in the middle
+==> LinkedList is the worst choice if our frequent operation is retrieval operation
+
+Constructors:
+-------------
+  public LinkedList();
+  ==> Creates an empty LinkedList object
+  public LinkedList(Collection C);
+  ==> Creates an equivalent LinkedList object for the given collection
+  
+  
+  public E getFirst(); --> this method is used to get the first element from the linked list
+  public E getLast(); --> this method is used to get the last element from the linked list
+  public E removeFirst(); --> this method is used to remove the first element from the linked list
+  public E removeLast(); --> this method is used to remove the last element from the linked list
+  public void addFirst(E); --> this method is used to add the first element in a linked list
+  public void addLast(E); --> this method is used to add the last element in a linked list
+  
+  public int size(); --> To get the size of the Linked list
+  public boolean add(E); --> This method is used to add the element in a linked list, on successful adding, it returns true else returns false
+  public boolean remove(java.lang.Object); --> this method is used to remove the data, If data is removed successful returns true else returns false
+  public boolean addAll(Collection<? extends E>); --> this method is used to add the other collection type to the linked list
+  public boolean addAll(int, Collection<? extends E>);--> this method is used to add the other collection type to the linked list from a givn index position
+  public void clear(); --> this method is used to clear all the data from a linked list
+  public E get(int); --> this method is used to get the object from a given index position
+  public E set(int, E); --> this method is used to return the object from a given index position and replaces the given data
+  public E peek(); --> This method is returning the first element from a linked list, but not removed. If it is empty returning null value
+  public E element(); --> This method is returning the first element from a linked list, If it is empty throwing NoSuchElementException
+  public E poll(); --> This method is used to retrieves the first element and removes it from the linked list. If it is empty returning null value
+  public E remove(); --> This method is used to retrieves and removes first element, if it is empty, throwing the NoSuchElementException
+  public boolean offer(E); --> This method is used to add the element at the tail
+  public boolean offerFirst(E); --> This method is used to add the element in the first position of the linked list
+  public boolean offerLast(E); --> --> This method is used to add the element in the last position of the linked list
+  public E peekFirst(); --> This method is returning the first element from a linked list, but not removed. If it is empty returning null value
+  public E peekLast();--> This method is returning the last element from a linked list, but not removed. If it is empty returning null value
+  public E pollFirst(); --> This method is used to retrieves the first element and removes it from the linked list. If it is empty returning null value
+  public E pollLast(); --> This method is used to retrieves the last element and removes it from the linked list. If it is empty returning null value
+  public void push(E); --> this methos is used to push the object on top of the stack
+  public E pop(); -->  this method is used to remove the object from the top of the stack
+  public Object[] toArray(); --> this method is used to convert the Linked List to Array
+  
+  public ListIterator<E> listIterator(int);
+  public Iterator<E> descendingIterator();
+  
+
+
 
 
