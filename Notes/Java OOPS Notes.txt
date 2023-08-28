@@ -2117,7 +2117,7 @@ ArrayList (C):
   public List<E> subList(int, int); --> This methos is used to get the List of Objects from starting position to end position-1
   public ListIterator<E> listIterator(int);
   public Iterator<E> iterator();
-  public void sort(java.util.Comparator<? super E>);
+
   
 ==> ArrayList and Vector are implemented with RandomAccessInterface, so that we can access any Random element with the same speed. 
 ==> Hence If our frequent operation is retrieval, ArrayList is the best choice
@@ -2183,6 +2183,545 @@ Constructors:
   public ListIterator<E> listIterator(int);
   public Iterator<E> descendingIterator();
   
+  Differences b/w ArrayList and LinkedList:
+-----------------------------------------
+ArrayList										vs 						LinkedList
+1. ArrayList is the best choice if our frequent operation is 			1. LinkedList is the best choice if our fequent operation is insertion (or) deletion	
+retrival
+2. ArrayList if the worst choice if our frequent operation is 			2. LinkedList is the worst choice if our frequent operation is retrieval
+insertion (or) deletion
+3. Underlying data structure is Growable array (or) resizable array		3. Underlying data structure is double linked list
+4. ArrayList implements RandomAccessInterface							4. LinkedList doesn’t implements RandomAccessInterface
+5. Default Initial capacity is 10										5. Default Initial capacity is Empty
+
+Vector (V):
+-----------
+1. Underlined data structure is Resizable array (or) Growable array
+2. Duplicate objects are allowed
+3. insertion order is preserved
+4. null insertion is possible
+5. Heterogeneous data is allowed
+6. Vector class is implemented with Serializable, Clonable and RandomAccessInterface
+7. Most of the methods in vector are synchronized, hence vector object is ThreadSafe
+8. Best choice if the frequent operation is retrieval
+
+For adding Objects:
+--------------------
+1. add (Object ob) --> [from collection - Interface]
+2. add(int index, Object o) --> [from List - Interface]
+3. addElement(Object ob) --> [from Vector class]
+
+For removing Objects:
+---------------------
+1. remove(Object ob) --> [from collection - Interface]
+2. remove(int index) --> [from List - Interface]
+3. removeElementAt(int index) --> [from Vector Class]
+4. clear() --> [from collection - Interface]
+5. removeAllElements() --> [from Vector Class]
+
+For accessing Objects:
+---------------------
+1. Object get(int index) --> [from List - Interface]
+2. Object elementAt(int index) --> [from Vector Class]
+3. Object firstElement() --> [from Vector Class]
+4. Object lastElement() --> [from Vector Class]
+
+Other methods:
+--------------
+1. int size();
+2. int capacity();
+3. Enumeration elements();
+
+Constructors:
+-------------
+1. Vector v = new vector();
+==> Creates an empty vector object with default initial capacity 10, once vector reaches it's max capacity, new vector object will be created with
+	NewCapacity = 2 * CurrentCapacity
+	
+2. Vector v = new Vector(int initialCapacity);
+==> Creates and empty vector object with specified Initial capacity
+
+3. Vector v = new Vector(int initialCapacity, int incrementalCapacity);
+
+4. Vector v = new Vector(Collection c);
+==> Creates an equivalent vector object for the given collection
+
+Stack:
+-----
+1. It is a subclass of Vector
+2. It is specifically designed for LastInFirstout Order (LIFO)
+
+Constructor:
+-----------
+	Stack s = new Stack();
+	
+Methods:
+--------
+1. Object push(Object ob) 
+	--> For inserting an object to the stack
+	
+2. Object pop();
+	--> To remove and returns to the top of the stack
+	
+3. Object peek();
+	--> To returns the top of the stack without removal of object
+
+4. int search(Object ob);
+	--> If the specified object is available, it returns the index position from the top of the stack
+	
+5. boolean empty();
+	--> To know whether stack is empty or not
+
+
+Set (I):
+--------
+==> It is the child interface of collection
+==> If we want to represent a group of objects into a single entity where duplicates are not allowed and insertion is not preserved, then we should go with Set interface
+==> set interface doesn't contain any new methods, so we should use only collection interface
+
+  public abstract int size();
+  public abstract boolean isEmpty();
+  public abstract boolean contains(Object);
+  public abstract Iterator<E> iterator();
+  public abstract Object[] toArray();
+  public abstract <T> T[] toArray(T[]);
+  public abstract boolean add(E);
+  public abstract boolean remove(Object);
+  public abstract boolean containsAll(Collection<?>);
+  public abstract boolean addAll(Collection<? extends E>);
+  public abstract boolean retainAll(Collection<?>);
+  public abstract boolean removeAll(Collection<?>);
+  public abstract void clear();
+  public abstract boolean equals(Object);
+  
+HashSet (C):
+------------
+==> Underlying data structure is Hashtable
+==> Duplicates are not allowed, if we try to add the duplicates data, add() method or some other method will return false
+==> Insertion order is not preserved, insertion order is done according to the hash code of objects
+==> Heterogeneous objects are allowed
+==> null insertion is preserved [but only one time]
+
+Constructors: (All the below constructos will be same for HashSet, LinkedHashSet, HashMap, LinkedHashMap, IdentityHashMap, WeakHashMap)
+---------------------------------------------------------------
+  1. public HashSet();
+  ==> HashSet h = new HashSet();
+  It creates the empty hashset with the capacity 16 and Load factor 0.75
+  
+  2. public HashSet(Collection<? extends E>);
+  ==> For inter conversion between objects
+  
+  3. public HashSet(int, float);
+  ==> It creates with the customized initial capacity and load factor is also customized
+  
+  4. public HashSet(int);
+  ==> It creates with the customized initial capacity and load factor is 0.75 only
+	
+	Load factor/Fill Ratio:
+	-----------------------
+  ==> After loading the how much factor, a new hashset object will be created, the factor is called as Load factor (or) Fill Ratio
+  
+  Methods:
+  --------
+  public Iterator<E> iterator();
+  public int size();
+  public boolean isEmpty();
+  public boolean contains(Object);
+  public boolean add(E);
+  public boolean remove(Object);
+  public void clear();
+  
+LinkedHashSet: 
+--------------
+==> It is a extended class from HashSet
+==> If we want to represent a group of individual objects as a single entity where duplicates are not allowed and insertion order is preserved, then we should go for LinkedHashSet
+
+Difference between HashSet and LinkedHashSet
+
+HashSet															LinkedHashSet
+1. Underlined data structure is Hashtable						1. Underlined data structure is Hashtable and LinkedList
+2. Insertion order is not preserved								2. Insertion order is preserved
+3. It is introduced in 1.2 version								3. It is introduced in 1.4 version
+
+Note: LinkedHashSet is the best choice to develop cache based application, where duplicates are not allowed and insertion order is preserved
+
+SortedSet (I):
+-------------
+1. It is child interface of a set
+2. If we want to represent a group of individual objects according to some sorting order and duplicates are not allowed, then we should go for SortedSet
+
+Methods:
+--------
+  public abstract Comparator<? super E> comparator(); --> It returns comparator object that describes underlying sorting technique. If we are using natural sorting order then we will get null
+  
+  public abstract SortedSet<E> subSet(E, E); --> It retruns the SortedSet whose elements are greater than or equal to the Object1 and Object2
+  public abstract SortedSet<E> headSet(E); --> It retruns the SortedSet whose elements are less than the Object
+  public abstract SortedSet<E> tailSet(E); --> It retruns the SortedSet whose elements are greater than or equal to the Object
+  public abstract E first(); --> It returns the first element of the SortedSet
+  public abstract E last(); --> It returns the last element of the SortedSet
+  
+	Example:
+	{100, 101, 103, 104, 107, 110, 115}
+	first() --> 100
+	last() --> 115
+	headSet(104) --> 100, 101, 103
+	tailSet(104) --> 104, 107, 110, 115
+	subset(103, 110) --> 103, 104, 107
+	
+	Default Natural Sorting order for numbers is --> Acending
+	Default Natural Sorting order for String is --> Alphabetical
+	
+	
+NavigableSet(I):
+----------------
+==> It is the child interface of SortedSet
+==> It defines several utility methods for navigation purposes
+
+Methods:
+--------
+  public abstract E lower(E); --> Returns the greatest element in this set strictly less than the given element, or null if there is no such element.
+  public abstract E floor(E); --> Returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
+  public abstract E ceiling(E); --> Returns the least element in this set greater than or equal to the given element, or null if there is no such element.
+  public abstract E higher(E); --> Returns the least element in this set strictly greater than the given element, or null if there is no such element.
+  public abstract E pollFirst(); --> Retrieves and removes the first (lowest) element, or returns null if this set is empty.
+  public abstract E pollLast(); --> Retrieves and removes the last (highest) element, or returns null if this set is empty
+  public abstract Iterator<E> iterator();
+  public abstract NavigableSet<E> descendingSet(); --> Returns a reverse order view of the elements contained in this set.
+  public abstract Iterator<E> descendingIterator(); --> Returns an iterator over the elements in this set, in descending order.
+  public abstract NavigableSet<E> subSet(E, boolean, E, boolean); --> Returns a view of the portion of this set whose elements range from fromElement to toElement.
+  public abstract NavigableSet<E> headSet(E, boolean); --> Returns a view of the portion of this set whose elements are less than (or equal to, if inclusive is true) toElement.
+  public abstract NavigableSet<E> tailSet(E, boolean); --> Returns a view of the portion of this set whose elements are greater than (or equal to, if inclusive is true) fromElement.
+  
+TreeSet (C):
+------------
+1. Underlying data structure is Balanced Tree
+2. Duplicates are not allowed
+3. Insertion order is not applicable, but all the elements are preserved according to some sorting order
+4. Heterogeneous objects are not allowed, if we add the heterogeneous data, we will get the runtime exception which is ClassCastException
+5. null insertion not allowed
+
+Constructors:
+--------------
+1. TreeSet t = new TreeSet();
+	==> Creates an empty object where elements will be inserted according to default natural sorting order
+	
+2. TreeSet t = new TreeSet(Comparator C);
+	==> Creates an empty object where elements will be inserted according to Customized sorting order
+	
+3. TreeSet t = new TreeSet(Collection C);
+	==> to convert from collection class to TreeSet 
+	
+4. Treeset t = new TreeSet(SortedSet s);
+
+
+
+  public Iterator<E> iterator();
+  public Iterator<E> descendingIterator();
+  public NavigableSet<E> descendingSet();
+  public int size();
+  public boolean isEmpty();
+  public boolean contains(Object);
+  public boolean add(E);
+  public boolean remove(Object);
+  public void clear();
+  public boolean addAll(Collection<? extends E>);
+  public NavigableSet<E> subSet(E, boolean, E, boolean);
+  public NavigableSet<E> headSet(E, boolean);
+  public NavigableSet<E> tailSet(E, boolean);
+  public SortedSet<E> subSet(E, E);
+  public SortedSet<E> headSet(E);
+  public SortedSet<E> tailSet(E);
+  public Comparator<? super E> comparator();
+  public E first();
+  public E last();
+  public E lower(E);
+  public E floor(E);
+  public E ceiling(E);
+  public E higher(E);
+  public E pollFirst();
+  public E pollLast();
+
+
+==> Comparable Interface: (Default Natural Sorting Order)
+---------------------------------------------------------
+==> This interface presents in java.lang package
+==> It contains only one method i.e., compareTo()
+	
+	public abstract int compareTo();
+	
+	Ex:
+	Obj1.compareTo(Obj2);
+	==> It returns -ve if Object1 is comes before Object2
+	==> It returns +ve if Object1 is comes after Object2
+	==> It returns zero if Object1 & Object2 are equal
+	
+==> Note: If we depending on natural sorting order, internally JVM will call compareTo() method while inserting into the TreeSet, hence the Objects should be comparable
+
+==> Comparator Interface: (Customized Sorting Order)
+----------------------------------------------------
+==> Comparator interface presents in the java.util package
+==> Comparator interface having compare() & equals() methods
+
+methods of Comparator:
+---------------------
+1. public int compare(Object ob1, Object ob2)
+	==> It returns -ve if Object1 is comes before Object2
+	==> It returns +ve if Object1 is comes after Object2
+	==> It returns zero if Object1 & Object2 are equal
+	
+2. public boolean equals(Object obj)
+
+==> Whenever we are implementing Comparator interface, compulsaory we should provide impementation only for compare() method and does not any impementation for equals() method, because already impementation is present through Object class through inheritance
+
+public class TreeSetDemo2 {
+    public static void main(String[] args) {
+
+        TreeSet t = new TreeSet(new MyComparator());
+        t.add(10);
+        t.add(0);
+        t.add(15);
+        t.add(5);
+        t.add(20);
+        t.add(20);
+        System.out.println(t);
+    }
+}
+
+public class MyComparator implements Comparator {
+
+    public int compare(Object obj1, Object obj2){
+        Integer i1 = (Integer) obj1;
+        Integer i2 = (Integer) obj2;
+
+        if(i1<i2){
+            return +1;
+        }else if(i1>i2){
+            return -1;
+        }else{
+            return 0;
+        }
+    }
+}
+
+==> If we are not passing comparator object, internally JVM will call compareTo() method of comparable interface, which is meant for Default Natural sorting order.
+In this case output is [0,5,10,15,20]
+
+==> If we are passing comparator object, then JVM will call compare() method of comparator interface, which is meant for Customized Sorting order.
+In this case output is [20, 15, 10, 5, 0]
+
+==> Various possible implementations of compare() method:
+---------------------------------------------------------
+TreeSet t = new TreeSet(new MyComparator());
+public int compare(Object obj1, Object obj2){
+	Integer i1 = (Integer) obj1;
+    Integer i2 = (Integer) obj2;
+	
+	1. return I1.compareTo(I2);--> default Natural Sorting order --> Ascending order [0,5,10,15,20]
+	2. return I2.compareTo(I1);--> Descending order --> [20, 15, 10, 5, 0]
+	3. return -I1.compareTo(I2) -->  Descending order --> [20, 15, 10, 5, 0]
+	4. return -I2.compareTo(I1);--> Ascending order --> [20, 15, 10, 5, 0]
+	5. return +1; --> insertion order [10, 0, 15, 5, 20, 20];
+	6. return -1; --> reverse of Insertion order [20, 20, 5, 15, 0, 10]
+	7. return 0; --> Only first element will be inserted & all considered as duplicate [10]
+	
+}
+
+
+Cursors:
+--------
+==> If we want to retrieve the objects one by one from the collection, then we should go for Cursors
+==> There are '3' types of cursors in Java
+	1. Enumeration (I)
+	2. Iterator (I)
+	3. ListIterator (I)
+	
+Enumeration (I):
+----------------
+==> It is introduced in 1.0 version (for Legacy)
+==> We can use the Enumeration one by one from the old collection objects (legacy collections)
+
+==> We can create Enumeration object by using elements() method of vector class
+	
+	public Enumeration<E> elements();
+	
+	Ex:
+		Enumeration e = v.elements();
+		
+	Methods:
+	--------
+	1. pubic boolean hasMoreElements();--> This method is used to check whether more elements in the collection is present or not
+	2. public Object nextElement(); --> This method is used to return the current element and cursors goes to the next element
+	
+Limitations of Enumeration:
+---------------------------
+==> Enumeration concept is only applicable for legacy classes and it is not universal cursor [Not applicable for all classes]
+==> By using Enumeration object, we can get only read access and we can't perform remove operation
+
+Note: To overcome the Limitations of Enumeration, we should go for Iterator
+
+Iterator:
+--------
+==> we can apply the iterator concept on any collection class, hence it is universal cursor.
+==> By using iterator we can perform both read and remove operations
+
+==> We can create a Iterator object by using iterator() method of collection interface
+	
+	public Iterator<Object> iterator();
+	
+	Ex:
+		Iterator<Object> itr = al.iterator();
+		
+	Methods:
+	-------
+	1. public boolean hasNext(); --> This method is used to check whether next element in the collection is present or not
+	2. public Object next(); --> This method is used to return the current element and cursors goes to the next element
+	3. public void remove(); --> This method is used to remove the data from a collection
+	
+Limitations of Iterator:
+-----------------------
+1. By using Enumeration and iterator we can move only towards forward direction and we can't move backward direction. Hence these are single direction cursors
+2. By using iterator, we can perform only read and remove operations, but we can't perform  the addition of new objects
+
+Note: To overcome these limitations of iterator, we should go for ListIterator
+
+ListIterator:
+-------------
+==> By using ListIterator we can move either forward direction (or) backward direction, hence List Iterator is called Bi-directional cursors
+==> By using ListIterator we can perform replacement (or) addition of new objects in addition to the read and remove operations
+
+==> We can get the ListIterator object by using listIterator() method of List Interface
+	
+	public ListIterator<Object> listIterator();
+	
+	Ex:
+	ListIterator<Object> li = ll.listIterator();
+	
+	Methods:
+	--------
+	Forward Direction
+	1. public boolean hasNext();
+	2. public Object next();
+	3. public int nextIndex();
+	
+	Backward Direction
+	1. public boolean hasPrevious();
+	2. public Object previous();
+	3. public int previousIndex();
+	
+	Other capacibity methods
+	1. public void remove();
+	2. public Object set(Object new);//to replace the existing object
+	3. public void add(Object new);// to add new object
+	
+Note: listIterator is the most powerful cursor, but it's limitation is, it is only applicable for list implemented class objects and it is not univeral cursor
+
+Map(I):
+-------
+==> Map is not the child interface of collection
+==> If we want to represent a group of objects as key value pairs, then we should go for Map Interface
+
+==> Both Key and Values are Objects. Duplicate keys are not allowed and values can be duplicated
+Ex: Roll No 	Name
+	101			sagar
+	102			Krishna
+	103 		sagar
+==> Each key value pair is called as Entry. Hence Map is called as collection of Entry Objects
+==> Map interface is having it's own methods (Collection methods can not be used as it is not a child interface or collection)
+
+Methods:
+-------
+  public abstract int size();
+  public abstract boolean isEmpty();
+  public abstract boolean containsKey(Object);
+  public abstract boolean containsValue(Object);
+  public abstract V get(Object);
+  public abstract V put(K, V);
+  public abstract V remove(Object);
+  public abstract void putAll(Map<? extends K, ? extends V>);
+  public abstract void clear();
+  public abstract Set<K> keySet();
+  public abstract Collection<V> values();
+  public abstract Set<java.util.Map$Entry<K, V>> entrySet();
+  public abstract boolean equals(Object);
+  
+  public V getOrDefault(Object, V);
+  public void forEach(java.util.function.BiConsumer<? super K, ? super V>);
+  public void replaceAll(java.util.function.BiFunction<? super K, ? super V, ? extends V>);
+  public V putIfAbsent(K, V);
+  public boolean remove(jObject, Object);
+  public boolean replace(K, V, V);
+  public V replace(K, V);
+
+Entry (I):
+----------
+==> A Map is a group of key value pairs and each keyvalue pair is called an Entry. Hence Map is considered as collection of Entry Objects
+==> Without existence of Map object, there is no chance of existing Entry object. Hence Entry Intreface is defined inside Map interface
+
+Interface Map{
+	-----------
+	-----------
+	-----------
+	
+	Interface Entry{
+			Object getKey(); --> It return the key of Entry Object
+			Object getValue(); --> It returns the value of a Entry Object
+			Object setValue(Object new) --> It replaces the old value of Entry Object with a new value and returns old value	
+	}
+
+}
+
+==> These '3' methods are Entry specific methods and we can apply only on Entry Object
+
+HashMap(C):
+------------
+==> The underlying data structure is Hashtable
+==> Insertion order is not preserved and it is based on the Hashcode of keys
+==> Duplicate keys are not allowed, but values can be duplicated
+==> Heterogeneous objects are allowed for both key & value
+==> Null insertion is allowed for key, but only once, where as null insertion is allowed for values (any number of times)
+==> HashMap is the best choice if our frequent operation is search operation
+
+Constructors: 
+-------------
+  1. public HashMap();
+  ==> HashMap map = new HashMap();
+  It creates the empty hashmap with the capacity 16 and Load factor 0.75
+  
+  2. public HashMap(Map M);
+  ==> For inter conversion between objects
+  
+  3. public HashMap(int, float);
+  ==> It creates with the customized initial capacity and load factor is also customized
+  
+  4. public HashMap(int);
+  ==> It creates with the customized initial capacity and load factor is 0.75 only
+  
+  Load factor/Fill Ratio:
+  -----------------------
+  ==> After loading the how much factor, a new hashset object will be created, the factor is called as Load factor (or) Fill Ratio
+  
+  Methods:
+  ---------
+  public int size();
+  public boolean isEmpty();
+  public V get(Object);
+  public boolean containsKey(Object);
+  public V put(K, V);
+  public boolean containsValue(Object);
+  public void clear();
+  public V remove(Object);
+  public boolean remove(Object, Object);
+  public V replace(K, V);
+  public boolean replace(K, V, V);
+  public void putAll(java.util.Map<? extends K, ? extends V>);
+  public Set<K> keySet();
+  public Collection<V> values();
+  public Set<Map.Entry<K, V>> entrySet();
+  public V getOrDefault(java.lang.Object, V);
+  public V putIfAbsent(K, V);
+  public V computeIfAbsent(K, Function<? super K, ? extends V>);
+  
+
 
 
 
