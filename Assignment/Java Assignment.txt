@@ -322,4 +322,12 @@ Assignment-14:
 	a. Input = 1ax2y34z-yfg45
 	b. sum = 1+2+3+4+4+5=19
 	b. Sum = 1+2+34+45=82
+====================================================================================================
+Assignment-15:
 
+1. Create '4' classes like Person, Teacher, Student and Employee Classes
+2. Implement the Inheritance --> Extend these '4' classes with Thread Class
+3. Implement public void run() method --> write different logics of all these '4' methods -- try to maintain a huge date and perform some logic
+4. Create a Demo class and write a main thread
+5. Create Objects for all the above '4' classes and call start() method
+6. Observe the '5' multiple threads should execute in parallel

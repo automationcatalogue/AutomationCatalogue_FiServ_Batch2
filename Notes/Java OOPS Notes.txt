@@ -2719,7 +2719,447 @@ Constructors:
   public Set<Map.Entry<K, V>> entrySet();
   public V getOrDefault(java.lang.Object, V);
   public V putIfAbsent(K, V);
-  public V computeIfAbsent(K, Function<? super K, ? extends V>);
+  
+
+
+HashMap																					Hashtable
+----------																			--------------------
+1. Every method present in the HashMap is non-synchronized							1. Every method present in the Hashtable is synchronized
+2. At a time, multiple threads are allowed to operate on HashMap object				2. At a time, only one thread is allowed to operate on Hashtable, hence it is 
+and hence it is not Thread Safe														Thread Safe
+3. Relatively performance is high, because threads are not required to wait			3. Relatively performance is low, because threads are required to wait to 
+ to operate on HashMap object														operate on Hashtable Object
+4. Null insertion is allowed for keys and values									4. Null insertion is not allowed for keys and values, if we put null value
+																					NullPointerException will come
+5. It is introduced in 1.2 version, hence it is Non-legacy							5. It is introduced in 1.0 version, hence it is legacy
+
+
+  public int size();
+  public boolean isEmpty();
+  public V get(java.lang.Object);
+  public boolean containsKey(Object);
+  public V put(K, V);
+  public boolean containsValue(java.lang.Object);
+  public void clear();
+  public V remove(java.lang.Object);
+  public boolean remove(java.lang.Object, java.lang.Object);
+  public V replace(K, V);
+  public boolean replace(K, V, V);
+  public void putAll(java.util.Map<? extends K, ? extends V>);
+  public java.util.Set<K> keySet();
+  public java.util.Collection<V> values();
+  public java.util.Set<java.util.Map$Entry<K, V>> entrySet();
+  public V getOrDefault(java.lang.Object, V);
+  public V putIfAbsent(K, V);
+  public V computeIfAbsent(K, java.util.function.Function<? super K, ? extends V>);
+  public V computeIfPresent(K, java.util.function.BiFunction<? super K, ? super V, ? extends V>);
+  public V compute(K, java.util.function.BiFunction<? super K, ? super V, ? extends V>);
+  
+  public V merge(K, V, java.util.function.BiFunction<? super V, ? super V, ? extends V>);
+  public void forEach(java.util.function.BiConsumer<? super K, ? super V>);
+  public void replaceAll(java.util.function.BiFunction<? super K, ? super V, ? extends V>);
+  
+LinkedHashMap:
+--------------
+1. It is the child class of HashMap
+2. It is exactly same as HashMap(including the methods and Constructors, except the following differences)
+
+HashMap														LinkedHashMap
+1. Underlying data structure is Hashtable					1. Underlying data structure is Hashtable + LinkedList
+2. Insertion order is not preserved and it is based on		2. Insertion order is preserved
+hashcode of keys
+3. It is introduced in 1.2 version							3. Introduced in 1.4 version
+
+
+IdentityHashMap:
+----------------
+==> It is exactly same as HashMap(including methods and constructors) except the below difference
+==> In the case of normal HashMap, JVM will use equals() method to identify the duplicate keys, which is made for comparison for content comparison
+	but in the case of IdentityHashMap, JVM will use == (double equals) operator is used to identify the duplicate keys, which is made for reference comparison (address comparison)
+	
+	
+Difference between ==(operator) and equals(method):
+---------------------------------------------------
+==> In general, ==(double equals operator) made for reference comparison (address comparison), where as equals method made for content comparison
+	
+	Integer I1 = new Integer(10);
+	Integer I2 = new Integer(10);
+	
+	System.out.println(I1==I2);//false
+	System.out.println(I1.equals(I2));//true
+	
+public class MapDemo5 {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+        Integer I1 = new Integer(10);
+        Integer I2 = new Integer(10);
+
+        map.put(I1,"Sagar");
+        map.put(I2,"Chakilala");
+        map.put(I1,"Santosh");
+
+        System.out.println(map);
+
+        IdentityHashMap<Integer, String> imap = new IdentityHashMap<>();
+        Integer I3 = new Integer(10);
+        Integer I4 = new Integer(10);
+
+        imap.put(I3,"Sagar");
+        imap.put(I4,"Chakilala");
+        imap.put(I3,"Santosh");
+
+        System.out.println(imap);
+    }
+}
+Output:
+{10=Santosh}
+{10=Santosh, 10=Chakilala}
+  
+==> I1 & I2 are duplicate keys, because I1.equals(I2) returns true
+==> If we replaced HashMap with IdentityHashMap, then I3 &I4 are not duplicate keys, I3==I4 returns false, in this case output is {10=santosh, 10=Chakilala}
+
+WeakHashMap:
+------------
+==> It is exactly same as HashMap except the following difference
+==> In the case of WeakHashMap, even though Object doesn't contain any reference, it is not eligible for garbage collector
+	--> If it is HashMap, eligible for Garbage collector
+	
+SortedMap:
+---------
+1.	It  is the child interface of a Map
+2.	If we want to represent a group of key value pairs according to some sorting order of keys, then we should go for SortedMap.
+3.	Sorting is based on the Key, but not based on the value
+  
+ Methods:
+ --------
+1.	Object firstKey();  It returns the firstKey after sorting order of keys
+2.	Object lastKey();  It returns the lastKey after sorting order of keys
+3.	SortedMap headMap(Object key)  It returns the key value pairs less than a specific object key after sorting order of keys
+4.	SortedMap tailMap(Object key)  It returns the key value pairs greater than or equals to a specific object key after sorting order of keys
+5.	SortedMap subMap(Object key1, Object key2)  It returns the key value pairs greater than or equals to a object key1 and less than key2 after sorting order of keys
+6.	Comparator comparator();  To get the customized sorting order of keys
+
+101  A
+103  B
+104  C
+107  D
+125  E
+136  F
+
+  
+firstKey()  101
+lastKey()  136		
+headMap(107)  {101=A, 103=B, 104=C}
+tailMap(107)  {107=D, 125=E, 136=F}
+subMap(103, 125)  {103=B, 104=C, 107=D}
+
+NavigableMap:
+-------------
+==> It is the child interface of SortedMap
+==> If we want to represent a group of key value pairs according to some sorting order of keys, for the Navigation purposes
+
+Methods:
+--------
+
+  public abstract java.util.Map$Entry<K, V> lowerEntry(K);
+  public abstract K lowerKey(K);
+  public abstract java.util.Map$Entry<K, V> floorEntry(K);
+  public abstract K floorKey(K);
+  public abstract java.util.Map$Entry<K, V> ceilingEntry(K);
+  public abstract K ceilingKey(K);
+  public abstract java.util.Map$Entry<K, V> higherEntry(K);
+  public abstract K higherKey(K);
+  public abstract java.util.Map$Entry<K, V> firstEntry();
+  public abstract java.util.Map$Entry<K, V> lastEntry();
+  public abstract java.util.Map$Entry<K, V> pollFirstEntry();
+  public abstract java.util.Map$Entry<K, V> pollLastEntry();
+  public abstract java.util.NavigableMap<K, V> descendingMap();
+  public abstract java.util.NavigableSet<K> navigableKeySet();
+  public abstract java.util.NavigableSet<K> descendingKeySet();
+  public abstract java.util.NavigableMap<K, V> subMap(K, boolean, K, boolean);
+  public abstract java.util.NavigableMap<K, V> headMap(K, boolean);
+  public abstract java.util.NavigableMap<K, V> tailMap(K, boolean);
+  public abstract java.util.SortedMap<K, V> subMap(K, K);
+  public abstract java.util.SortedMap<K, V> headMap(K);
+  public abstract java.util.SortedMap<K, V> tailMap(K);
+  
+TreeMap (C):
+------------
+==> Underlying data structure is RED-BLACK tree
+==> Insertion order is not preserved and it is based on some sorting order of keys
+==> Duplicate keys are not allowed, but values can be duplicated
+==> If we are depending on default natural sorting order of the keys, then keys should be homogeneous and comparable, otherwise we will get RuntimeException saying that ClassCastException comes
+==> If we are depending on customized sorting order of the keys, then keys need not be homogeneous and comparable, we can take the heterogeneous & non-comparable objects also
+==> Whether we are depending on default natural sorting order or customized sorting order, there are no restriction for values, we can take heterogeneous & non-comparable objects also 
+
+
+	
+Constructors:
+--------------
+1. TreeMap t = new TreeMap();
+	==> Creates an empty object where elements will be inserted according to default natural sorting order
+	
+2. TreeMap t = new TreeMap(Comparator C);
+	==> Creates an empty object where elements will be inserted according to Customized sorting order
+	
+3. TreeMap t = new TreeMap(Map C);
+	==> to convert from collection class to TreeSet 
+	
+4. TreeMap t = new TreeMap(SortedMap s);
+
+
+public java.util.TreeMap();
+  
+  public int size();
+  public boolean containsKey(java.lang.Object);
+  public boolean containsValue(java.lang.Object);
+  public V get(java.lang.Object);
+  public K firstKey();
+  public K lastKey();
+  public V put(K, V);
+  public V remove(java.lang.Object);
+  public void clear();
+  public java.util.Map$Entry<K, V> firstEntry();
+  public java.util.Map$Entry<K, V> lastEntry();
+  public java.util.Map$Entry<K, V> pollFirstEntry();
+  public java.util.Map$Entry<K, V> pollLastEntry();
+  public java.util.Map$Entry<K, V> lowerEntry(K);
+  public K lowerKey(K);
+  public java.util.Map$Entry<K, V> floorEntry(K);
+  public K floorKey(K);
+  public java.util.Map$Entry<K, V> ceilingEntry(K);
+  public K ceilingKey(K);
+  public java.util.Map$Entry<K, V> higherEntry(K);
+  public K higherKey(K);
+  public java.util.Set<K> keySet();
+  public java.util.NavigableSet<K> navigableKeySet();
+  public java.util.NavigableSet<K> descendingKeySet();
+  public java.util.Collection<V> values();
+  public java.util.Set<java.util.Map$Entry<K, V>> entrySet();
+  public java.util.NavigableMap<K, V> descendingMap();
+  public java.util.NavigableMap<K, V> subMap(K, boolean, K, boolean);
+  public java.util.NavigableMap<K, V> headMap(K, boolean);
+  public java.util.NavigableMap<K, V> tailMap(K, boolean);
+  public java.util.SortedMap<K, V> subMap(K, K);
+  public java.util.SortedMap<K, V> headMap(K);
+  public java.util.SortedMap<K, V> tailMap(K);
+  public boolean replace(K, V, V);
+  public V replace(K, V);
+  public void putAll(java.util.Map<? extends K, ? extends V>);
+  public java.util.Comparator<? super K> comparator();  
+  
+MultiThreading:
+===============
+==> Execution of more than one thread at a time is called as Multithreading.
+  
+Thread:
+-------
+==> A thread is a piece of code that executed independently.
+
+==> Creating a new thread is '2' ways.
+1. By extending java.lang.Thread class
+2. By implementing java.lang.Runnable interface
+
+==> Every program contains atleast one thread i.e., main thread.
+
+1. New thread will born whenever Thread() class constructor is called
+2. Thread will come to ready status whenever start() method is called
+3. Thread will come to running state whenever run() method is called
+4. Thread will come to sleeping state whenever sleep() method is called
+5. Sleeping threading comes to running status after time interval
+6. Thread will come to suspend state whenever suspend() method is called
+7. suspended thread will come back to running status whenever resume() method is called
+8. Thread wil comes to waiting state whenever wait() method is called
+9. Waiting thread comes to running state whenever notify() (or) notifyAll() method is called
+10. Thread will die whenever destory()  method is called
+
+
+		//class wait(), notify(), notifyAll()
+		java.lang.Object								java.lang.Runnable //In this interface run() --> abstract method
+			|												|
+			--------------------------------------------------
+							|
+						java.lang.Thread	start()
+											run()
+											sleep()
+											suspend()
+											resume()
+											destroy()
+
+											destroy()
+											
+java.lang.Object
+Methods:
+--------
+1. public final native void notify();
+2. public final native void notifyAll();
+3. public final void wait() throws InterruptedException;
+
+java.lang.Runnable
+Method:
+-------
+1. public anstract void run()
+
+java.lang.Thread
+Variables:
+----------
+1. public static final int MIN_PRIORITY; (1)
+2. public static final int NORM_PRIORITY; (5)
+3. public static final int MAX_PRIORITY; (10)
+
+Constructors:
+------------
+1. public Thread();
+2. public Thread(Runnable r);
+
+Methods:
+--------
+1. public static native Thread currentThread();
+2. public static native void sleep(long ms) throws InterruptedException;
+3. public synchronized void start();
+4. public void run();
+5. public void distroy();
+6. public final void suspend();
+7. public final void resume();
+8. public final setPriority(int);
+9. public final int getPriority();
+10. public final synchronized void setName(String);
+11. public final String getName();
+
+Synchrinization:
+-----------------
+==> It is the mechanism that allows to access a shared resource only one thread at a time 
+
+Note:
+------
+1. start() method implicitly calls run() method
+2. run() method is null body method and it is used to write the task code
+
+==> main() thread default name is main and main() thread default priority is '5' [NORM_PRIORITY]
+
+1. Program to get the CurrentThread information
+public class Demo {
+    public static void main(String[] args) {
+        Thread t=Thread.currentThread();
+        System.out.println(t.getName());
+        System.out.println(t.getPriority());
+        t.setName("SagarThread");
+        t.setPriority(Thread.MAX_PRIORITY);
+        System.out.println(t.getName());
+        System.out.println(t.getPriority());
+    }
+}
+
+2. Program to demonstrate sleep() method:
+-----------------------------------------
+public class Demo1 {
+    public static void main(String[] args) {
+        try{
+            for(int i=1;i<=10;i++){
+                System.out.println(i);
+                Thread.sleep(1000);
+            }
+        }catch (InterruptedException ie){
+            System.err.println(ie);
+        }
+    }
+}
+
+3. Program to create Multithreaded application by extending java.lang.Thread class:
+-----------------------------------------------------------------------------------
+1. create a class that extends java.lang.Thread class
+2. override run() method
+3. Write child Thread task code in run() method
+4. write main() method
+5. create an object of current class
+6. call start() method
+7. write main() thread task code in main() method
+
+
+class Demo extends Thread{
+
+	public void run(){
+		---------
+		---------//child thread task code
+		---------
+	}
+	
+	public static void main(String args[]){
+		Demo ob = new Demo();
+		ob.start();
+		---------
+		---------//main thread task code
+		---------
+	}
+}
+
+public class Demo2 extends Thread{
+
+    public void run(){
+        try{
+            for(int i=1;i<=10;i++){
+                System.out.println("Child Thread task "+i);
+                Thread.sleep(1000);
+            }
+        }catch(InterruptedException ie){
+            System.err.println(ie);
+        }
+    }
+
+    public static void main(String[] args) {
+        Demo2 ob = new Demo2();
+        ob.start();
+        try{
+            for(int i=1;i<=10;i++){
+                System.out.println("Main Thread task "+i);
+                Thread.sleep(1000);
+            }
+        }catch(InterruptedException ie){
+            System.err.println(ie);
+        }
+    }
+
+}
+
+
+
+4. Program to demonstrate suspend() and resume() methods:
+---------------------------------------------------------
+public class Demo3 extends Thread{
+    public void run(){
+        try{
+            for(int i=1;i<=10;i++){
+                System.out.println("Child Thread task "+i);
+                Thread.sleep(1000);
+            }
+        }catch(InterruptedException ie){
+            System.err.println(ie);
+        }
+    }
+
+    public static void main(String[] args) {
+        try{
+            Demo3 ob = new Demo3();
+            ob.start();
+            for(int i=1;i<=10;i++){
+                System.out.println("Main Thread :"+i);
+                Thread.sleep(1000);
+                if(i==5){
+                    ob.suspend();
+                }
+
+                if(i==10){
+                    ob.resume();
+                }
+            }
+
+
+        }catch(Exception e){
+            System.err.println(e);
+        }
+    }
+}
   
 
 
