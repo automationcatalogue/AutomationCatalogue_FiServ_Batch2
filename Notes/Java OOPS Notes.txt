@@ -3027,10 +3027,6 @@ Methods:
 10. public final synchronized void setName(String);
 11. public final String getName();
 
-Synchrinization:
------------------
-==> It is the mechanism that allows to access a shared resource only one thread at a time 
-
 Note:
 ------
 1. start() method implicitly calls run() method
@@ -3160,9 +3156,223 @@ public class Demo3 extends Thread{
         }
     }
 }
+
+5. Steps to create Multi threaded application by implementing java.lang.Runnable interface:
+-------------------------------------------------------------------------------------------
+1. Create a class that implements java.lang.Runnable interface
+2. override run() method
+3. Write child Thread task code in run() method
+4. Write main() method
+5. Create an object of current() class and assign to runnable interface
+6. Create an object of Threadclass by passing runnable referene in Thread class constructor
+7. call start() method
+8. write main() thread task code
+
+Class Demo implements Runnable{
+	public void run(){
+		-----------
+		-----------	//Child Thread task code
+		-----------
+	}
+	
+	public static void main(String args[]){
+		Runnable r=new Demo();
+		Thread t = new Thread(r);
+		t.start();
+		---------------
+		---------------
+		---------------
+	}
+}
   
 
+Synchrinization:
+-----------------
+==> It is the mechanism that allows to access a shared resource only one thread at a time 
+==> There are '2' ways to synchronize the code
+	1. Synchronizing a method
+	2. Synchronizing a block of code
+	
+	1. Synchronizing a method:
+	--------------------------
+	syntax:
+
+	Synchronized ReturnType methodName(arg1, arg2, arg3....... argN){
+		----------------------
+		----------------------
+		----------------------
+	}
+	
+	2. Synchronizing a block of code:
+	---------------------------------
+	Syntax:
+	
+	ReturnType methodName(arg1, arg2, arg3,...... argN){
+		---------------
+		---------------
+		---------------
+		
+		Synchronized(Object){
+			------------
+			------------
+			------------
+		}
+		
+		----------------
+		----------------
+		----------------
+	}
 
 
 
+JDBC (Java Database Connecting):
+--------------------------------
 
+1. DDL --> Data Definition Language
+2. DML --> Data Manipulation Language
+3. TCL --> Transaction Control Language
+4. DCL --> Data Control Language
+
+DDL:
+---
+==> CREATE, ALTER, RENAME, DROP, etc.,
+
+DML:
+----
+==> SELECT, UPDATE, INSERT, DELETE, MERGE etc.,
+
+TCL:
+----
+==> COMMIT, ROLLBACK, SAVEPOINT etc.,
+
+DCL:
+----
+==> GRANT, REVOKE etc.,
+
+JDBC --> Java Database Connectivity
+JDBC is a part of Java SE (Java Standard Edition)
+
+Let's Assume that Application is developed with Java language
+Database is MySQL
+Our Java application can't communicate directly with Database, so we are going to use the Driver.
+1. This Driver is going to convert the Java to SQL and SQL to Java
+2. Connection String is required to establish the communication between Java Application to SQL
+3. Statement Object will be used to take the SQL query from Java application to SQL and the response of SQL data will take it back to Java Application
+4. After Executing the SQL query, we will be getting ResultSet and this ResultSet is provided by Statement Object
+
+Basic Components of JDBC Application:
+-------------------------------------
+1. Driver --> It's like a translator
+2. Connection
+3. Statement 
+4. ResultSet
+
+Steps to Develop JDBC application:
+----------------------------------
+1. Load and Register Driver
+2. Establish connection between Java application and database
+3. Creation of Statment Object
+4. Send and Execute SQL Query
+5. Process result from ResultSet
+6. Close connection
+
+
+Types of Drivers:
+-----------------
+==> In the market, there are 1000 drivers are there.
+==> Based on functionality and architecture, JDBC drivers can be divided into '4' categories
+1. Type-1 Driver (JDBC-ODBC Bridge Driver (or) Bridge Driver)
+2. Type-2 Driver (Native API-Partly Java Driver (or) Native Driver)
+3. Type-3 Driver (All Java net protocol drivers (or) network protocol Drivers (or) middleware drivers)
+4. Type-4 Driver (Pure Java Driver (or) native protocol driver (or) ThinDriver)
+
+In our application, if we using only one driver like Oracle/MySQL, go for Type-4 Drivers, because it is a platform independent driver
+Type 4 drivers are the most common and are designed for a particular vendor's database.
+Standalone applications will use these Drivers
+
+Type 3 is a single JDBC driver used to access a middleware server, which, in turn, makes the relevant calls to the database.
+In a project, if multiple databases are present and want to go for single driver. 
+Large scale web applications & Enterprise applications will use these Drivers
+
+when there are no Type-4 & Type-3 drvers not present for my database, then we should go for Type-2 Driver
+Type 2 JDBC drivers require a native database API to be used
+
+
+If Type-4, Type-3, Type-2 Drivers are not present, then go for Type-1 Driver
+Type 1 JDBC drivers are used for testing JDBC applications against an ODBC (Oracle Database) data source
+
+Differences between JDBC and ODBC:
+https://www.tutorialspoint.com/what-is-the-difference-between-odbc-and-jdbc
+
+
+==> SQL Queries are broadly divided into two categories
+Select Queries										Non-Select Queries
+select												insert | update | delete
+Result is always a group of records					Result is always some number like
+													1 Row is created
+													1 Row is deleted
+													
+
+==> In JDBC, to execute Queries there are '3' methods present
+	1. executeQuery()
+	2. executeUpdate()
+	3. execute()
+	
+executeQuery:
+-------------
+==> To execute select queries
+	select * from login_credentials --> a group of records --> ResultSet is the ReturnType
+	
+	public ResultSet executeQuery(String sqlQuery) throws SQLException;
+	
+executeUpdate:
+--------------
+==> Non-Select Operations (insert|delete|Update) --> ReturnType is always int
+
+	public int executeUpdate(String sqlQuery) throws SQLException;
+	
+execute:
+--------
+==> It can be used for both Select and Non-Select operations
+==> It can be used when we don't know the type of query at the begining
+==> Return type is boolean --> if value is true --> It is a select Query	
+							-> if value is false --> it is a non-select Query
+
+						
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class ExecuteDemo{
+    public static void main(String[] args) throws Exception{
+        String dburl="jdbc:mysql://localhost:3306/fi_serv_training";
+        String dbUserName="root";
+        String dbPassword="V@shi0807";
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your SQL Query");
+        String sql_query=sc.nextLine();
+        System.out.println(sql_query);
+        Connection con= DriverManager.getConnection(dburl, dbUserName, dbPassword);
+        Statement st =con.createStatement();
+        boolean b=st.execute(sql_query);
+        if(b){
+            System.out.println("Select query is executed");
+            ResultSet rs =st.getResultSet();
+            while(rs.next()){
+                System.out.println(rs.getString(1)+" "+rs.getString(2));
+            }
+        }else{
+            System.out.println("Non-Select query is executed");
+            int rowCount=st.getUpdateCount();
+            System.out.println("The number of records effected is :"+rowCount);
+        }
+
+        con.close();
+
+    }
+}
