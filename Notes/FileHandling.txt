@@ -1,0 +1,212 @@
+File Handling:
+--------------
+
+Java Streams:
+-------------
+==> A flow of data from source to destination is called as Stream
+==> A source can be a keyboard, file, client, sever etc.,
+==> A destination can be a monitor, file, client and server etc.,
+
+==> In Java, Streams can be divided into '3' categories
+1. Console Input/Output Stream
+2. File Input/Output Stream
+3. Network Input/Output Stream
+
+******************************************
+==> System.out.println();
+
+class System{
+		
+		public static InputStream in;
+		public static PrintStream out;
+		public static PrintStream err;
+
+}
+
+class InputStream{
+
+}
+
+class PrintStream{
+	public void println(int x){
+		----------------
+		----------------
+	}
+	
+	public void println(char ch){
+		----------------
+		----------------
+	}
+	
+	public void println(float f){
+		----------------
+		----------------
+	}
+}
+**************************************************
+==> All file related implementation classes are present in the java.io package
+
+File Class Constructors and Methods:
+------------------------------------
+Constructors:
+-------------
+  public File(String); --> It will create a new file in the specified location
+  public File(String, String); It creates a new File instance from a parent pathname string and a child pathname string.
+  public File(File, String); It creates a new File instance from a parent abstract pathname and a child pathname string.
+  public File(URI); --> It creates a new File instance by converting the given file: URI into an abstract pathname.
+  
+Methods:
+-------
+	public boolean createNewFile() throws java.io.IOException; --> 	It automically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist.
+	public boolean canWrite(); --> It tests whether the application can modify the file
+	public boolean canExecute(); --> It tests whether the application can execute the file denoted by this abstract pathname.
+	public boolean canRead(); --> It tests whether the application can read the file 
+	isAbsoulte() --> 	It tests whether this abstract pathname is absolute.
+	iDirectory() -->	It tests whether the file denoted by this abstract pathname is a directory.
+	isFile() --> It tests whether the file denoted by this abstract pathname is a normal file.
+	
+	getName() -> It returns the name of the file or directory denoted by this abstract pathname.
+	getParent() --> It returns the pathname string of this abstract pathname's parent, or null if this pathname does not name a parent directory.
+	toPath() --> It returns a java.nio.file.Path object constructed from the this abstract path.
+	toURI() --> 	It constructs a file: URI that represents this abstract pathname.
+	listFiles() --> It returns an array of abstract pathnames denoting the files in the directory denoted by this abstract pathname
+	list(FilenameFilter filter) --> It returns an array of strings naming the files and directories in the directory
+	mkdir()	 --> It creates the directory named by this abstract pathname.
+	
+/***** FileInputStream /FileOutputStream ********/
+-----------------------------------------------------
+==> FileInputStream --> Java FileInputStream class obtains input bytes from a file
+==> FileInputStream class constructor is used to open the file in a read mode
+It is used for reading byte-oriented data (streams of raw bytes) such as image data, audio, video etc. You can also read character-stream data. But, for reading streams of characters
+
+Constructors:
+-------------
+==> public FileInputStream(String fileName) throws FileNotFoundException; --> It opens a files for reading if file exists
+Methods:
+--------
+1. int available() --> It is used to return the estimated number of bytes that can be read from the input stream.
+2. int read() --> It is used to read the byte of data from the input stream.
+3. int read(byte[] b) --> 	It is used to read up to b.length bytes of data from the input stream.
+4. int read(byte[] b, int off, int len) --> t is used to read up to len bytes of data from the input stream.
+5. void close() --> It is used to closes the stream
+6. protected void finalize() --> It is used to ensure that the close method is call when there is no more reference to the file input stream.
+
+Steps to read a file:
+--------------------
+1. open a file for reading
+2. findout file size
+3. Alocate the memory in a RAM according to file size
+4. Read data from a file
+5. Display data on a monitor
+6. close file
+
+==> FileOutputStream--> Java FileOutputStream is an output stream used for writing data to a file.
+==> FileOutputStream class constructor is used to open the file in a Write mode
+
+Constructor:
+------------
+==> public FileOutputStream(String fileName) throws FileNotFoundException;
+
+Methods:
+--------
+1. void write(byte[] ary) -->	It is used to write ary.length bytes from the byte array to the file output stream.
+2. void write(byte[] ary, int off, int len) --> It is used to write len bytes from the byte array starting at offset off to the file output stream.
+3. void write(int b) -> It is used to write the specified byte to the file output stream.
+4. void close() --> it closes a file
+
+Steps to copy data from one file to another file using FileInputStream and FileOutputStream
+-------------------------------------------------------------------------------------------
+1. open a file for reading
+2. findout file size
+3. Alocate the memory in a RAM according to file size
+4. Read data from a file
+5. Open another file for writing
+6. Write data a file
+7. close both the files
+
+
+/***** Types of Streams *****************/
+------------------------------------------
+1. Byte Streams
+2. Character Streams
+
+==> Byte streams handles text, Image, graphics, animation, audio, video etc.,
+==> Charcter streams handles only text
+
+Hierarchy of ByteStream class:
+------------------------------
+															
+															
+															Object
+																|
+			-------------------------------------------------------------------------------------
+			|																					|
+		InputStream																				OutputStream
+			|																						|
+	---------------------------------------------												-------------------------------------------------
+	|					|						|												|					|							|	
+FileInputStream			FilterInputStream		ObjectInputStream								FileOutputStream	FilterOutputStream		ObjectOutputStream
+								|																							|
+							DataInputStream																		----------------------------
+																												|							|
+																										DataOutputStream					PrintStream
+																										
+==> DataInputStream and DataOutputStream classes support all PrimitiveDatatypes and String
+==> ObjectInputStream and ObjectOutputStream classes support Objects
+
+Hierarchy of CharacterStream class:
+-----------------------------------
+															
+															
+															Object
+																|
+			-------------------------------------------------------------------------------------
+			|																					|
+		Reader																					Writer
+			|																						|
+	---------------------------											----------------------------------------------------
+	|					|												|					|							|	
+BufferReader		InputStreamReader								BufferedWriter	OutputStreamWriter				PrintWriter
+						|																		|
+						FileReader																FileWriter
+						
+ObjectInputStream:
+------------------
+==> It is used to read an Object from file (or) network
+
+ObjectOutputStream:
+-------------------
+==> It is used to write an Object into a file (or) network
+
+==> java.io.ObjectInputStream:
+------------------------------
+Constructor:
+	public ObjectInputStream(InputStream) throws IOException;
+	
+Methods:
+--------
+	public final Object readObject() throws IOException, ClassNotFoundException;
+	public void close() throws IOException
+	
+==> java.io.ObjectOutputStream:
+------------------------------
+Constructor:
+	public ObjectOutputStream(outputstream) throws IOException;
+	
+Methods:
+--------
+	public final void writeObject() throws IOException;
+	public void close() throws IOException
+				
+Serialization:
+==============
+==> It is a process of converting Object into series of bits
+==> In Java, Object must be serializable to do the following actions
+	1. Writing object to a file
+	2. Reading object from a file
+	3. Writing object to a network
+	4. Reading Object from network
+	
+==> Classs must be marked with "java.io.Serializable" interface to make serializable object
+==> "java.io.Serializable" is called as marker interface (or) empty interface, because no members present in this interface
+
