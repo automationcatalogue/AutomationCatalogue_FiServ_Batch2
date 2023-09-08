@@ -1,0 +1,20 @@
+<Students>
+    <student>
+        <name>Siva</name>
+        <email>Siva_123@gmail.com</email>
+        <mobile>12345</mobile>
+        <address>USA-Newyork</address>
+    </student>
+    <student>
+        <name>Santosh</name>
+        <email>Santosh_456@gmail.com</email>
+        <mobile>95454152</mobile>
+        <address>UK-London</address>
+    </student>
+    <student>
+        <name>Priyanka</name>
+        <email>Priyanks_789@gmail.com</email>
+        <mobile>811264564</mobile>
+        <address>India-Chennai</address>
+    </student>
+</Students>

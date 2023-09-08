@@ -1,0 +1,93 @@
+Text files, Excel files, CSV files, XML files, Json files, YAML files, Swift files, properties files.....
+
+XML --> Extensible Markup Language
+----------------------------------
+
+<Persons>
+	<person name="Sagar">
+		<City value = "Hyderabad"/>
+		<Gender>Male</Gender>
+		<Age>35</Age>
+	</person>
+	<person name ="Mohan">
+		<City>Bangalore</City>
+		<Gender>Male</Gender>
+		<Age>30</Age>
+	</person>
+	<person name ="Arun">
+		<city value="Chennai">
+		</city>
+		<Gender value="Male"/>
+		<Age>32</Age>
+	</person>
+	<person name ="Gayathri">
+		<City>Pune</City>
+		<Gender>Female</Gender>
+		<Age>25</Age>
+	</person>
+</Persons>
+
+==> Reading XML file is called parsing
+										
+										XML Parsing
+											|
+							-------------------------------------
+							|									|
+						Object Based						Event Based
+							(e.g DOM)							|
+														---------------------
+														|					|
+													Push Parsing			Pull Parsing
+														(e.g SAX)				(e.g StAX)
+								
+==> Difference between DOM and SAX Parsers		
+DOM Parsers											SAX Prasers
+---------------------------------------------------------------------------------------------------------
+1. DOM stands for Document Object Model				1. SAX stands for Simple API for XML
+2. DOM reads the entire document					2. SAX reads node by node
+3. DOM is useful when reading small to medium size	3. SAX is used when big XML files needs to be parsed
+XML files		
+4. DOM is tree based parser							4. SAX is event based parser
+5. DOM is little slow compared to SAX				5. SAX is fasther than DOM
+6. DOM can insert and delete Nodes					6. SAX cannot insert and delete nodes	
+
+==> From the Programmer, if the xml file data is to be read then developer has to write their own code to parse the xml file. It is complicated.		
+==> To avoid this, Java/programming language has given parsers like DOM and SAX to read the xml file	
+==> XML parser consumes lot of time and it is complicated, DOM/SAX parser is used to parse the xml file. using this code can be developed and accurate
+
+To Create a XML File:
+---------------------
+1. In the program, document object is created
+2. Elements/nodes of the XML file are created
+3. Data to be placed in between the nodes are created in text object
+4. Text and elements (nodes) are linked
+5. Nodes are linked to the Root Node
+6. Finally, In Transformer class transform(Source source, Result result) method is used to convert the document object to XML file
+
+
+==> Document: This class is used to Create a XML, or Reading and writing the XML data
+==> To get the Document class object Reference, we need to call DocumentBuilder class, new Document()
+==> To get the DocumentBuilder class ObjectReference, we need to call DocumentBuilderFactory class new DocumentBuilder() method
+
+In DOM,
+GetNodeName() --> Returns the name of the current node.
+GetAttribute() --> Returns the value of XML Attribute node.
+GetElementByTagName() --> Returns the data of the node for the corresponding node name.
+
+DOM Parser:
+-----------
+import javax.xml.prasers.*;
+import org.w3c.dom.*;
+import java.io.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+
+SAX Parser:
+-----------
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.*;
+import org.xml.sax.helpers.*;
+import java.io.*;
+
