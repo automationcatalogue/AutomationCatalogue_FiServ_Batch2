@@ -1,0 +1,261 @@
+Java8 Features:
+---------------
+1. Lambda Expressions
+2. Functional Interfaces
+3. Default methods in Interfaces
+4. Static methods in interfaces
+5. Predicate (It's a Pre-defined functional interface)
+6. Function (It's a Pre-defined functional interface)
+7. Consumer (It's a Pre-defined functional interface)
+8. :: (Method Reference & Constructor Reference)
+9. Stream API (Bulk operations on collection objects)
+10. Date & Time API (Joda API--> by using joda.org)
+
+
+Java 1.0 --> 1996
+Java 1.8 --> 2017 ==> Why Java8 is more focus version in the market?
+
+==> All the above changes are mainly focusing on '3' objectives
+1. To Simplify Programming
+2. Before Java8 is majorly Object Oriented Programming and It is missing the concepts of Procedural oriented programming advantages, To Utilize the functional Programming benefits are introduced in Java8 in the form of Lambda expressions
+3. Old versions of Java is not benefits the Multicore processing features of hardware resources
+In Java8 To enable the parallel processing, so that It will use the multicore processing features.
+
+Lambda Expressions:
+===================
+==> Java is the last programming language which started using Lambda expressions
+Other programming languages such as  LISP, C, C++, C#, SCALA, RUBY, Python already implemented this concept before Java
+
+Features:
+---------
+1. To enable functional programming in java
+2. Write more readable, maintainable and Concise Code
+3. To use APIs very easily and effectively
+4. To enable parallel processing
+
+What is Lamda Expression
+------------------------
+==> It is an anonymous function
+						Nameless
+						Without return type
+						without modifiers
+						
+Lamda Expression:
+-----------------
+1. It is a function without name (Anonymous function)
+2. Lambda expression can't extend abstract and concrete classes
+3. Lambda Expression can implement an interface which contains single abstract method (Functional interface)
+4. Inside Lambda expression we can't declare instance variables, whatever variables declared are considered are local variables
+5. Lambda expresions cannot be instantiated
+6. Inside Lambda expression, this keyword always referes current outer class object, i.e., enclosing class object
+7. Lambda expression is the best choice if we want to handle interface with single abstract method (Functional Interface)
+8. For the Lambda expression, at the time of compilation, no separate .class file will be generated
+9. Lambda expression will reside in permanent memory of JVM (method area)
+
+Example 1:
+----------
+class Demo1{
+	public void m1(){
+		System.out.println("Hello World....");
+	}
+}
+==============================================
+//Lambda Expression for above method
+	()->{System.out.println("Hello World....");}
+==> If body contains single line --> no need of using braces	
+	()->System.out.println("Hello World....");
+	
+==========================================================================================
+Example 2:
+class Demo1{
+	public void add(int a, int b){
+		System.out.println(a+b);
+	}
+}
+==============================================
+//Lambda Expression for above method
+	
+	(int a, int b)->{System.out.println(a+b);}
+	(int a, int b)->System.out.println(a+b);
+	(a,b)->System.out.println(a+b);
+	
+==========================================================================================
+Example 3:
+----------
+class Demo1{
+	public int cube(int a){
+		return a*a*a;
+	}
+}
+==============================================
+//Lambda Expression for above method
+	(int a)->{return a*a*a;}
+	(int a)->a*a*a;
+	(a)->a*a*a;
+	a->a*a*a;
+===============================================================================================
+Example 4:
+
+class Demo1{
+	public int getStringLength(String s1){
+		return s.length();
+	}
+}
+==============================================
+//Lambda Expression for above method
+	str->s.length();
+	
+=================================================================================================
+which one are valid in below expressions:
+-----------------------------------------
+1. n->return n*n; (Invalid)
+2. n->{return n*n;}; (valid)
+3. n->{return n*n}; (Invalid), because inside the lambda expressions must end with ; symbol
+4. n->{n*n;}; (Invalid)
+5. n->n*n; (Valid)
+
+
+==> How to call these lambda expressions?
+	It will be done by using Functional Interface
+	
+	
+	Example of Some of the functional interfaces
+	---------------------------------------------
+	Runnable ==> run()
+	Comparable ==> compareTo()
+	Comparator => compareTo()
+	ActionListener => actionPerformed()
+	Callable => call()
+	
+		An interface which contains Single Abstract methods are called as functional interfaces
+What is the use of these functional interfaces in lambda expression?
+	==> To call/invoke the lambda expressions
+	
+==>  Default methods & static methods w.r.t Functional Interface:
+-----------------------------------------------------------------
+In Functional Interface, we can write any number of Default methods and static methods. 
+Restriction is only applicable for Abstract method. Only one Abstract method should be present in functional interface
+
+intreface Interf{
+	public void m1();
+	default void m2(){
+	}
+	public static void m3(){
+	}
+}
+==> If we want mention that interface is a Functional Interface, @FunctionalInterface annotation should be used on top of the class name
+==> @FunctionalInterface annotation is optional, but advantage is it will alert if we doing some mistake like writintg two abstract methods /no abstract method is using
+
+@FunctionalInterface
+interface A{
+	public abstract void m1();
+}
+@FunctionalInterface
+interface B extends A{
+	public abstract void m1();
+}
+==> Above one is valid
+
+@FunctionalInterface
+interface A{
+	public abstract void m1();
+}
+@FunctionalInterface
+interface B extends A{
+	public abstract void m2();
+}
+==> Above one is Invalid, because if the parent is having one interface FunctionalInterface, by default child will have that method in child interface
+
+@FunctionalInterface
+interface A{
+	public abstract void m1();
+}
+@FunctionalInterface
+interface B extends A{
+	public abstract void m1();
+}
+==> Above one is valid
+
+@FunctionalInterface
+interface A{
+	public abstract void m1();
+}
+@FunctionalInterface
+interface B extends A{
+	public abstract void m2();
+}
+==> Above one is Invalid, because if the parent is having one interface FunctionalInterface, by default child will have that method in child interface
+
+@FunctionalInterface
+interface A{
+	public abstract void m1();
+}
+
+interface B extends A{
+	public abstract void m2();
+}
+==> above one is valid, because B interface is a normal interface and it can have any number of abstract methods
+
+interface interf
+{
+	public void m1();
+}
+class Demo implements interf{
+	public void m1(){
+		System.out.println("Hello World");
+	}
+}
+class Test{
+	public static void main(String args[]){
+		interface i = new Demo();
+		i.m1();
+	}
+}
+
+=======================================================================================
+Above program can be implemented by using lambda expression like below
+interface interf{
+	public void m1();
+}
+class Test{
+	public static void main(String args[]){
+		interf i = ()->System.out.println("Hello World....");
+		i.m1();
+	}
+}
+========================================================================================
+interface interf
+{
+	public void add(int a, int b);
+}
+class Demo implements interf{
+	public void add(int a, int b){
+		System.out.println(a+b);
+	}
+}
+class Test{
+	public static void main(String args[]){
+		interface i = new Demo();
+		i.add(10,20);
+	}
+}
+=============================================================================================
+interface interf
+{
+	public void add(int a, int b);
+}
+class Test{
+	public static void main(String args[]){
+		interface i = (a,b)-> {System.out.println(a+b);}
+		i.add(10,20);
+	}
+}
+==============================================================================================
+Limitation is: Wherever Functional Interface is present, there only Lambda expressions can be used, if functional interfaces are not present, Lambda expressions can not be written.
+
+Reason is If Functional Interface is having two methods and when you are calling the Lambda expression, which method it should execute? (ambiguity presents), that is the reason it will work only with one abstract method of Functional interface
+
+==>  For Our general requirements to write the conditional statements, increment operators, calling the methods etc., everywhere we can use the Lambda expressions. There are several interfaces defined in java.util.function package
+
+====================================================================================================================
+	

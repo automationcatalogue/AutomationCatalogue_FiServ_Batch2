@@ -13,8 +13,6 @@ public class A {
         void display(){
             System.out.println("Advanced Java!!!");
         }
-
-
     }
 
 
