@@ -258,4 +258,92 @@ Reason is If Functional Interface is having two methods and when you are calling
 ==>  For Our general requirements to write the conditional statements, increment operators, calling the methods etc., everywhere we can use the Lambda expressions. There are several interfaces defined in java.util.function package
 
 ====================================================================================================================
+Stream API (Bulk operation of collection Objects):
+---------------------------------------------------
+==> Stream is a pre-defined interface in Java
+==> It is present in java.util.Stream package
+==> Stream interface is used to the process the Collection objects data
+==> To get the Stream class object reference, we need to call Collection interface stream() method
+		Stream s = c.stream();
+
+Stream Interface methods:
+-------------------------
+1. filter(Predicate<T>); --> This method is used to filter the data of you collection Objects
+	I/p: 0 values
+	O/P: Any value between 0 to 10
+	
+	==> Inside the Predicate functional interface we have a anonymous function which returns boolean value
+	
+2. map(Function<T>); --> This method is used to process the entire data of your collection objects data
+	I/p: 10 values
+	O/P: 10 values
+	
+	==> Inside the Function functional interface we have a anonymous function which may return any value (int value, String value, character value)
+	
+3. Collect(Collector.toList()) --> It converts the Stream data to List interface data
+4. Count(); --> this method is used to retun the number of values in the collection object
+5. Sorted() --> Default Natural Sorting order and returns the Stream data
+6. Sorted(Comparator c) --> Customized Natural Sorting order and returns the Stream data
+7. forEach(Lambda Expression) --> This method used to process for entire collection objects data one after another
+8. toArray(); --> Which coverts the Stream data to Array Data
+Streams concept not only applicable for Collection, applicable for group of values and Array Values
+9. Stream.of(); --> this method is used to apply on the group of values and Array Values
+	
+	
+public class Demo1 {
+    public static void main(String[] args) {
+        ArrayList<Integer> al = new ArrayList<Integer>();
+        al.add(15);
+        al.add(50);
+        al.add(25);
+        al.add(10);
+        al.add(30);
+        al.add(20);
+        System.out.println(al);
+
+        List<Integer> al3 = al.stream().filter(i->i%2==0).collect(Collectors.toList());
+        System.out.println(al3);
+
+        List<Integer> al4 = al.stream().map(i->i*2).collect(Collectors.toList());
+        System.out.println(al4);
+
+        long oddCount = al.stream().filter(i->i%2!=0).count();
+        System.out.println("Number of odd values in ArrayList is :"+oddCount);
+
+        List<Integer> al5 = al.stream().sorted().collect(Collectors.toList());
+        System.out.println(al5);
+
+        List<Integer> al6 = al.stream().sorted((I1, I2)->(I1<I2)?1:(I1>I2)?-1:0).collect(Collectors.toList());
+        System.out.println(al6);
+
+    }
+}
+
+public class Demo2 {
+    public static void main(String[] args) {
+        ArrayList<String> al = new ArrayList<>();
+        al.add("Sagar");
+        al.add("Automation");
+        al.add("Tester");
+        al.add("Pavan");
+        al.add("Hyder");
+        System.out.println(al);
+
+        Comparator<String> c = (s1,s2)->{
+            int l1 =s1.length();
+            int l2 = s2.length();
+            if(l1<l2)
+                return -1;
+            else if (l1>l2)
+                return +1;
+            else
+                return 0;
+        };
+
+        List<String> al2 = al.stream().sorted(c).collect(Collectors.toList());
+        System.out.println(al2);
+    }
+}
+	
+
 	
