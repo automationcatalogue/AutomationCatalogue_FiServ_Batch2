@@ -1,0 +1,105 @@
+Automation Testing Tools:
+-------------------------
+1. Selenium
+2. Reorex
+3. Automation HQ
+4. TOSCA
+5. UFT (QTP)
+6. WORK SOFT
+7. Postman
+8. Cypress
+9. WebDriverIO
+10. PlayWright
+11. Katalon Studio
+12. Appium
+13. Rest Assured API Library
+
+Applications:
+-------------
+1. Web Based Applications
+2. Desktop Based Applications/Windows Based Applications
+3. Mobile Based Application
+
+Selenium WebDriver:
+-------------------
+==> Selenium is Purely web based automation testing tool
+==> Official Website for Selenium is https://www.selenium.dev/
+
+Browsers:
+---------
+1. MicrosoftEdge
+2. Chrome
+3. Firefox
+4. Safari
+5. IE
+
+Operating Systems:
+------------------
+1. Windows
+2. Mac (iOS)
+3. Linux
+
+Programming Languages:
+----------------------
+1. Java
+2. JavaScript
+3. Python
+4. C#.Net
+5. Ruby
+
+
+1. Selenium IDE - Record /Playback tool
+2. Selenium WebDriver - Web based Automation testing tool
+3. Selenium Grid - Executes Selenium WebDriver Scripts in Multiple Browsers and Multiple Operating Systems in Parallel
+
+How to Download Selenium WebDriver Libraries and Add it to Java Project:
+-------------------------------------------------------------------------
+Open the Selenium.Dev website --> Click on Downloads --> Go to the Java Language Bindings --> Download the Latest Selenium Library
+Extract the Selenium Library in C:\FIServ-Automation\Jars\selenium-java-4.13.0
+
+Now Open IntelliJIdea - Java Project --> Click on File --> Click on Project Structure --> Click on Modules --> Click on Dependencies
+Click on + Add button --> Select Jars or Directories --> Browse the Above Selenium Libraries and Click on OK
+--> Selenium Libraries will be added to the Project
+
+
+WebDriver:
+----------
+==> WebDriver is an Interface
+==> 												
+
+												WebDriver(I)
+													|	
+				------------------------------------------------------------------------------------------------
+				|					|					|					|					|				|
+				ChromeDriver		FirefoxDriver		ChromiumDriver		EdgeDriver
+				
+Methods:
+--------
+1. void get(String URL); --> This method is used to load the Website
+2. String getTitle(); --> This method is used to get the title of the Current Page
+3. navigate().to(String url)--> This method is used to load the URL
+4. void close() --> This method is used to close the browser
+5. void quit() --> This method is used to close browser
+
+6. String getCurrentURL() --> This method is used to get the Current URL of the application
+7. String getPageSource() --> This method is used to get the page source of the application
+8. manage().window().maximize() --> This method is used to maximize the browser window
+9. getWindowHandle() --> This method is used to get the the current window Session ID
+10. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
+11. switchTO() --> This method is used to used to switch between the browser windows
+12. navigate().forward() --> This method is used to move forward in the current browser window
+12. navigate().back() --> This method is used to move backward in the current browser window
+13. findElement(By by) --> This method is used to find the Element of a page/application
+14. findElements() --> This method is used to return the list of elements in a page/application
+
+Difference between get() and navigate().to():
+----------------------------------------------
+==> Both get(String url) and navigate.to(String url) methods are used to load the given URL.
+	When get() method is used, driver will wait till the complete page/application is loaded and then it moves to next step in the script
+	When navigate().to() method is used, driver will not wait till the complete page/application is loaded. It just loads the url and moves to the next step in the script
+	
+Difference between close() and quit():
+--------------------------------------
+==>Both close() and quit() methods are used to close the browsers
+	When close() method is used, driver will close the current window which is opened by WebDriver
+	When quit() method is used, driver will close all the windows which are opened by WebDriver

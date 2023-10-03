@@ -28,5 +28,6 @@ public class Demo2 {
 
         List<String> al2 = al.stream().sorted(c).collect(Collectors.toList());
         System.out.println(al2);
+        System.out.println(9+1+"hi");
     }
 }
