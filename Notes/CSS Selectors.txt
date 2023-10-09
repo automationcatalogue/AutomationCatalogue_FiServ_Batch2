@@ -1,0 +1,142 @@
+CSS Selectors:
+--------------
+==> cssSelector is a path pattern that can use web element's attributes to locate a web element in the web page
+==> cssSelector is very fast compared to Xpath, because Xpath engines are different in each browser. Therefore some times xpath are not suitable to identify element on IE and CSS is recommended for the same.
+
+==> cssSelector is light weight compared to xpath and it is very straight forward
+==> cssSelector locates the elements only in forward direction
+
+	syntax:
+	-------
+		htmlTagName[arritbuteType='attributeValue'] --> Single Attribute
+		htmlTagName[arritbuteType1='attributeValue1'][arritbuteType2='attributeValue2'] --> with Multiple attributes
+		
+	Note:	==>	*[attributeName='attributeValue'] --> This will check for all the tags in the DOM
+			==>	[attributeName='attributeValue'] --> Can write the cssSelector without TagName and HtmlTagName also
+			
+		Examples:
+		1. input[name='q'] --> Google Search text-box
+		2. input[name='txtPassword'][id='txtPassword'] --> password button in OrangeHRM
+		
+Using (#) Symbol:
+-----------------
+==> # Symbol is used along with the ID attribute to identify the web element in a web page
+
+	Syntax:
+	-----------
+		"#attributeValue" --> will become your cssSelector
+		
+	Examples:
+	---------
+	1. #txtPassword --> Password in OrangeHRM
+	2. #glow-ingress-line2 --> Select your Addresss link in Amazon
+	3. input[name='txtUsername']#txtUsername --> UserName in OrangeHRM
+	
+Using (Dot) Symbol:
+-------------------	
+==> . Symbol is used along with the className attribute to identify the web element in a web page
+	
+	Syntax:
+	-----------
+		".attributeValue" --> will become your cssSelector
+		
+		
+	Examples:
+	---------
+	==> .makeFlex.hrtlCenter.font10.makeRelative.lhUser.userLoggedOut --> Login or Create Acount button in Makemytrp website
+	==> .top-level-menu-item.forced-active.active ==> Dashboard in OrangeHRM
+	==> .css-label_c.t_c --> Flexible with Date in OrangeHRM
+	
+Wild card in CSS:
+-----------------
+==> User can use wild card characters in cssSelector to find the element ^, $, * are wild characters present in the cssSelector in selenium
+
+==>'^' means starting value is fixed
+	Syntax:
+	------
+	htmlTagName[attributeType^='attributeValue'] --> It is similar to starts-with function in Xpath
+	
+	Examples:
+	---------
+		1. label[for^='concessionBook'] --> Person with Disability Concession check-box in IRCTC
+		2. input[title^='Enter city name and select'][name='fromPlaceName'] --> From in TSRTC
+		3. #topMnuloans[rel^='lendingSub'] --> Loans in Citi bank
+		
+==>'$" means Ending value is fixed
+
+	Syntax:
+	------
+	htmlTagName[attributeType$='attributeValue'] --> It is similar to end-with function in Xpath
+	
+	Examples:
+	---------
+	1. input[value$='Availability'].chkavailabilityBtn --> Check availablity button in TSRTC
+	2. a[data-bs-target$='Modal'] --> Login button in ICICI Direct website
+	
+==>'*" means Middle value (or) starting value (or) ending value is fixed
+
+	Syntax:
+	------
+	htmlTagName[attributeType*='attributeValue'] --> It is similar to contains function in Xpath
+	
+	Examples:
+	---------
+		1. a[onclick*='PassDoorStep'] --> Password at your door step link
+		2. a[title*='alth Managem']#topMnuinvesting --> Wealth Management link in Citi Bank
+		
+Note: ==> To inspect to the specific web element based on the number--> "tagname:nth-of-type(number)"
+	  ==> To inspect to the specific child element based on the number--> "tagname:nth-child(number)"	
+	  
+CSS Combinators:
+----------------
+==>Combinator explains the relationship between the cssSelectors
+==> There are '4' cssCombinators are in cssSelector
+	1. Descendant Selector
+	2. Child Selector
+	3. Adjacent Sibling Selector
+	4. General Selector Sibling
+	
+1. Descendant Selector: --> (It is similar to the following axes function in xpath)
+------------------------
+==> Space is Descendant selector
+==> The descendant selector matched all elements that are descendants of a specified element
+
+	Examples:
+	---------
+	1. #content div:nth-of-type(1) div:nth-of-type(1) div div:nth-child(2) div div form div div input[name='email'] --> Email text-box in facebook website
+	2. #nav-xshop a:nth-child(3) --> Customer Service in Amazon.in website
+	3. .chHeaderContainer nav ul li:nth-child(6) a span:nth-child(2) --> Buses link in Makemy trip website
+	
+2. Child Selector: --> (It is similar to the child axes function in xpath)
+------------------
+==>'>' is child selector
+==> The child selector selects all elements that are the immediate children of a specified element
+
+	Examples:
+	--------
+	1. #topbar-ribbon>div:nth-child(1)>div:nth-child(2)>top-level-menu-item:nth-of-type(1) div a --> To Select EmployeeList in OrangeHRM
+	2. .input-group.form-select div:nth-of-type(1)>button:nth-of-type(1)>div>div>div --> To Select the Location drop-dwn in Add Employee OrangeHRM
+	3. .form-group.relative>label --> DOB text-box in ICICI direct
+	
+3. Adjacent Sibling Selector: --> (It is similar to the following-sibling axes function in xpath, but only Immediate Adjacent only)
+-----------------------------
+==> '+ is used for adjacent selector combinator
+==> The adjacent sibling selector selects a element that is adjacent siblings of a specified element
+
+	Examples:
+	----------
+	1. li[data-cy='menu_Trains']+li>div a span:nth-child(2) --> To Select Buses link using Trains in Makemytrip
+	2. a[data-csa-c-content-id='nav_cs_newreleases']+a --> To Select next to the New Releases in Amazon website
+	3. input[type='password'] +div+input --> Login button in ICICI Direct website
+	
+4. General Selector Sibling: --> (It is similar to the following-sibling axes function in xpath)
+----------------------------
+==> '~' is used for general sibling selector combinator
+==> The general sibling selector selects all elements that are siblings of a specified element.
+
+	Examples:
+	---------
+	1. li[data-cy='menu_Hotels']~li:nth-of-type(7)>div a span:nth-child(2) --> To select the Buses link from Hotels menu in MakeMytrip website
+	2. input[name='fromPlaceName']~input:nth-of-type(8) --> Return-on date picker in TSRTC website
+
+	

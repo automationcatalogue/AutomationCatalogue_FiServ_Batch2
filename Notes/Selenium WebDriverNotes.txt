@@ -1,3 +1,13 @@
+Projects/Real-time Web Applications
+1. http://demowebshop.tricentis.com/login
+	Email: aarosagarch@gmail.com
+	Password: Admin@123
+
+2. https://automatetest-trials710.orangehrmlive.com
+	username: Admin
+	Password: Admin@123
+
+
 Automation Testing Tools:
 -------------------------
 1. Selenium
@@ -80,17 +90,17 @@ Methods:
 3. navigate().to(String url)--> This method is used to load the URL
 4. void close() --> This method is used to close the browser
 5. void quit() --> This method is used to close browser
+6. manage().window().maximize() --> This method is used to maximize the browser window
+7. String getCurrentURL() --> This method is used to get the Current URL of the application
+8. String getPageSource() --> This method is used to get the page source of the application
+9. navigate().forward() --> This method is used to move forward in the current browser window
+10. navigate().back() --> This method is used to move backward in the current browser window
+11. WebElement findElement(By by) --> This method is used to find the Element of a page/application
 
-6. String getCurrentURL() --> This method is used to get the Current URL of the application
-7. String getPageSource() --> This method is used to get the page source of the application
-8. manage().window().maximize() --> This method is used to maximize the browser window
-9. getWindowHandle() --> This method is used to get the the current window Session ID
-10. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
-11. switchTO() --> This method is used to used to switch between the browser windows
-12. navigate().forward() --> This method is used to move forward in the current browser window
-12. navigate().back() --> This method is used to move backward in the current browser window
-13. findElement(By by) --> This method is used to find the Element of a page/application
-14. findElements() --> This method is used to return the list of elements in a page/application
+12. getWindowHandle() --> This method is used to get the the current window Session ID
+13. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
+14. switchTO() --> This method is used to used to switch between the browser windows
+15. findElements() --> This method is used to return the list of elements in a page/application
 
 Difference between get() and navigate().to():
 ----------------------------------------------
@@ -103,3 +113,121 @@ Difference between close() and quit():
 ==>Both close() and quit() methods are used to close the browsers
 	When close() method is used, driver will close the current window which is opened by WebDriver
 	When quit() method is used, driver will close all the windows which are opened by WebDriver
+	
+Locators:
+----------
+==> There are '8' types of locators present in selenium
+1. Name
+2. ID
+3. ClassName
+4. LinkText
+5. PartialLinkText
+6. TagName
+7. Xpath
+8. CssSelector
+
+Selenium WebDriver Locators:
+----------------------------
+
+ClassName :
+-----------
+By
+1. By id(String args);
+2. By name(String args);
+3. By linkText(String args);
+4. By partialLinkText(String args);
+5. By className(String args);
+6. By tagName(String args);
+7. By xpath(String args);
+8. By cssSelector(String args);
+
+==>DOM --> Document Object Model --> Where all the WebElements/Objects are stored in a page
+
+==> 1. Click on F12 button --> DOM will be opened
+		(OR)
+==> 2. Right click on a specific Element --> Click on Inspect option
+
+WebElement
+==> WebElement in Selenium is refers the HTML element in a DOM.
+==> WebElement is a interface in Selenium
+
+WebElement methods:
+-------------------
+1. public void sendKeys(CharSequence args0); --> This method is used to enter a text in an element (Ex: Text-box)
+2. public void click(); --> This method is used to click on the element
+3. public void clear(); --> This method is used to clear the text, if there is a text available in the element
+4. public boolean isDisplayed(); --> This method is used to check whether element is displayed or not once element is found--> if element is not found, we will get NoSuchElementException
+5. public boolean isEnabled(); --> This method is used to check whether element is enabled or not
+6. public String getText(); --> This method is used to get the Text of a element
+
+
+3. public void submit(); --> This method is used to submit a form to the remote server, if the current element is a form (OR) current element is available with in a form								 
+
+7. public boolean isSelected(); --> This method is used to Determine whether element is selected or not
+
+9. public String getAttribute(String args0); --> This method is used to get the value of a given Attribute of the element
+10. public String getCssValue(String args0); --> This method is used to get the value of given CSS property
+11. public String getTagName(); --> This method is used to return the tagName of a given element
+12. public Point getLocation(); --> This method is used to get the Element Location where on the page
+13. public Point getSize; --> This method is used to get the Element Size on the page
+
+
+XPATH:
+------
+==> XPATH is also called as XML path
+==> XML Path expression is used to find any kind of WebElement on web page uniqely using HTML page DOM.
+
+Xpaths broadly divided into three categories:
+-------------------------------------------
+1. Absolute Xpath
+2. Relative Xpath
+3. Xpath with Attributes 
+
+==> xpath with Attributes is the bestway --> If this way giving duplicate elements --> we need to write the relative xpath
+
+How to write a Xpath?
+---------------------
+==> As a tester, If you want to write the xpath, you need to identify the starting point (tagname) and ending point (tagname) in HTML DOM
+==> Once Identified the start point(tagName) and end point(tagName), traversing between the startpoint to endpoint will becomes xpath
+
+==> Endpoint (tagName) is always constant. i.e., your highlighted element (which shows in blue color)
+==> Startpoint(tagName) could be anywhere in the DOM. We need to identify the best optimized xpath when we identify the start point
+==> Best Startpoint (tagName) will be identified with the experience
+
+Absolute Xpath:
+--------------
+==> Starting point of the node is always constant for Absolute xpath i.e., html tagName
+==> Ending point is always the highlighted webelement
+==> traverse between your start point to endpoint will become your xpath
+
+
+points to be considered while writing a xpath:
+----------------------------------------------
+1. If the same tagNames are repeated continuosly one parent, then count (number) should be appended after the tagName
+2. Whenever traversing from one tagName to another tagName i.e., parent node to child node, we should use '/' should be used to distinguish the parent and child nodes
+
+
+XPATH With Attributes:
+----------------------
+==> starting point and ending point of the node is always constant i.e., highlighted webelement
+
+1. Xpath with single Attribute
+------------------------------ 
+Syntax:
+		//htmltagName[@attributeType='attributeValue']
+		
+2. Xpath with multiple Attributes
+------------------------------------
+Syntax:		
+		//htmltagName[@attributeType1='attributeValue1'][@attributeType2='attributeValue2']...........[@attributeTypeN='attributeValueN'] 
+		
+Relative XPATH:
+---------------
+==> In the Relative XPATH, starting point can be any node. best relative xpath can be written based on your experience
+==> To Identify the starting point of the node, there are 'n' number of ways are available, can use anyone of the approach to identify the relative xpath of an WebElement
+
+
+Syntax:
+------
+	//htmltagName[@attributename='attribtuteValue']/................/end point in the HTML (Highlighted line in the DOM)
+	

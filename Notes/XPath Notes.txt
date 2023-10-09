@@ -1,0 +1,398 @@
+XPATH:
+------
+==> xpath is also called as XML path
+==> XML Path expression is used to find any kind of WebElement on web page uniqely using HTML page DOM.
+
+
+How to write a Xpath?
+---------------------
+==> As a tester, If you want to write the xpath, you need to identify the starting point (tagname) and ending point (tagname) in HTML DOM
+==> Once Identified the start point(tagName) and end point(tagName), traversing between the startpoint to endpoint will becomes xpath
+
+==> Endpoint (tagName) is always constant. i.e., your highlighted element (which shows in blue color)
+==> Startpoint(tagName) could be anywhere in the DOM. We need to identify the best optimized xpath when we identify the start point
+==> Best Startpoint (tagName) will be identified with the experience
+
+Xpaths broadly divided into three categories:
+-------------------------------------------
+1. Absolute Xpath
+2. Relative Xpath
+3. Xpath with Attributes 
+
+==> xpath with Attributes is the bestway --> If this way giving duplicate elements --> we need to write the relative xpath
+
+
+Absolute Xpath:
+--------------
+==> Starting point of the node is always constant for Absolute xpath i.e., html tagName
+==> Ending point is always the highlighted webelement
+==> traverse between your start point to endpoint will become your xpath
+
+points to be considered while writing a xpath:
+----------------------------------------------
+1. If the same tagNames are repeated continuosly one parent, then count (number) should be appended after the tagName
+2. Whenever traversing from one tagName to another tagName i.e., parent node to child node, we should use '/' should be used to distinguish the parent and child nodes
+
+Syntax:
+-------
+/html/................../end node
+
+Examples:
+---------
+1. Login button in the OrangeHRM application
+/html/body/div/div/div/div[2]/div/form/div[4]/button
+
+2. ICICI Direct website - Login button
+/html/body/header/div[3]/div[2]/div/div[2]/a[5]
+
+3. Facebook - Create new acount button
+/html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a
+
+4. Amazon Website --> searchResult --> 1st Item
+/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/div/div/div/div[2]/div/div/div/h2/a/span
+
+*Note:
+------
+==> Absolute Xpath is not preferable, since whenever changes happened in the application, absolute xpath has to be changed every time and maintenance of the script becomes tedious
+
+Assignment-1: (Absolue Xpath)
+------------------------------
+1. Write the xpath for facebook page - Login button
+2. Write the xpath for IRCTC - Ralway Pass Concession checkbox
+3. Write the xpath for naukri - Register button
+4. Write the xpath for wikipedia - search wikipedia text-box
+5. Write the xpath for Paytm - Paytm For Business --> Financial Services --> Insurance button
+6. Next:EducationDetails button in the Monster.com
+7. Mobile number drop-dwon : canada+1 - Monster.com
+8. Download on the app store button in the Instagram
+9. Search for a Job --> LinkedIn website
+10. Subscription in Youtube.com
+11. Electornics - Bluetooth Speakers - in Flipkart.com website
+
+
+XPATH With Attributes:
+----------------------
+==> starting point and ending point of the node is always constant i.e., highlighted webelement
+
+1. Xpath with single Attribute
+------------------------------ 
+Syntax:
+		//htmltagName[@attributeType='attributeValue']
+		
+Examples:
+---------
+1. Password text-box on a OragngeHRM website
+	//input[@placeholder='Password']
+
+2. Google Search text-box
+	//textarea[@title='Search']
+	
+3. Jobs Link Naukri Home Page
+	//a[@class='nI-gNb-menuItems__anchorDropdown'] --> This example is showing duplicate elements, try to change another attriute
+																									(or)
+																								XPATH with Multiple attributes to get unique elements
+2. Xpath with multiple Attributes
+------------------------------------
+Syntax:		
+		//htmltagName[@attributeType1='attributeValue1'][@attributeType2='attributeValue2']...........[@attributeTypeN='attributeValueN'] 
+
+Examples:
+---------
+1. Jobs Link Naukri Home Page
+	//a[@class='nI-gNb-menuItems__anchorDropdown'][@title='Search Jobs']
+	
+2. Gmail Link Google Search page
+	//a[@class='gb_t'][@target='_top'] --> Still giving duplicate elements
+	
+
+Note: For a text attribute syntax will be like below
+//tagName[text()='textvalue']
+
+	//a[@class='gb_t'][@target='_top'][text()='Gmail']
+	
+3. From text-box in IRCTC Homepage
+	//input[@role='searchbox'][@type='text'][@aria-autocomplete='list'][@autocomplete='off']
+	Even after trying all the attributes, result is duplicate elements
+	
+Below are the different functions (or) different ways to identify the element in a unique way
+1) contains
+2) starts-with
+3) and 
+4) or
+5) .. (Double Dot Symbol)
+6) Parameterized Xpath
+
+==> Xpath with contains() method:
+----------------------------------
+	Syntax:
+	--------
+	//htmltagName[contains(@attributeType,'attributeValue')]
+	
+	Examples:
+	1. IRCTC website --> 1st check-box on home page --> (//input[contains(@class,'ng-pristine')])[1]
+	2. Amazon.in wbsite --> 1st list of items text --> //h2[contains(text(),'Appliances for your home')]
+	
+==> Xpath with starts-with() method:
+-------------------------------------
+	Syntax:
+	--------
+	//htmltagName[starts-with(@attributeType,'attributeValue')]
+	
+	Examples:
+	1. IRCTC website --> 1st check-box on home page --> (//input[starts-with(@class,'css-checkbox ')])[1]
+	2. Amazon.in wbsite --> 1st list of items text --> //h2[starts-with(text(),'Appliances for your home')]
+	
+==> Xpath with and operator:
+----------------------------
+==> It is similar to the Xpath with multiple attributes
+	
+	Syntax:
+	--------
+	//htmltagName[@attributeType1='attributeValue' and '@attributeType2='attributeValue']
+	
+	Examples:
+	---------
+	1. Amazon.in --> Search text-box : 
+		//input[@id='twotabsearchtextbox' and @name='field-keywords' and @aria-label='Search Amazon.in']
+		//input[starts-with(@id,'twotab') and @name='field-keywords' and contains(@aria-label,'Amazon.in')]
+	2. //a[starts-with(@data-app-ios,'/content') and @id='getCallBackPopup']
+	
+==> Xpath with or operator:
+----------------------------
+==> It is similar to the Xpath with multiple attributes
+
+	Syntax:
+	--------
+	//htmltagName[@attributeType1='attributeValue' or '@attributeType2='attributeValue']
+	
+	Examples:
+	---------
+	1. Google Search text-box ==> //textarea[@name='s' or @id='APjFqb']
+	2. OrangeHRM username text-box ==> //input[@name='abcd' or @name='txtUsername']
+	
+==> .. (Double dot symbol):
+--------------------------
+	When Double dot symbol is used, Current Node will be traversed to the Parent Node
+	
+	Examples:
+	---------
+	1. Reister Button in Naukri--> (//a[@alt='Naukri Logo'])[1]/../div[1]/a[2]
+	2. Password text-box in ICICI Direct website --> //label[@for='InputPassword']/../div/input[2]
+	3. Sathyameva Jayave in wikipedia --> (//div[@id='mw-content-subtitle']/../../div[3]//span[@title='Sanskrit-language text'])[1]//a
+	
+Note:
+-----
+1. When "and" operator is used, both attribute types and it's values inside the xpaths should become true.
+2. When "or" operator is used, at least one attribute type and it's value inside the xpaths should become true.
+	
+	
+Assignment-2: (XPATH with Attributes)
+--------------
+1. Write the xpath for facebook page - Login button
+2. Write the xpath for IRCTC - Ralway Pass Concession checkbox
+3. Write the xpath for naukri - Register button
+4. Write the xpath for wikipedia - search wikipedia text-box
+5. Write the xpath for Paytm - Paytm For Business --> Financial Services --> Insurance button
+6. Next:EducationDetails button in the Monster.com
+7. Mobile number drop-dwon : canada+1 - Monster.com
+8. Download on the app store button in the Instagram
+9. Search for a Job --> LinkedIn website
+10. Subscription in Youtube.com
+11. Electornics - Bluetooth Speakers - in Flipkart.com website
+
+
+
+Differences between Absolute xpath and Relative xpath:
+------------------------------------------------------
+==> Absoute xpath will always starts with "/"
+==> In Absoute xpath, traversing will be happened node by node
+==> Absolute xpath is faster
+==> Maintenance of xpath is tedious, there is a high possibility of corrupting xpath for every release
+
+==> Relative xpath will always starts with "//"
+==> In Relative xpath, traversing will jump from any node to any node
+==> Relative xpath is bit slower compared to absolute xpath
+==> Maintenance of xpath is less compare to absolute xpath, there is a less possibility of corrupting xpath for every release
+
+
+Note:
+-----
+1. Dynamic WebElements --> If the attribute values are having the numbers --> There is a possibility of changing the numbers, every time whenever application is launched
+	So, that's reason don't use the attribute values which are having numbers
+	==> Use the attributes by removing the numbers (like use contains(), starts-with() methods etc.,)
+
+
+Relative XPATH:
+---------------
+==> In the Relative XPATH, starting point can be any node. best relative xpath can be written based on your experience
+==> To Identify the starting point of the node, there are 'n' number of ways are available, can use anyone of the approach to identify the relative xpath of an WebElement
+
+
+Syntax:
+------
+	//htmltagName[@attributename='attribtuteValue']/................/end point in the HTML (Highlighted line in the DOM)
+	
+	Examples:
+	---------
+	1. OrangeHRM - UserName text box
+		//div[@class='input-field']/input[@name='txtUsername']
+
+		//form[@id='frmLogin']/div[1]/input
+
+		//div[@class='login-form shadow']/form/div[1]/input
+		
+	2. 3rd Item search result in Amazon website
+	//span[@data-component-type='s-search-results']/div[1]/div[5]/div/div/div/div/div/div[2]/div/div/div/h2/a/span
+	//span[@data-component-type='s-search-results']/div[1]/div[5]//h2/a/span
+	
+	3. Gap.com --> Jeans search --> clicking on 4th search result
+	(//section[@aria-label='Product Grid']/div[1]/div[5]//img)[1]
+	
+X-Path Axes functions / Advanced XPATHS:
+----------------------------------------
+1. ancestor -  Selects all ancestors(parent, grandparent, etc.,) of the current node
+2. child - selects all children of the current node
+3. following - Selects everything in the document after closing tag of the current node
+4. following-sibling -  Selects all siblings of the current node
+5. preceding -  Selects all nodes that appear before the current node in the document
+6. preceding-sibling - Selects all siblings before the current node
+7. parent - Selects the parent of the current node
+
+
+1. ancestor:
+------------
+==> This selects the all ancestors(parent, grandparent) based on the tagName provided from the current node
+
+	Syntax:
+	-------
+		//htmlTagName[@attributeType='attributeValue']//ancestor::tagName -->It will show the number of ancestor tags present from the current node
+		
+		To goto the specific ancestor node, number (Count) can be used
+		--> If Number provides the 1, It is the Immediate ancestor from the current node
+		--> If Number provides the 5, It is the 5th Immediate ancestor from the current node
+		
+	Examples:
+	---------
+	1. Selection of Cabs in MakeMyTrip website (traversing from super offers) link-->
+		//li[contains(@data-cy,'SuperOffersSection')]//ancestor::div[2]/div[2]//li[@data-cy='menu_Cabs']//span[2]
+		
+2. child:
+---------
+==> It will be selecting all the children of current node
+
+	syntax:
+	-------
+	//htmlTagName[@attributeType='attriuteValue']//child::tagName --> It will show the number of child tags present under the current node
+	
+	To go to a specific child node, number(Count) can be used as below
+	//htmltagName[@attributetype='attributevalue']//child::tagName[Number]
+	-->If Number provides the 1, It is the Immediate child from the current node
+	-->If Number provides the 5, It is the 5th child from the current node
+	
+	Examples:
+	--------
+	1. In MakeMytrip website - To select the Buses, using headerOut node
+		//div[@class='headerOuter']//child::li[6]//span[2]
+	2.  In IRCTC website - To select the GENERAL drop-down
+		//label[contains(text(),'BOOK TICKET')]//ancestor::div[3]//child::form/div[3]/div/div/p-dropdown
+		(//label[contains(text(),'BOOK TICKET')]//ancestor::div[2]//child::p-dropdown)[2]/div
+3. following:
+-------------
+==> This selects the all the tags after the current node
+
+	Syntax:
+	-------
+	//htmlTagName[@attributeType='attributeValue']//following::tagName
+	
+	To go to a specific node, Index number can be used as below
+	//htmltagName[@attributetype='attributevalue']//following::tagName[Number]
+	-->If Number provides the 1, It is the first Immediate node after the current node
+	-->If Number provides the 5, It is the 5th Immediate node after the current node
+	
+	Examples:
+	---------
+	1. ICICI Direct website - Selecting ReferNow button
+		//button[@class='humburger']//following::a[5]
+	2. OrangeHRM - Add Employee - Location drop-down 
+		(//label[@for='joinedDate'])[1]//following::button[5]/div/div/div
+		
+		
+4. following-sibling:
+---------------------
+==> Selects all siblings of the current node
+
+Syntax:
+-------
+		//htmltagName[@attributeType='attributeValue']//following-sibling::tagName...... --> This will show all the Siblings of the current node
+		If you want to go to specific sibling, provide the number of a Sibling after the current node		
+		//htmltagName[@attributeType='attributeValue']//following-sibling::tagName[Number]
+		
+		Examples:
+		---------
+		1. Amazon.in website - Selecting the Amazon pay using Mobiles
+			//a[text()='Mobiles']//following-sibling::a[8]
+		2.  OrangeHRM - Add Employee - LastName using firstName
+			//input[@id='first-name-box']//following-sibling::input[2]
+		
+***Difference between following and following-sibling in XPath?
+----------------------------------------------------------------
+following:																			following-sibling
+----------																		---------------------------
+1. Selects all the tags after the current Nodes in the document					1. Selects all siblings of the current node
+2. Considers child, grandchild, siblings, siblings child and grandchild			2. selects only siblings of the current node 
+																					(will not select children, grandchild etc.,)
+3. following is not a subset of following-sibling								3. following-sibling is a subset of following
+
+5. Preceding:
+-------------
+==> Selects all nodes that appear before the current node in the document
+
+	Syntax:
+	-------
+	//htmlTagName[@attributeType='attribtuteValue']//preceding::tagName[number]
+	
+	If the number(Count) is 1, It will be selecting the immediate node before the current element
+	If the number(Count) is 5, It will be selecting the 5th node before the current element
+	
+	Examples:
+	---------
+	1. Gap.com --> Jeans --> New Arrivals
+		//button[text()='Show All']//preceding::a[7]
+		//button[text()='Show All']//preceding::li[7]/a
+		//button[text()='Show All']//preceding::h2[2]//following-sibling::ul/li[1]/a
+		
+6. preceding-sibling:
+---------------------
+==> Selects all siblings before the current node
+Syntax:
+-------
+	//htmltagName[@attributeType='attributeValue']//preceding-sibling::tagName --> Selects all siblings before the current node
+	If specific node needs to select, use the IndexNumber as below
+	//htmltagName[@attributeType='attributeValue']//preceding-sibling::tagName[Number] --> 
+	If Number is 1, Selects the Immediate sibling before the current node
+	If Number is 5, Selects the 5th immediate sibling before the current node
+	
+Examples:
+---------
+	1. In Myntra website - selecting Kids using Beauty
+		(//a[text()='Beauty'])[1]/../..//preceding-sibling::div[2]//a[text()='Kids']
+		//a[text()='Beauty']//ancestor::div[@class='desktop-navContent']//preceding-sibling::div[2]/div/a
+	2. In OrangeHRM website - Selecting locations using next button
+		//button[text()='Next']//ancestor::div[1]//preceding-sibling::div[1]/form/oxd-decorator/div/div[2]//child::button[@data-id='location']/div/div/div
+		
+7. Parent:
+----------
+==> Selects the parent of the current node
+
+Syntax:
+-------
+	//htmltagName[@attributeType='attributeValue']//parent::tagName --> selects the parent of the current node
+	--> If Wrong tagName provides, it would result "0 of 0"
+	
+Examples:
+---------
+	1. In ICICI Direct website - Selecting NRI using Login
+		(//a[text()='LOGIN'])[2]//parent::div/a[4]
+	2. In OrangeHRM website - Add Employee window - selecting MiddleName using LastName
+		//input[@id='last-name-box']//parent::div/input[2]
+	
