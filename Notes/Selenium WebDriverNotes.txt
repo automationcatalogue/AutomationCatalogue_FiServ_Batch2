@@ -96,11 +96,12 @@ Methods:
 9. navigate().forward() --> This method is used to move forward in the current browser window
 10. navigate().back() --> This method is used to move backward in the current browser window
 11. WebElement findElement(By by) --> This method is used to find the Element of a page/application
+12. List<WebElement> findElements() --> This method is used to return the list of elements in a page/application
 
 12. getWindowHandle() --> This method is used to get the the current window Session ID
 13. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
 14. switchTO() --> This method is used to used to switch between the browser windows
-15. findElements() --> This method is used to return the list of elements in a page/application
+
 
 Difference between get() and navigate().to():
 ----------------------------------------------
@@ -298,5 +299,47 @@ Execution Selenium Scripts in Multiple Browsers:
 6. Opera Browser --> In the Latest version of Selenium Library Opera browser is not supporting
 
 Note: Browser Version should be compatible with Selenium Library version
+
+=======================================================================================
+			SELECTION of Values from a drop-down
+1. Selection of drop-down values when Select tag is present in DOM
+	Note:
+		==> Select is a Pre-defined class in Selenium Library
+		==> Select class of the Selenium Library will work only when drop-down tagName is started with Select tag
+		
+	Syntax:
+	-------
+		Select ob = new Select(WebElement);
+Methods:
+--------
+1. selectByIndex(int index); This method is used based on the index value of the drop down
+2. selectByValue(String value); This method is used to select the dropdown based on the value which is provided in the drop-down
+3. selectByVisibleText(String Text); This method is used to select the dropdown based on the visible text.
+4. isMultiple();  This method is used for verifying whether current dropdown is multi-select or single selection dropdown
+5. deSelectByIndex(int index); Deselects the option at given index
+6. deSelectByValue(String value);  Deselects the option that have a value matching the argument
+7. deSelectByVisibleText(String text); Deselect the option that display text matching the argument
+8. deSelectAll(); Cleard all selected values
+9. getFirstSelectedOption(); Returns the First selected option as a WebElement
+10. getAllSelectedOptions(); Returns all the selected options as a List of WebElements
+11. getOptions(); This method Returns all the options in a dropdown as a List of WebElements
+	
+
+2. Selection of drop-down values when Select tag is not present in DOM
+
+==> Select class of the Selenium Library will NOT work  when drop-down tagName is not started with Select tag
+==> When Select tag is not present, Write a XPATH to get/retreive the group of WebElements by using "findElements" method
+	List<WebElement> elements = driver.findElements(By.xpath("**********"));
+	
+==> Use the for-each loop and iterate over all the webelements and write a condition inside the loop to select the value from drop-down
+	Example:
+		for(WebElement element_location:elements_Locations){
+            String location = element_location.getText();
+            if(location.equalsIgnoreCase(TestData.orangeHRM_Location)){
+                element_location.click();
+                System.out.println("Location "+location+" is selected from the drop-down");
+                break;
+            }
+        }
 		
 	

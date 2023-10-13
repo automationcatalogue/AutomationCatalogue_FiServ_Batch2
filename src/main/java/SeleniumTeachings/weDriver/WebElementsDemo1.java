@@ -1,5 +1,7 @@
 package SeleniumTeachings.weDriver;
 
+import Utils.CommonUtils;
+import Utils.TestData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,8 +67,7 @@ public class WebElementsDemo1 {
         driver.findElement(By.xpath("//button[@data-id='location']/div/div/div")).click();
         System.out.println("Location drop-down is clicked");
 
-        driver.findElement(By.xpath("//span[@class='text'][text()='India Office']")).click();
-        System.out.println("India Office is clicked");
+        CommonUtils.selectDropdown(By.xpath(""), TestData.orangeHRM_Location);
 
         driver.findElement(By.xpath("//button[@type='button'][@ng-if='vm.showSaveButton']")).click();
         System.out.println("Next button is clicked");
@@ -76,8 +77,7 @@ public class WebElementsDemo1 {
         System.out.println("Marital Status drop-down is clicked");
 
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='Married']")).click();
-        System.out.println("Married is selected");
+        CommonUtils.selectDropdown(By.xpath(""),TestData.orangeHRM_maritalStatus);
 
         boolean isNextPresent = driver.findElement(By.xpath("//button[@translate='Next']")).isDisplayed();
         if(isNextPresent){
@@ -92,8 +92,8 @@ public class WebElementsDemo1 {
         System.out.println("Region drop-down is clicked");
 
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='Region-2']")).click();
-        System.out.println("Region-2 drop-down is clicked");
+        By locator_region = By.xpath("");
+        CommonUtils.selectDropdown(locator_region, TestData.orangeHRM_Region);
 
         Thread.sleep(2000);
         driver.findElement(By.xpath("//label[text()='FTE']/../div/button/div/div/div")).click();
