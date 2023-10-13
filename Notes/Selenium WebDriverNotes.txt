@@ -159,18 +159,13 @@ WebElement methods:
 4. public boolean isDisplayed(); --> This method is used to check whether element is displayed or not once element is found--> if element is not found, we will get NoSuchElementException
 5. public boolean isEnabled(); --> This method is used to check whether element is enabled or not
 6. public String getText(); --> This method is used to get the Text of a element
-
-
-3. public void submit(); --> This method is used to submit a form to the remote server, if the current element is a form (OR) current element is available with in a form								 
-
-7. public boolean isSelected(); --> This method is used to Determine whether element is selected or not
-
+7. public void submit(); --> This method is used to submit a form to the remote server, if the current element is a form (OR) current element is available with in a form								 
+8. public boolean isSelected(); --> This method is used to Determine whether element is selected or not
 9. public String getAttribute(String args0); --> This method is used to get the value of a given Attribute of the element
 10. public String getCssValue(String args0); --> This method is used to get the value of given CSS property
 11. public String getTagName(); --> This method is used to return the tagName of a given element
 12. public Point getLocation(); --> This method is used to get the Element Location where on the page
 13. public Point getSize; --> This method is used to get the Element Size on the page
-
 
 XPATH:
 ------
@@ -230,4 +225,78 @@ Relative XPATH:
 Syntax:
 ------
 	//htmltagName[@attributename='attribtuteValue']/................/end point in the HTML (Highlighted line in the DOM)
+	
+CSS Selectors:
+--------------
+==> cssSelector is a path pattern that can use web element's attributes to locate a web element in the web page
+==> cssSelector is very fast compared to Xpath, because Xpath engines are different in each browser. Therefore some times xpath are not suitable to identify element on IE and CSS is recommended for the same.
+
+==> cssSelector is light weight compared to xpath and it is very straight forward
+Limitation:
+-----------
+==> cssSelector locates the elements only in forward direction
+==> Text attributes cannot be used in css selector
+
+syntax:
+-------
+		htmlTagName[arritbuteType='attributeValue'] --> Single Attribute
+		htmlTagName[arritbuteType1='attributeValue1'][arritbuteType2='attributeValue2'] --> with Multiple attributes
+		
+	Note:	==>	*[attributeName='attributeValue'] --> This will check for all the tags in the DOM
+			==>	[attributeName='attributeValue'] --> Can write the cssSelector without TagName and HtmlTagName also
+			
+		Examples:
+		1. input[name='q'] --> Google Search text-box
+		2. input[name='txtPassword'][id='txtPassword'] --> password button in OrangeHRM
+		
+Using (#) Symbol:
+-----------------
+==> # Symbol is used along with the ID attribute to identify the web element in a web page
+
+	Syntax:
+	-----------
+		"#attributeValue" --> will become your cssSelector
+		
+	Examples:
+	---------
+	1. #txtPassword --> Password in OrangeHRM
+	2. #glow-ingress-line2 --> Select your Addresss link in Amazon
+	3. input[name='txtUsername']#txtUsername --> UserName in OrangeHRM
+	
+Using (Dot) Symbol:
+-------------------	
+==> . Symbol is used along with the className attribute to identify the web element in a web page
+	
+	Syntax:
+	-----------
+		".attributeValue" --> will become your cssSelector
+		
+		
+	Examples:
+	---------
+	==> .makeFlex.hrtlCenter.font10.makeRelative.lhUser.userLoggedOut --> Login or Create Acount button in Makemytrp website
+	==> .top-level-menu-item.forced-active.active ==> Dashboard in OrangeHRM
+	==> .css-label_c.t_c --> Flexible with Date in OrangeHRM
+	
+Execution Selenium Scripts in Multiple Browsers:
+------------------------------------------------
+1. Chrome Browser --> To run the testcases in Windows/Mac/Linux Operating Systems
+	WebDriver driver = new ChromeDriver();
+	
+2. Firefox Browser --> To run the testcases in Windows/Mac/Linux Operating Systems
+	WebDriver driver = new FirefoxDriver();
+	
+3. Edge Browser --> To run the testcases in Windows operating System
+	WebDriver driver = new EdgeDriver();
+
+4. Safari Browser --> To run the testcases in Mac (iOS) operating System
+	WebDriver driver = new SafariDriver();
+	
+5. IE Browser --> To run the testcases in Windows OS
+	WebDriver driver = new InternetExplorerDriver();
+
+6. Opera Browser --> In the Latest version of Selenium Library Opera browser is not supporting
+
+Note: Browser Version should be compatible with Selenium Library version
+		
 	
