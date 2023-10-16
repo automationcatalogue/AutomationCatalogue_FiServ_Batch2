@@ -97,10 +97,11 @@ Methods:
 10. navigate().back() --> This method is used to move backward in the current browser window
 11. WebElement findElement(By by) --> This method is used to find the Element of a page/application
 12. List<WebElement> findElements() --> This method is used to return the list of elements in a page/application
+13. switchTO() --> This method is used to used to switch between the browser windows
 
 12. getWindowHandle() --> This method is used to get the the current window Session ID
 13. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
-14. switchTO() --> This method is used to used to switch between the browser windows
+
 
 
 Difference between get() and navigate().to():
@@ -341,5 +342,74 @@ Methods:
                 break;
             }
         }
-		
+===========================================================================================================================================
+									Handling iFrames in Selenium
+==> iFrame is an HTML element that allows us to embed another HTML document within the current document
+==> In General, iFrames creates rectrangular region on a webpage that displays the content from another source
+
+There are '3' ways To Switch into the iFrame in Selenium
+1. Switching into iFrame using Id (or) Name
+2. Switching into iFrame using index 
+3. Switching into iFrame using WebElement
 	
+Switching into iFrame using Id (or) Name:
+-----------------------------------------
+==> driver.switchTo().frame("Id (or) Name of the frame")
+
+Switching into iFrame using index :
+-----------------------------------
+==> driver.switchTo().frame(Index position of the frame);
+
+Switching into iFrame using WebElement:
+---------------------------------------
+WebElement element = driver.findElement(By.xpath("<iframe>"));
+==> driver.switchTo().frame(WebElement);
+
+==> Whenever If we want to interact any element presents outside the frame, we should exit/comeout from the frame
+driver.switchTO().defaultContent();
+
+=================================================================================================================================================
+									Handling Alerts in Selenium
+==> Alert is a pop-up (or) dialog-box that appears on a webapage to perform some user interaction
+==> Typically these alerts will be triggered in the webapges when clicking on a button (or) while submitting a form
+
+To Switching into the Alert:
+----------------------------
+	Alert al = driver.switchTo().alert();
+	
+	To Accept the alert --> al.accept();
+	To cancel the alert --> al.dismiss();
+	To enter the data into the alert --> al.sendKeys("<Data>");
+	To retrieve the alert text --> al.getText()
+	
+	==> In Selenium alerts can be handled, if it has only less than 2 buttons and 1 text-box
+===================================================================================================================================================
+									Take Screenshots in Selenium 
+==> TakeScreenshot is a Interface
+==> TakeScreenshot is helpful in capturing the Screenshot
+==> We need to explicitly performs driver Object into TakeScreenshot Object
+
+Capturing the Screenshot:
+-------------------------
+TakeScreenshot ts = (TakeScreenshot) driver;
+File src=ts.getScreenshotAs(OutputType.FILE); // This method is used to capture the screenshot and stores in file variable
+File dest = new File("<Path of the file>.jpg")
+FileUtils.copyFile(src, dest);
+====================================================================================================================================================
+Robot:
+------
+==> Robot is a class in java.awt package;
+==> Robot is a predefined class in Java.
+==> By using Robot class, we can take the control of keyboard and mouse, so all Keyboard related activities and mouse related activities can be performed by using robot class.
+==> Robot class is the last priority in using Selenium scripts because Robot class doesn't work in Remote machines (like Jenkins, Selenium Grid etc.,)
+
+==> Robot r = new Robot();
+Methods:
+--------
+1. keyPress --> This method is used to press the given key
+2. keyRelease --> This method is used to release the given key
+3. mousePress --> This method is used to press the mouse
+4. mouseRelease --> This method is used to release the mouse
+5. mouseWheel --> This method is used to scroll the mouse
+
+======================================================================================================================================================
