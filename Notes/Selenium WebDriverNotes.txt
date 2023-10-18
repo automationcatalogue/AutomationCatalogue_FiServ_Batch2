@@ -98,9 +98,8 @@ Methods:
 11. WebElement findElement(By by) --> This method is used to find the Element of a page/application
 12. List<WebElement> findElements() --> This method is used to return the list of elements in a page/application
 13. switchTO() --> This method is used to used to switch between the browser windows
-
-12. getWindowHandle() --> This method is used to get the the current window Session ID
-13. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
+14. String getWindowHandle() --> This method is used to get the the current window Session ID
+15. Set<String> getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
 
 
 
@@ -412,4 +411,57 @@ Methods:
 4. mouseRelease --> This method is used to release the mouse
 5. mouseWheel --> This method is used to scroll the mouse
 
-======================================================================================================================================================
+======================================================================================================================================
+									Windows Handling in Selenium
+
+				Window Handling in Selenium
+			
+Window Handling:
+----------------
+1. getWindowHandle() --> This method is used to get the the current window Session ID
+2. getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
+3. switchTO() --> This method is used to used to switch between the browser windows
+
+Sample:
+--------
+String currentWindowID=driver.getWindowHandle();//To hold the Previous Session ID
+
+int windowSize=driver.getWindowHandles().size();//To get the Number of Windows
+//To Switch to the latest Window Session
+for(String windowsession:driver.getWindowHandles()){
+	driver.switch.window(windowsession);
+===================================================================================================================================
+									Actions Class in Selenium
+==> Actions class is one of the very important class in Hanlding Mouse and Keyboard related activities
+
+
+Handling Keyboard and Mouse related activities by using Actions class:
+----------------------------------------------------------------------
+Actions action=new Actions(driver);
+
+1. click(WebElement); --> This method is used to click in the middle of the given element
+2. clickAndHold(); --> This method is used to click (without releasing) at the current mouse location.
+3. clickAndHold(WebElement); --> This method is used to click (without releasing) in the middle of the given element.
+
+4. contextClick(); --> This method is used to right-click at the current mouse location
+5. contextClick(WebElement); --> This method is used to right-click in the middle of the given element.
+6. doubleClick(); --> This method is used to double-click at the current mouse location
+7. doubleClick(WebElement); This method is used to double-click in the middle of the given element.
+
+8. dragAndDrop(WebElement source, WebElement target); -->This method is used to performs click and hold at the location of the source element, moves the location of the target element, then releases the mouse
+9. dragAndDropBy(WebElement source, int xOffset, int yOffset); This method is used to performs click and hold at the location of the source element, moves by a given offset, then releases the mouse
+
+10. keyDown(Keys theKey); --> It performs a modifier key press
+11. keyDown(WebElement element, Keys theKey); --> It performs a modifier the key press after focusing on an element
+12. keyUp(Keys theKey); --> It performs a modifier key release
+13. keyUp(WebElement element, Keys theKey); --> It performs a modifier the key release after focusing on an element
+
+14. moveByOffset(int xOffset, int yOffset); --> This method is used to move the mouse from its current position by the given offset.
+15. moveToElement(WebElement); --> This method is used to  mouse-hover on the middle of the given element
+16. movetToElement(WebElement element, int xOffset, int yOffet); --> This method is used the mouse-hover to an offset from the top-left corner of the element.
+17. perform() ; --> This method is used to performing the actions without calling build() first.
+18. build() ; --> This method is used before performing the group of actions on a webElement.
+19. release(); --> This method is used to releases the depressed left mouse button at the current mouse location
+20. release(WebElement); --> This method is used to releases the depressed left mouse button, in the middle of the given element
+21. sendKeys(charSequence); --> This method is used to perform the send keys to the active element
+22. sendKeys(WebElement element, charSequence) --> This method is used to perform the sendKeys to the specific webElement.
