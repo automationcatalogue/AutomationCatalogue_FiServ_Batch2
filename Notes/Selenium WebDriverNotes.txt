@@ -465,3 +465,71 @@ Actions action=new Actions(driver);
 20. release(WebElement); --> This method is used to releases the depressed left mouse button, in the middle of the given element
 21. sendKeys(charSequence); --> This method is used to perform the send keys to the active element
 22. sendKeys(WebElement element, charSequence) --> This method is used to perform the sendKeys to the specific webElement.
+
+=====================================================================================================================================================
+==> TestData can be maintained in different type of file formats
+	Excel file, CSV file, Text file, Word file, JSON file, XML file, YAML file, Properties file
+	
+==> Reading data and writing data using Excel files is possible through Apache POI Jars.
+
+==> When we use TestData through the Excel files, maintenance will become easy compared to other source of files (like XML files, YAML files, java files, csv files etc.)
+
+==> Limitation/Challenge in using Excel file is --> Excel file will get corrupted easily when two or more users are writing the data at same time.
+
+==> Workbook is a collection/group of sheets
+
+Classes and Methods:
+--------------------
+1. FileInputStream --> To Open any file in Read Mode
+		FileInputStream fis = new FileInputStream("path of the excel file");
+		fis.close(); //To close the file
+		
+2. FileOutputStream --> To Open the file in a Write Mode
+		FileOutputStream fos = new FileOutputStream("path of the excel file");
+		fos.close(); //To close the file
+		
+3. XSSFWorkbook --> Predefine class to read/write the workbook information
+		XSSFWorkbook wbk= new XSSFWorkbook(fis);
+		
+4. XSSFSheet --> Predefine class to read/write from the sheet
+		XSSFSheet sh=wbk.getSheetAt(0); --> To Read/write the data from the first sheet
+					=wbk.getSheet("AddEmployee") -->  To Read/write the data from the AddEmployee sheet
+					sh.getSheetName(); --> To Read the sheetName
+					
+5. XSSFRow row --> Predefine class to read/write for a row
+		XSSFRow row = sh.getRow(int rownum); --> To get the Row number information
+		int rownum=sh.getLastRowNum(); --> This method is used to give the number of rows
+		
+6. XSSFCell cell -->Predefine class to read/write for a column
+		XSSFCell cell = row.getCell(int cellNum) --> To get the cell number information
+		int colnum=row.getLastCellNum();
+		cell.setCellValue() --> This method is used to write the data back to the excel file
+		
+7. getStringCellValue() ; --> This method is used to read the data from a given cell
+		String s=cell.getStringCellValue();
+8. setCellValue("<data>") --> This method is used to write the data into a given cell
+
+===================================================================================================================================================
+						/*** Timeouts in Selenium ********/
+						
+==> Whenever WebDriver finds an element,  It requires to follows the element on the page.
+By default:
+	1. WebDriver finds the element only once
+	2. It doesn't wait for the element, So timeout is "0" seconds.
+	
+==> So whenever WebDriver element not found, it raises an exception like NoSuchElementException
+
+1. Implicit TimeOut:
+--------------------
+	Syntax:
+	-------
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
+==> Whenever driver find an element. it requires to find the element within  timeout '0' seconds. If doesn't found it quits and it doesn't retry for it.
+
+==> If driver sets implicitly for 20 seconds, now webDriver waits for 20 seconds instead of 0 seconds. Once the page is loaded, it finds an element
+if doesn't found WebDriver waits for 250 milliseconds (Delay time) and it then again goes to find and element and it keeps on repeating the loop, till the timeout is happened.
+
+==> If within 20 seconds, if webDriver doesn't find the element, WebDriver raises the exception called the "NoSuchElementException/ElementNotFoundException". This implicit  wait is attached to the driver object and till the lifetime of the driver.
+
+==> So until the driver is active, this implicit wait will be used to find the all elements in the code/program.
