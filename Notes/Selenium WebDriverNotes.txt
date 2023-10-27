@@ -533,3 +533,112 @@ if doesn't found WebDriver waits for 250 milliseconds (Delay time) and it then a
 ==> If within 20 seconds, if webDriver doesn't find the element, WebDriver raises the exception called the "NoSuchElementException/ElementNotFoundException". This implicit  wait is attached to the driver object and till the lifetime of the driver.
 
 ==> So until the driver is active, this implicit wait will be used to find the all elements in the code/program.
+
+disadvantages/drawbacks:
+------------------------
+==> 1. Let's assume that in application all elements are loading very quickly, but one webelement taking 60 seconds of time
+If Driver object sets the timeout with huge time like '60' seconds, This timeout will be applied for all the webelements on a webpage
+In this scenarios, It is not good to use Implicit timeout, because it applies 60 seconds of timeout for all webelements
+
+==> 2. Implicit wait only checks whether element is loaded in the DOM or not. Sometime elements are loaded in the DOM, but not reflected in the UI (or) not enabled. In this case also, It is not good to use Implicit timeout, because implicit wait only checks the element whether element present in the DOM or not and it will not check in UI
+
+Explicit Timeouts:
+------------------
+==> An explicit waits is code you to define to wait for a certain condition to occur before proceeding further in the code.
+==> The worst case of this Explicit wait is Thread.sleep(), which sets the condition to an exact time period to wait
+(OR)
+==> Explicit waits are used to halt the execution till the time specific condition is met (OR) maximum time has elapsed.
+==> Unlike Implicit waits, explicit waits are applied for particular instance only
+
+1. WebDriverWait timeout
+2. FluentWait timeout
+
+WebDriverWait timeout:
+----------------------
+==> WebDriverWait is a one Pre-defined class in Selenium Library
+
+		Syntax:
+		-------		
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("************")));
+			
+			
+			The above statement waits up to time outs (lets say 30 seconds), before throwing a TimeoutException. 
+			(OR)
+			If it finds the element will return it in 0-30 seconds
+			
+			==>WebDriverWait by default calls the expected condition for every 500 mill seconds, until it returns successfully. 
+			
+When do we use the WebDriverWait?
+---------------------------------
+==> There can be instance when a particular element takes more than a minute to load. In this case, we definitely not like to set a huge to implicit wait, as of we do this our browser will going to wait for the same time for every element
+
+	To avoid this situation, we should simply put a separate time on the required element only. by following this our browser implicit wait time would be short for every element and it would be large for specific element.
+	
+Best scenarios to implement WebDriverWait:
+------------------------------------------
+1. An element not present in UI, being at all in the DOM
+2. An element being present, but not visible
+3. An element being present in the DOM, but not enable (i.e., not clickable)
+
+There are pages which gets displayed with the Javascript, the elements are already present in the browser DOM, but are not visible. The implicit wait only waits for an element to appear in the DOM. so it returns immediately but when you interact with element, we could get a "NoSuchElementException/ElementNotInteractbleException". we could test this hypothesis by writing a helper method that explicit waits for an element to visible (OR) clickable.
+
+Types of ExpectedConditions:
+----------------------------
+==> ExpectedConditions class provides a great help to deal with scenarios where we have to ascertain for condition to occur before executing the actual test step.
+==> ExpectedConditions class comes with a wide range of expected conditions that can be accessed with the help of the WebDriverWait reference variable and until() method
+
+Methods:
+--------
+1. alertIsPresent() --> An expectation to be alert is present
+2. frameToBeAvailableAndSwitchToIt(By locator) --> An expectation for checking whether the given frame is available to switch to the frame
+3. frameToBeAvailableAndSwitchToIt(WebElement frameLocator) --> An expectation for checking whether the given frame is available to switch to the frame
+4. visibilityOf(WebElement element) --> An expectation for checking that an element, known to be present on the DOM of a page, is visible.
+5. visibilityOfElementLocated(By locator) --> An expectation for checking that an element is present on the DOM of a page and visible.
+6. visibilityOfAllElements(List<WebElement> elements) --> An expectation for checking that all elements present on the web page that match the locator are visible
+7. invisibilityOf(WebElement element) --> An expectation for checking the element to be invisible
+8. invisibilityOfElementLocated(By locator) --> An expectation for checking that an element is either invisible or not present on the DOM.
+9. elementToBeClickable(By locator) --> An expectation for checking element is visible and enabled, such that you can click it
+10. elementToBeClickable(WebElement element) --> An expectation for checking element is visible and enabled, such that you can click it
+11. presenceOfElementLocated(By locator) --> An expectation for checking that an element is present on the DOM of a page.
+12. presenceOfAllElementsLocatedBy(By locator) --> An expectation for checking that there is at least one element present on a web page.
+13. stalenessOf(WebElement element) --> Wait until an element is no longer attached to the DOM.
+14. textToBePresentInElement(WebElement element, String text) --> An expectation for checking if the given text is present in the specified element
+15. titleContains(String title) --> An expectation for checking that the title contains a case-sensitive substring
+16. urlContains(String fraction) --> An expectation for the URL of the current page to contain specific text.
+
+	
+Stale Element Reference Exception:
+----------------------------------
+Stale means old, decayed, no longer fresh. Stale Element means an old element or no longer available element. Assume there is an element that is found on a web page referenced as a WebElement in WebDriver. If the DOM changes then the WebElement goes stale. If we try to interact with an element which is staled then the StaleElementReferenceException is thrown.
+
+What are the Causes of StaleElement Exception?
+----------------------------------------------
+We face this stale element reference exception when the element we are interacting with is destroyed and then recreated again. When this happens the reference of the element in the DOM becomes stale. Hence we are not able to get the reference to the element.
+A stale element reference exception is a WebDriver error that is thrown in the following two cases.
+
+Cause 1: The referenced web element has been deleted completely. 
+Cause 2: The referenced element is no longer attached to the DOM
+
+How To Overcome Stale Element Reference Exception in Selenium:
+--------------------------------------------------------------
+Solution 1: Refreshing the web page
+	driver.navigate().refersh();
+	driver.findElement(By.xpath("xpath here")).click();
+Solution 2: Using Try Catch Block
+	for(int i=0;i<=2;i++) {
+			try {
+				element=driver.findElement(By.xpath(xpath));
+				break;			
+			}catch(StaleElementReferenceException se) {
+				Thread.sleep(1000);
+				Reporter.log("StaleElementReferenceException occured, retrying for same element...!!!", true);
+			}catch(Exception e) {
+				Reporter.log("Exception occurred while finding the element...!!!", true);
+				e.getStackTrace();
+			}
+			
+	}
+Solution 3: Using ExpectedConditions.refreshed
+	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("table")));
+	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
