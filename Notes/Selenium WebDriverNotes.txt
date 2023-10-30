@@ -642,3 +642,109 @@ Solution 2: Using Try Catch Block
 Solution 3: Using ExpectedConditions.refreshed
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("table")));
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
+	
+======================================================================================================================
+Fluent Wait:
+------------
+==> Explicit Wait can be achieved in '2' ways.
+	1. WebDriverWait
+	2. FluentWait
+	
+==> Fluent finds the Web element repeatedly at regular intervals of time until the timeout (OR) till the object gets found.
+==> Unlike WebDriverWait, FluentWait will builds with the customized wait methods based on condition
+==> Both FluentWait and WebDriverWait implements the "Wait" interface
+
+==> Whatever synchronization is possible through WebDriverWait, same will be done through FluentWait also.
+==> In WebDriverWait, there are predefined expected conditions to implement the synchronization in selenium, but whereas for FluentWait there are no specific predefined expected conditions, which needs to develop customized conditions to implement FluentWait.
+
+==> In WebDriverWait, Delay time is 500 ms and whereas FluentWait Delay time (calls as Polling time) is customized.
+	
+Syntax and Example:
+-------------------
+
+   Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+       .withTimeout(30, SECONDS)
+       .pollingEvery(15, SECONDS)
+       .ignoring(NoSuchElementException.class);
+
+   WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+     public WebElement apply(WebDriver driver) {
+       return driver.findElement(By.id("foo"));
+     }
+   });
+   
+
+ImplicitWait												WebDriverWait											FluentWait
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+1. It is applicable for all WebElements						1. It is applicable for a specific condition			1. It is applicable for a specific 
+(because it associates with webDriver)																				condition
+2. NoSuchElementException and ElementInteractableExceptions	2. TimeOutException										2. TimeOutException
+3. DelayTime is 250 ms										3. DelayTime is 500 ms									3. Polling Time is customized
+
+
+================================================================================================================================
+Properties File:
+----------------
+
+Read and Write Data using Properties file:
+------------------------------------------
+==> .properties are one the files which can be used to maintain the TestData for Configurations
+==> Properties is a predefined class in Java
+
+==> To Read the Data in properties file
+-----------------------------------------
+	Properties prop = new Properties(); --> Creating the Properties file object
+	FileInputStream fis = new FileInputStream(propertiesFilePath);  -->Properties file is opened in a read mode
+	prop.load(fis); --> To load all the data from properties into a prop object
+	
+	prop.getProperty("proertyName"); -->To Read the Value of a PropertyName
+	
+==> To Write the Data in properties file:
+-----------------------------------------
+	Properties prop = new Properties(); --> Creating the Properties file object
+	FileOutputStream fis = new FileOutputStream(propertiesFilePath);  -->Properties file is opened in a Write mode
+	prop.load(fis); --> To load all the data from properties into a prop object
+	
+	prop.setProperty("proertyName","propertyValue"); -->PropertyValue will be written against to PropertyName
+	prop.store(fos,"comment"); --> written Data will be stored in the properties file
+	prop.close(); --> To Close the property file
+	
+=====================================================================================================================================
+
+YAML files:
+-----------
+YAML -->YAML Ain't Markup Language
+
+==> This is similar to the JSON file (Javascript Object Notation)
+==> Data readability is comfortable
+==> Both yml and yaml files are same
+==> To work with YAML file, SnakeYaml file needs to download and should add into the project
+
+==> To Read the Data in yaml file
+-----------------------------------------
+	Yaml ob = new yaml(); --> Creating the yaml object
+	FileInputStream fis = new FileInputStream(yamlFilePath);  -->Yaml file is opened in a read mode
+	ob.load(fis); --> To load all the data from Yaml into a prop object
+		Return type of load method is Object --> so should be stored in the map object
+		Map<String, String> map = ob.load(fs);
+			(OR)
+		Map<String, Map> map = ob.load(fs);	//Based on the requirement
+		
+	To read the Data from a map, use the get method and pass the key, value will be returned
+	map.get("key"); --> To Read the data
+	
+==> To Write the Data in yaml file:
+-----------------------------------------
+	Yaml ob = new yaml(); --> Creating the file object
+	FileWrite fw = new FileWriter(yamlFilePath);  -->Yaml file is opened in a Write mode
+	ob.load(fis); --> To load all the data from Yaml into a prop object
+		Return type of load method is Object --> so should be stored in the map object
+		Map<String, String> map = ob.load(fs);
+			(OR)
+		Map<String, Map> map = ob.load(fs);	//Based on the requirement
+	
+	map.put(key, value);  --> To Write the Data into a map, use the map method
+	yaml.dump(map,fw) --> To write the map data into a file
+	fw.close(); --> To Close the fileWriter
+	
+========================================================================================================================================
