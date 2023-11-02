@@ -3,7 +3,7 @@ Projects/Real-time Web Applications
 	Email: aarosagarch@gmail.com
 	Password: Admin@123
 
-2. https://automatetest-trials710.orangehrmlive.com
+2. https://automationteste-trials710.orangehrmlive.com
 	username: Admin
 	Password: Admin@123
 
@@ -748,3 +748,174 @@ YAML -->YAML Ain't Markup Language
 	fw.close(); --> To Close the fileWriter
 	
 ========================================================================================================================================
+Desired Capabilities/Options Classes:
+--------------------------------------
+What is Desired Capability?
+---------------------------
+==>The Desired Capability is a series of key/value pairs that stores browser properties like browser name, browser version, the path of browser driver in the system to determine the behaviour of the browser at run time.
+	(OR)
+==> DesiredCapabilities allows the browsers to launch with certain configuration.
+
+When new ChromeDriver(); (OR) new FirefoxDriver(); (OR) new InternetExplorerDriver(); (OR) new OperaDriver(); (OR) new EdgeDriver();
+==> A Very fresh browser is launched without any configuration.
+==> But When DesiredCapabilities are used for WebDriver object, browsers will be launched with certain configuration
+
+DesiredCapabilities and Options classes links:
+-----------------------------------------------
+
+==> Please refer the DesiredCapabilities class in Selenium.dev documentation to know more about DesiredCapabilities
+	https://www.selenium.dev/selenium/docs/api/java/index.html --> select/click on DesiredCapabilities to get all relevant Info
+	
+==> Below link will show you all the possible key value pairs which can be used in DesiredCapabilities
+	https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
+	
+==> Below link will show you all the ChromeOptions arguments
+	https://peter.sh/experiments/chromium-command-line-switches/
+	
+==> ==> Below link will show you all the InternetExplorer Capabilities
+	https://maheshambati.wordpress.com/2013/11/06/internet-explorer-options-selenium/
+	
+	
+Most frequent desired capabilities Uses with IE browser:
+--------------------------------------------------------
+		DesiredCapabilities caps= new DesiredCapabilities();
+		caps.setCapability("ignoreProtectedModeSettings", true); --> //To set the ProtectedModeSettings Enabled for all Zones
+		caps.setCapability("ignoreZoomSetting", true); //To Make Zoom level to 100%
+		caps.setCapability("requireWindowFocus", true);//To Make the IE browser having the focus on execution
+		caps.setCapability("enablePersistentHover", true); //To make the mouse over events at the last location the mouse cursor has been moved to.
+		caps.setCapability("enableElementCacheCleanup", true); //This determines whether the driver should attempt to remove obsolete elements from the element cache on page navigation
+
+
+==> Until Selenium3 --> In Selenium, Desired Capabilities class is present
+==> In Selenium4 onwards --> DesiredCapabilities class is deprecated, inplace of DesiredCapabilities Options classes are Introduced
+
+1. Chrome Browser --> ChromeOptions
+2. Firefox Browser --> FirefoxOptions
+3. Edge Browser --> EdgeOptions
+4. Safari Browser --> SafariOptions
+
+These Option classes are Used to manipulate your browser with some default properties
+	(or)
+If we want set some properties for our browser before It launches, we should use browser related options classes
+
+
+ChromeOptions Class:
+--------------------
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("start-maximized"); //To Maximize the screen
+		options.addArguments("--incognito"); // To open the browser in Incognito mode
+		options.addArguments("--disable-popup-blocking");//To Disable the pop-up blocker
+		options.addArguments("--ignore-certificate-errors");//To Ignore the certificate related errors
+		options.setAcceptInsecureCerts();// To accept the websites which are not having security certificate
+		
+		options.setBinary("/path/to/other/chrome/binary"); //To use chrome executable binary from non-standard location
+		options.addExtensions(new file("<plugin extension of crx file path>"));//To add the extensions for a chrome browser
+		
+To Merge the DesiredCapabilities with ChromeOptions class, use the merge() method, so that both DesiredCapabilities and chrome options can be passed to the WebDriver object
+-->		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("something", true);
+		
+-->		ChromeOptions options = new ChromeOptions();
+		options.addArguments("something");
+		
+--> 	options.merge(caps); //This method is used to merge all the DesiredCapabilities into ChromeOptions class
+
+	WebDriver driver = new ChromeDriver(options);
+		
+		
+==> Below link will show you all the ChromeOptions arguments
+	https://peter.sh/experiments/chromium-command-line-switches/
+	
+================================================================================================================================================
+JavaScriptExecutor:
+-------------------
+==>JavaScript is used to make the Website Interactive
+==>JavaScript can change the content of the html page dynamically
+
+Java script Executor:
+----------------------
+--> While performing test scenarios, there are certain actions those become inherent part of test scripts. If there are any issues while performing the actions we can use Java script executor.
+Actions may be:
+1. Clicking a button, hyperlink, link etc.,
+2. Typing a text in text-box
+3. scrolling vertically, horizontally or until the desired object in to view and many more ...
+
+Why should we use JavaScriptExecutor:
+-------------------------------------
+1. Because of cross domain policies of browsers enforces our script execution may fail unexpectedly without adequate error messaging.
+2. JavaScriptExecutor presents the capabilities to execute the Javascript directly within the browser.
+3. JavaScriptExecutor enhances the existing scripts by performing javascript injection into our application. In Simple words "JavaScript can be executed within the browser with the help of JavaScript Executor"
+4. JavaScriptExecutor allows to run pure JavaScript code irrespective of the Selenium language binding(Java, C#, Python etc.,)
+
+
+JavaScriptExecutor:
+-------------------
+==> JavascriptExecutor is a predefined interface in selenium.
+
+1. executeScript(String script, args);--> Executes JavaScript in the context of the currently selected frame or window.
+2. executeAsyncScript(String script, args); --> Execute an asynchronous piece of JavaScript in the context of the currently selected frame or window.
+
+script--> It is a Javascript which needs to be executed at run-time
+args --> the parameters that the script required for its execution
+
+Syntax:
+-------
+JavaScriptExecutor js=(JavaScriptExecutor)driver;
+js.executeScript(script, args);
+
+JavaScriptExecutor scripts and it's implementation:
+-----------------------------------------------------
+1. Typing in text-box
+	//document.getElementById('ID of a WebElement'); --> Finds an element using Id
+	//document.getElementsByTagName(name); --> Finds elements using tagName
+	//document.getElementsByClassName(name) --> Finds elements using className
+	
+	js.executeScript("document.getElementById('ID of a WebElement').value='<testdata>'");
+	(OR)
+	WebElement element = driver.findElement(By.xpath("*******"));
+	js.executeScript("arguments[0].value='<testdata>';", element);
+	
+2. Clicking a WebElement
+	WebElement element=driver.findElement();
+	js.executeScript("arguments[0].click();", element);
+	
+3. scrolling	
+	js.executeScript("window.scrollBy(0,50)");//vertically down by 50 pixels
+	js.executeScript("window.scrollBy(0,-50)");//vertically up by 50 pixels
+	js.executeScript("window.scrollBy(50,0)");//Horizontally towards right by 50 pixels
+	js.executeScript("window.scrollBy(-50,0)");//Horizontally towards left by 50 pixels
+	
+	js.executeScript("window.scrollTo(0, document.body.scrollHeight)");// To Scroll bottom of the page
+	js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");// To Scroll top of the page
+	js.executeScript("window.scrollTo(document.body.scrollWidth, 0)");// To Scroll right side of the page
+	js.executeScript("window.scrollTo(-document.body.scrollWidth, 0)");// To Scroll left side of the page
+	
+	js.executeScript("arguments[0].scrollIntoView(true);", element); //scrolling down (or) up until the element in view.
+	Note:
+	-----
+	If there are any scrolling options at the level table in a web page (Not on page level), First click on some element/get the focus on that table and apply all above methods for scrolling
+
+4. Refresh the browser
+	js.executeScript("history.go(0)");
+	
+5. Navigate to a different page
+	js.executeScript("window.location = \'<URL>'");
+
+6. To get the Title of the page
+	js.executeScript("return document.title;").toString();
+	
+7. To get the URL of the page
+	js.executeScript("return document.URL;").toString();
+
+8. To get the Domain of the page
+	js.executeScript("return document.domain;").toString();
+9. To get the InnerText of the entire webpage in selenium
+	//document.documentElement.innerText
+	js.executeScript("return document.documentElement.innerText").toString();
+10. To get the InnerHtml of the entire webpage in selenium
+	js.executeScript("return document.documentElement.innerHTML").toString();
+	
+	
+To know all JavascriptExecutor methods and scripts, refer the below link:
+-------------------------------------------------------------------------
+https://www.w3schools.com/js/js_htmldom.asp
