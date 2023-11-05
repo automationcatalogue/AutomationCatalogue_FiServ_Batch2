@@ -1,47 +1,52 @@
-Projects/Real-time Web Applications
-1. http://demowebshop.tricentis.com/login
+1. OrangeHRM - Employee Management Website
+	https://automationteste-trials710.orangehrmlive.com
+	username: Admin
+	Password: Admin@123
+	
+2. DemoWebshop - Ecommerce website
+	http://demowebshop.tricentis.com/login
 	Email: aarosagarch@gmail.com
 	Password: Admin@123
 
-2. https://automationteste-trials710.orangehrmlive.com
-	username: Admin
-	Password: Admin@123
 
-
-Automation Testing Tools:
--------------------------
+Automatio Testing Tools:
+------------------------
 1. Selenium
-2. Reorex
-3. Automation HQ
-4. TOSCA
-5. UFT (QTP)
-6. WORK SOFT
-7. Postman
-8. Cypress
-9. WebDriverIO
-10. PlayWright
-11. Katalon Studio
-12. Appium
-13. Rest Assured API Library
+2. TOSCA
+3. Cypress
+4. WebDriver IO
+5. PlayWright
+6. UFT (QTP)
+7. Appium
+8. Rest Assured API Library
+9. Test Complete
+10. Katalon Studio etc.,
+
 
 Applications:
 -------------
-1. Web Based Applications
-2. Desktop Based Applications/Windows Based Applications
-3. Mobile Based Application
+1. Web Applications
+2. Desktop Applications/Windows Applications
+3. Mobile Applications
 
-Selenium WebDriver:
--------------------
-==> Selenium is Purely web based automation testing tool
-==> Official Website for Selenium is https://www.selenium.dev/
+Selenium
+--------
+==> Selenium Purely supporting Web Based Automation testing
+==> Official Selenium Website
+https://www.selenium.dev/
+
+1. Selenium IDE - Record/Playack
+2. Selenium WebDriver - Web Automation Testing tool
+3. Selenium Grid - To Run your automation Scrpts in Parallel in Multiple Browsers and Multiple Operating Systems
 
 Browsers:
 ---------
-1. MicrosoftEdge
-2. Chrome
-3. Firefox
-4. Safari
-5. IE
+1. Chrome
+2. Mozilla Firefox
+3. Safari
+4. Internet Explorer
+5. Microsoft Edge
+
 
 Operating Systems:
 ------------------
@@ -54,13 +59,11 @@ Programming Languages:
 1. Java
 2. JavaScript
 3. Python
-4. C#.Net
-5. Ruby
+4. Ruby
+5. C#.Net
 
 
-1. Selenium IDE - Record /Playback tool
-2. Selenium WebDriver - Web based Automation testing tool
-3. Selenium Grid - Executes Selenium WebDriver Scripts in Multiple Browsers and Multiple Operating Systems in Parallel
+==> Please try to maintain Latest Version of Selenium Library with Browser Latest version
 
 How to Download Selenium WebDriver Libraries and Add it to Java Project:
 -------------------------------------------------------------------------
@@ -74,19 +77,20 @@ Click on + Add button --> Select Jars or Directories --> Browse the Above Seleni
 
 WebDriver:
 ----------
-==> WebDriver is an Interface
-==> 												
+==> WebDriver is a Interface in Selenium Library
+==> We cannot Create Object for WebDriver
 
-												WebDriver(I)
-													|	
-				------------------------------------------------------------------------------------------------
-				|					|					|					|					|				|
-				ChromeDriver		FirefoxDriver		ChromiumDriver		EdgeDriver
-				
+						WebDriver (I)
+							|
+			----------------------------------------------------------------------------
+			|					|					|					|				|
+			ChromeDriver		ChromiumDriver		FirefoxDiver		......			............
+			
+			
 Methods:
 --------
 1. void get(String URL); --> This method is used to load the Website
-2. String getTitle(); --> This method is used to get the title of the Current Page
+2. String getTitle(); --> This method is used to get the title of the webpage
 3. navigate().to(String url)--> This method is used to load the URL
 4. void close() --> This method is used to close the browser
 5. void quit() --> This method is used to close browser
@@ -102,7 +106,6 @@ Methods:
 15. Set<String> getWindowHandles() --> This method is used to return the number of windows which are opened by WebDriver
 
 
-
 Difference between get() and navigate().to():
 ----------------------------------------------
 ==> Both get(String url) and navigate.to(String url) methods are used to load the given URL.
@@ -114,7 +117,8 @@ Difference between close() and quit():
 ==>Both close() and quit() methods are used to close the browsers
 	When close() method is used, driver will close the current window which is opened by WebDriver
 	When quit() method is used, driver will close all the windows which are opened by WebDriver
-	
+
+
 Locators:
 ----------
 ==> There are '8' types of locators present in selenium
@@ -126,6 +130,7 @@ Locators:
 6. TagName
 7. Xpath
 8. CssSelector
+
 
 Selenium WebDriver Locators:
 ----------------------------
@@ -148,19 +153,21 @@ By
 		(OR)
 ==> 2. Right click on a specific Element --> Click on Inspect option
 
-WebElement
+
+											WebElement
 ==> WebElement in Selenium is refers the HTML element in a DOM.
 ==> WebElement is a interface in Selenium
 
 WebElement methods:
 -------------------
 1. public void sendKeys(CharSequence args0); --> This method is used to enter a text in an element (Ex: Text-box)
-2. public void click(); --> This method is used to click on the element
+2. public void click(); --> This method is used to click on the identified webelement
 3. public void clear(); --> This method is used to clear the text, if there is a text available in the element
-4. public boolean isDisplayed(); --> This method is used to check whether element is displayed or not once element is found--> if element is not found, we will get NoSuchElementException
+4. public boolean isDisplayed(); --> This method is used to check whether element is displayed or not once element is found
+								 --> if element is not found, we will get NoSuchElementException
 5. public boolean isEnabled(); --> This method is used to check whether element is enabled or not
 6. public String getText(); --> This method is used to get the Text of a element
-7. public void submit(); --> This method is used to submit a form to the remote server, if the current element is a form (OR) current element is available with in a form								 
+7. public void submit(); --> This method is used to submit a form to the remote server, if the current element is a form (OR) current element is available with in a form
 8. public boolean isSelected(); --> This method is used to Determine whether element is selected or not
 9. public String getAttribute(String args0); --> This method is used to get the value of a given Attribute of the element
 10. public String getCssValue(String args0); --> This method is used to get the value of given CSS property
@@ -196,11 +203,14 @@ Absolute Xpath:
 ==> Ending point is always the highlighted webelement
 ==> traverse between your start point to endpoint will become your xpath
 
-
 points to be considered while writing a xpath:
 ----------------------------------------------
 1. If the same tagNames are repeated continuosly one parent, then count (number) should be appended after the tagName
 2. Whenever traversing from one tagName to another tagName i.e., parent node to child node, we should use '/' should be used to distinguish the parent and child nodes
+
+Syntax:
+-------
+/html/................../end node
 
 
 XPATH With Attributes:
@@ -217,6 +227,7 @@ Syntax:
 Syntax:		
 		//htmltagName[@attributeType1='attributeValue1'][@attributeType2='attributeValue2']...........[@attributeTypeN='attributeValueN'] 
 		
+		
 Relative XPATH:
 ---------------
 ==> In the Relative XPATH, starting point can be any node. best relative xpath can be written based on your experience
@@ -231,12 +242,11 @@ CSS Selectors:
 --------------
 ==> cssSelector is a path pattern that can use web element's attributes to locate a web element in the web page
 ==> cssSelector is very fast compared to Xpath, because Xpath engines are different in each browser. Therefore some times xpath are not suitable to identify element on IE and CSS is recommended for the same.
-
 ==> cssSelector is light weight compared to xpath and it is very straight forward
+
 Limitation:
 -----------
 ==> cssSelector locates the elements only in forward direction
-==> Text attributes cannot be used in css selector
 
 syntax:
 -------
@@ -279,37 +289,38 @@ Using (Dot) Symbol:
 	==> .top-level-menu-item.forced-active.active ==> Dashboard in OrangeHRM
 	==> .css-label_c.t_c --> Flexible with Date in OrangeHRM
 	
-Execution Selenium Scripts in Multiple Browsers:
-------------------------------------------------
-1. Chrome Browser --> To run the testcases in Windows/Mac/Linux Operating Systems
-	WebDriver driver = new ChromeDriver();
-	
-2. Firefox Browser --> To run the testcases in Windows/Mac/Linux Operating Systems
-	WebDriver driver = new FirefoxDriver();
-	
-3. Edge Browser --> To run the testcases in Windows operating System
-	WebDriver driver = new EdgeDriver();
+Execution of Selenium Scripts in Multiple Browsers:
+---------------------------------------------------
+1. Chrome Browser --> To run the testcases in Firefox browsers either in Windows/Mac/Linux
+	WebDriver driver = new ChromeDriver();	
 
-4. Safari Browser --> To run the testcases in Mac (iOS) operating System
+2. Firefox Browser --> To run the testcases in Firefox browsers either in Windows/Mac/Linux
+	WebDriver driver = new FirefoxDriver();	
+	
+3. Edge Browser --> Testcases to run in the Windows 
+	WebDriver driver = new EdgeDriver();
+	
+4. Safari Browser --> Testcases to run in the Mac (iOS)
 	WebDriver driver = new SafariDriver();
 	
-5. IE Browser --> To run the testcases in Windows OS
+5. IE Browser --> Microsoft company it self is not giving the Support on IE browser
 	WebDriver driver = new InternetExplorerDriver();
-
-6. Opera Browser --> In the Latest version of Selenium Library Opera browser is not supporting
+	
+6. Opera Browser --> In the Latest versions of Selenium4, Opera browser is not supporting
 
 Note: Browser Version should be compatible with Selenium Library version
-
-=======================================================================================
-			SELECTION of Values from a drop-down
-1. Selection of drop-down values when Select tag is present in DOM
+==============================================================================================================
+				SELECTION of value from Drop-Down
+				
+1. Selection of the drop-down value when Select Tag is present in the DOM
 	Note:
 		==> Select is a Pre-defined class in Selenium Library
 		==> Select class of the Selenium Library will work only when drop-down tagName is started with Select tag
 		
-	Syntax:
-	-------
+		Syntax:
+		------
 		Select ob = new Select(WebElement);
+		
 Methods:
 --------
 1. selectByIndex(int index); This method is used based on the index value of the drop down
@@ -325,7 +336,7 @@ Methods:
 11. getOptions(); This method Returns all the options in a dropdown as a List of WebElements
 	
 
-2. Selection of drop-down values when Select tag is not present in DOM
+2. Selection of the drop-down value when Select Tag is not present in the DOM
 
 ==> Select class of the Selenium Library will NOT work  when drop-down tagName is not started with Select tag
 ==> When Select tag is not present, Write a XPATH to get/retreive the group of WebElements by using "findElements" method
@@ -341,8 +352,12 @@ Methods:
                 break;
             }
         }
-===========================================================================================================================================
-									Handling iFrames in Selenium
+==================================================================================================
+						Handling iFrames in Selenium
+
+
+IFrames:
+--------
 ==> iFrame is an HTML element that allows us to embed another HTML document within the current document
 ==> In General, iFrames creates rectrangular region on a webpage that displays the content from another source
 
@@ -350,7 +365,7 @@ There are '3' ways To Switch into the iFrame in Selenium
 1. Switching into iFrame using Id (or) Name
 2. Switching into iFrame using index 
 3. Switching into iFrame using WebElement
-	
+
 Switching into iFrame using Id (or) Name:
 -----------------------------------------
 ==> driver.switchTo().frame("Id (or) Name of the frame")
@@ -359,6 +374,7 @@ Switching into iFrame using index :
 -----------------------------------
 ==> driver.switchTo().frame(Index position of the frame);
 
+
 Switching into iFrame using WebElement:
 ---------------------------------------
 WebElement element = driver.findElement(By.xpath("<iframe>"));
@@ -366,9 +382,9 @@ WebElement element = driver.findElement(By.xpath("<iframe>"));
 
 ==> Whenever If we want to interact any element presents outside the frame, we should exit/comeout from the frame
 driver.switchTO().defaultContent();
-
-=================================================================================================================================================
-									Handling Alerts in Selenium
+=====================================================================================================================
+					Handling Alerts in Selenium
+					
 ==> Alert is a pop-up (or) dialog-box that appears on a webapage to perform some user interaction
 ==> Typically these alerts will be triggered in the webapges when clicking on a button (or) while submitting a form
 
@@ -379,25 +395,27 @@ To Switching into the Alert:
 	To Accept the alert --> al.accept();
 	To cancel the alert --> al.dismiss();
 	To enter the data into the alert --> al.sendKeys("<Data>");
-	To retrieve the alert text --> al.getText()
+	To retrieve the alert text --> al.getText();
 	
 	==> In Selenium alerts can be handled, if it has only less than 2 buttons and 1 text-box
-===================================================================================================================================================
-									Take Screenshots in Selenium 
-==> TakeScreenshot is a Interface
+======================================================================================================================
+					Take Screenshots in Selenium
+==> TakeScreenshot is a Interface			
 ==> TakeScreenshot is helpful in capturing the Screenshot
 ==> We need to explicitly performs driver Object into TakeScreenshot Object
 
 Capturing the Screenshot:
 -------------------------
+WebDriver driver;
 TakeScreenshot ts = (TakeScreenshot) driver;
-File src=ts.getScreenshotAs(OutputType.FILE); // This method is used to capture the screenshot and stores in file variable
-File dest = new File("<Path of the file>.jpg")
+
+File src = ts.getScreenshotAs(OutputType.FILE);
+File dest = new File("<Path of the file>");
 FileUtils.copyFile(src, dest);
-====================================================================================================================================================
-Robot:
-------
-==> Robot is a class in java.awt package;
+					
+==========================================================================================================================
+					Robot Classes 
+==> Robot class is a part of java.awt package (not related to selenium)
 ==> Robot is a predefined class in Java.
 ==> By using Robot class, we can take the control of keyboard and mouse, so all Keyboard related activities and mouse related activities can be performed by using robot class.
 ==> Robot class is the last priority in using Selenium scripts because Robot class doesn't work in Remote machines (like Jenkins, Selenium Grid etc.,)
@@ -411,9 +429,7 @@ Methods:
 4. mouseRelease --> This method is used to release the mouse
 5. mouseWheel --> This method is used to scroll the mouse
 
-======================================================================================================================================
-									Windows Handling in Selenium
-
+=============================================================================================================================
 				Window Handling in Selenium
 			
 Window Handling:
@@ -430,10 +446,10 @@ int windowSize=driver.getWindowHandles().size();//To get the Number of Windows
 //To Switch to the latest Window Session
 for(String windowsession:driver.getWindowHandles()){
 	driver.switch.window(windowsession);
-===================================================================================================================================
-									Actions Class in Selenium
+}	
+===========================================================================================================================
+				Actions Class
 ==> Actions class is one of the very important class in Hanlding Mouse and Keyboard related activities
-
 
 Handling Keyboard and Mouse related activities by using Actions class:
 ----------------------------------------------------------------------
@@ -442,20 +458,16 @@ Actions action=new Actions(driver);
 1. click(WebElement); --> This method is used to click in the middle of the given element
 2. clickAndHold(); --> This method is used to click (without releasing) at the current mouse location.
 3. clickAndHold(WebElement); --> This method is used to click (without releasing) in the middle of the given element.
-
 4. contextClick(); --> This method is used to right-click at the current mouse location
 5. contextClick(WebElement); --> This method is used to right-click in the middle of the given element.
 6. doubleClick(); --> This method is used to double-click at the current mouse location
 7. doubleClick(WebElement); This method is used to double-click in the middle of the given element.
-
 8. dragAndDrop(WebElement source, WebElement target); -->This method is used to performs click and hold at the location of the source element, moves the location of the target element, then releases the mouse
 9. dragAndDropBy(WebElement source, int xOffset, int yOffset); This method is used to performs click and hold at the location of the source element, moves by a given offset, then releases the mouse
-
 10. keyDown(Keys theKey); --> It performs a modifier key press
 11. keyDown(WebElement element, Keys theKey); --> It performs a modifier the key press after focusing on an element
 12. keyUp(Keys theKey); --> It performs a modifier key release
 13. keyUp(WebElement element, Keys theKey); --> It performs a modifier the key release after focusing on an element
-
 14. moveByOffset(int xOffset, int yOffset); --> This method is used to move the mouse from its current position by the given offset.
 15. moveToElement(WebElement); --> This method is used to  mouse-hover on the middle of the given element
 16. movetToElement(WebElement element, int xOffset, int yOffet); --> This method is used the mouse-hover to an offset from the top-left corner of the element.
@@ -466,10 +478,12 @@ Actions action=new Actions(driver);
 21. sendKeys(charSequence); --> This method is used to perform the send keys to the active element
 22. sendKeys(WebElement element, charSequence) --> This method is used to perform the sendKeys to the specific webElement.
 
-=====================================================================================================================================================
+==================================================================================================================================
+						/*** Reading and Writing data into Excel file ***********/
+						
 ==> TestData can be maintained in different type of file formats
 	Excel file, CSV file, Text file, Word file, JSON file, XML file, YAML file, Properties file
-	
+
 ==> Reading data and writing data using Excel files is possible through Apache POI Jars.
 
 ==> When we use TestData through the Excel files, maintenance will become easy compared to other source of files (like XML files, YAML files, java files, csv files etc.)
@@ -479,7 +493,7 @@ Actions action=new Actions(driver);
 ==> Workbook is a collection/group of sheets
 
 Classes and Methods:
---------------------
+---------------------
 1. FileInputStream --> To Open any file in Read Mode
 		FileInputStream fis = new FileInputStream("path of the excel file");
 		fis.close(); //To close the file
@@ -495,7 +509,6 @@ Classes and Methods:
 		XSSFSheet sh=wbk.getSheetAt(0); --> To Read/write the data from the first sheet
 					=wbk.getSheet("AddEmployee") -->  To Read/write the data from the AddEmployee sheet
 					sh.getSheetName(); --> To Read the sheetName
-					
 5. XSSFRow row --> Predefine class to read/write for a row
 		XSSFRow row = sh.getRow(int rownum); --> To get the Row number information
 		int rownum=sh.getLastRowNum(); --> This method is used to give the number of rows
@@ -508,10 +521,8 @@ Classes and Methods:
 7. getStringCellValue() ; --> This method is used to read the data from a given cell
 		String s=cell.getStringCellValue();
 8. setCellValue("<data>") --> This method is used to write the data into a given cell
-
-===================================================================================================================================================
+===========================================================================================================================================
 						/*** Timeouts in Selenium ********/
-						
 ==> Whenever WebDriver finds an element,  It requires to follows the element on the page.
 By default:
 	1. WebDriver finds the element only once
@@ -542,8 +553,8 @@ In this scenarios, It is not good to use Implicit timeout, because it applies 60
 
 ==> 2. Implicit wait only checks whether element is loaded in the DOM or not. Sometime elements are loaded in the DOM, but not reflected in the UI (or) not enabled. In this case also, It is not good to use Implicit timeout, because implicit wait only checks the element whether element present in the DOM or not and it will not check in UI
 
-Explicit Timeouts:
-------------------
+2. Explicit Timeouts:
+---------------------
 ==> An explicit waits is code you to define to wait for a certain condition to occur before proceeding further in the code.
 ==> The worst case of this Explicit wait is Thread.sleep(), which sets the condition to an exact time period to wait
 (OR)
@@ -556,16 +567,16 @@ Explicit Timeouts:
 WebDriverWait timeout:
 ----------------------
 ==> WebDriverWait is a one Pre-defined class in Selenium Library
-
+		
 		Syntax:
-		-------		
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("************")));
+		-------
+		
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("***************")));
 			
-			
-			The above statement waits up to time outs (lets say 30 seconds), before throwing a TimeoutException. 
+			The above statement waits up to time outs (lets say 20 seconds), before throwing a TimeoutException. 
 			(OR)
-			If it finds the element will return it in 0-30 seconds
+			If it finds the element will return it in 0-20 seconds
 			
 			==>WebDriverWait by default calls the expected condition for every 500 mill seconds, until it returns successfully. 
 			
@@ -607,6 +618,11 @@ Methods:
 15. titleContains(String title) --> An expectation for checking that the title contains a case-sensitive substring
 16. urlContains(String fraction) --> An expectation for the URL of the current page to contain specific text.
 
+
+==> 1. elementToBeClickable ==> This condition will wait till the specific webelement is presents in the DOM and it is visible in the UI and It should be clickable
+	2. visibilityOfElement ==> This condition will wait till the specific webelement is presents in the DOM and it is visible in the UI
+	3. presenceOfElementLocated ==> This condition will wait till the specific webelement is presents in the DOM
+	
 	
 Stale Element Reference Exception:
 ----------------------------------
@@ -642,8 +658,7 @@ Solution 2: Using Try Catch Block
 Solution 3: Using ExpectedConditions.refreshed
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("table")));
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
-	
-======================================================================================================================
+=================================================================================================
 Fluent Wait:
 ------------
 ==> Explicit Wait can be achieved in '2' ways.
@@ -659,7 +674,7 @@ Fluent Wait:
 
 ==> In WebDriverWait, Delay time is 500 ms and whereas FluentWait Delay time (calls as Polling time) is customized.
 	
-Syntax and Example:
+	Syntax and Example:
 -------------------
 
    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
@@ -673,16 +688,13 @@ Syntax and Example:
      }
    });
    
-
 ImplicitWait												WebDriverWait											FluentWait
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-1. It is applicable for all WebElements						1. It is applicable for a specific condition			1. It is applicable for a specific 
+1. It is applicable for all objects 						1. It is applicable for a specific condition			1. It is applicable for a specific 
 (because it associates with webDriver)																				condition
 2. NoSuchElementException and ElementInteractableExceptions	2. TimeOutException										2. TimeOutException
 3. DelayTime is 250 ms										3. DelayTime is 500 ms									3. Polling Time is customized
 
-
-================================================================================================================================
 Properties File:
 ----------------
 
@@ -698,7 +710,7 @@ Read and Write Data using Properties file:
 	prop.load(fis); --> To load all the data from properties into a prop object
 	
 	prop.getProperty("proertyName"); -->To Read the Value of a PropertyName
-	
+
 ==> To Write the Data in properties file:
 -----------------------------------------
 	Properties prop = new Properties(); --> Creating the Properties file object
@@ -709,8 +721,7 @@ Read and Write Data using Properties file:
 	prop.store(fos,"comment"); --> written Data will be stored in the properties file
 	prop.close(); --> To Close the property file
 	
-=====================================================================================================================================
-
+======================================================================================================================================
 YAML files:
 -----------
 YAML -->YAML Ain't Markup Language
@@ -747,9 +758,10 @@ YAML -->YAML Ain't Markup Language
 	yaml.dump(map,fw) --> To write the map data into a file
 	fw.close(); --> To Close the fileWriter
 	
-========================================================================================================================================
+======================================================================================================================
 Desired Capabilities/Options Classes:
 --------------------------------------
+
 What is Desired Capability?
 ---------------------------
 ==>The Desired Capability is a series of key/value pairs that stores browser properties like browser name, browser version, the path of browser driver in the system to determine the behaviour of the browser at run time.
@@ -774,8 +786,8 @@ DesiredCapabilities and Options classes links:
 	
 ==> ==> Below link will show you all the InternetExplorer Capabilities
 	https://maheshambati.wordpress.com/2013/11/06/internet-explorer-options-selenium/
-	
-	
+
+
 Most frequent desired capabilities Uses with IE browser:
 --------------------------------------------------------
 		DesiredCapabilities caps= new DesiredCapabilities();
@@ -784,7 +796,6 @@ Most frequent desired capabilities Uses with IE browser:
 		caps.setCapability("requireWindowFocus", true);//To Make the IE browser having the focus on execution
 		caps.setCapability("enablePersistentHover", true); //To make the mouse over events at the last location the mouse cursor has been moved to.
 		caps.setCapability("enableElementCacheCleanup", true); //This determines whether the driver should attempt to remove obsolete elements from the element cache on page navigation
-
 
 ==> Until Selenium3 --> In Selenium, Desired Capabilities class is present
 ==> In Selenium4 onwards --> DesiredCapabilities class is deprecated, inplace of DesiredCapabilities Options classes are Introduced
@@ -797,7 +808,6 @@ Most frequent desired capabilities Uses with IE browser:
 These Option classes are Used to manipulate your browser with some default properties
 	(or)
 If we want set some properties for our browser before It launches, we should use browser related options classes
-
 
 ChromeOptions Class:
 --------------------
@@ -826,12 +836,13 @@ To Merge the DesiredCapabilities with ChromeOptions class, use the merge() metho
 ==> Below link will show you all the ChromeOptions arguments
 	https://peter.sh/experiments/chromium-command-line-switches/
 	
-================================================================================================================================================
-JavaScriptExecutor:
--------------------
+=========================================================================================================================
+JavaScriptExecutor
+==> Predefined interface in Selenium Library
+
 ==>JavaScript is used to make the Website Interactive
 ==>JavaScript can change the content of the html page dynamically
-
+	
 Java script Executor:
 ----------------------
 --> While performing test scenarios, there are certain actions those become inherent part of test scripts. If there are any issues while performing the actions we can use Java script executor.
@@ -848,6 +859,7 @@ Why should we use JavaScriptExecutor:
 4. JavaScriptExecutor allows to run pure JavaScript code irrespective of the Selenium language binding(Java, C#, Python etc.,)
 
 
+
 JavaScriptExecutor:
 -------------------
 ==> JavascriptExecutor is a predefined interface in selenium.
@@ -858,6 +870,7 @@ JavaScriptExecutor:
 script--> It is a Javascript which needs to be executed at run-time
 args --> the parameters that the script required for its execution
 
+
 Syntax:
 -------
 JavaScriptExecutor js=(JavaScriptExecutor)driver;
@@ -865,7 +878,13 @@ js.executeScript(script, args);
 
 JavaScriptExecutor scripts and it's implementation:
 -----------------------------------------------------
-1. Typing in text-box
+==> JavaScriptExecutor js=(JavaScriptExecutor)driver;
+
+1. Clicking a WebElement
+	WebElement element=driver.findElement();
+	js.executeScript("arguments[0].click();", element);
+	
+2. Typing in text-box
 	//document.getElementById('ID of a WebElement'); --> Finds an element using Id
 	//document.getElementsByTagName(name); --> Finds elements using tagName
 	//document.getElementsByClassName(name) --> Finds elements using className
@@ -875,11 +894,8 @@ JavaScriptExecutor scripts and it's implementation:
 	WebElement element = driver.findElement(By.xpath("*******"));
 	js.executeScript("arguments[0].value='<testdata>';", element);
 	
-2. Clicking a WebElement
-	WebElement element=driver.findElement();
-	js.executeScript("arguments[0].click();", element);
+3. scrolling
 	
-3. scrolling	
 	js.executeScript("window.scrollBy(0,50)");//vertically down by 50 pixels
 	js.executeScript("window.scrollBy(0,-50)");//vertically up by 50 pixels
 	js.executeScript("window.scrollBy(50,0)");//Horizontally towards right by 50 pixels
@@ -891,9 +907,6 @@ JavaScriptExecutor scripts and it's implementation:
 	js.executeScript("window.scrollTo(-document.body.scrollWidth, 0)");// To Scroll left side of the page
 	
 	js.executeScript("arguments[0].scrollIntoView(true);", element); //scrolling down (or) up until the element in view.
-	Note:
-	-----
-	If there are any scrolling options at the level table in a web page (Not on page level), First click on some element/get the focus on that table and apply all above methods for scrolling
 
 4. Refresh the browser
 	js.executeScript("history.go(0)");
@@ -919,3 +932,212 @@ JavaScriptExecutor scripts and it's implementation:
 To know all JavascriptExecutor methods and scripts, refer the below link:
 -------------------------------------------------------------------------
 https://www.w3schools.com/js/js_htmldom.asp
+
+============================================================================================================================================
+WebTables:
+----------
+==> If the application data contains in the form of rows and columns, that it self called as WebTable
+==> Below is the typical structure you see in the DOM
+
+<table id='abcd', name='xyz'>
+	<thead>
+		<tr>
+			<th header1='value1'>
+			<th header2='value2'>
+			<th header3='value3'>
+			<th header4='value4'>
+			<th header5='value5'>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id='1'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='2'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='3'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='4'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='5'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='6'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+
+	</tbody>
+
+</table>
+
+==> tbody --> It represents complete table body
+==> tr --> It represents the table row
+==> td --> It represents the table column
+
+1. 
+==> To Retrieve the Specific row information
+	Syntax:
+	------
+		//table[@id='******']/tbody/tr[rowNumber]
+		
+	Examples
+		//table[@id='employeeListTable']/tbody/tr[5]
+		
+2.
+==> To Retrieve the all rows information
+	Syntax:
+	------
+		//table[@id='******']/tbody/tr
+	
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr
+		
+3. To Retrieve the data from Specific row and Specific cell data
+	Syntax:
+	-------	
+		//table[@id='******']/tbody/tr[rowNumber]/td[columnNumber]
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr[3]/td[6]
+		
+4. To Retrieve all columns information for a specific row
+	Syntax:
+	-------
+		//table[@id='********']/tbody/tr[rowNumber]/td
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr[1]/td
+		
+========================================================================================================
+Selenium4 Features:
+-------------------
+		Selenium3 vs Selenium4 Core Differences
+		
+Architecture of Selenium 3 vs Selenium 4
+Selenium 3 Architecture:
+========================
+Selenium 3 Architecture is made up of four major components:
+
+Selenium Client library / Language Bindings
+JSON wire protocol over HTTP
+Browser Drivers
+Browsers
+Selenium Client Library connects with Browser Drivers and Browsers using the JSON (JavaScript Object Notation) Wire Protocol. 
+
+JSON protocol provides a transport mechanism for transferring data between client and server on the web through various data structures like arrays and objects used to read and write data from JSON.
+
+JSON acts as a REST (Representational State Transfer) API to exchange information between HTTP servers. 
+JSON wire protocol was used before Selenium version 3.8. After Selenium 3.8, W3C protocol was introduced. But, in version 3 they still provided the support for JSON wire protocol, which was completely removed later in Selenium 4
+
+Selenium 4 Architecture:
+========================
+W3C protocol was introduced because all the web browsers followed the W3C standards and also all the browser drivers followed the W3C standards. To standardise the communication, JSON wire protocol was replaced by W3C. This helped in better communication with the browsers, stability, and common code (i.e. no browser specific code required). 
+
+Due to W3C there is a direct transfer of information between client and server.
+
+Major components of selenium 4 are selenium client and webdriver language bindings.
+
+2. Chrome Driver
+Let’s first understand the hierarchy of Selenium 4 Webdriver (see diagram below) and see how ChromeDriver works. In Selenium 4 chromedriver class extends chromium driver, it was not the case in selenium 3. In Selenium 3, chromedriver directly extended Remote WebDriver class.
+
+3. Optimized Selenium Grid in Selenium 4
+Unlike Selenium 3, testers would no longer be required to start the Hub and Node jars every time they want to perform automation testing. In Selenium 4, Hub and Node are packed in a single jar file. Selenium Grid 4 architecture supports 4 processes – Session Map, Node, Router and Distributor. Selenium Grid 4 has more scalable and traceable infrastructure. There are some additional perks like enhanced GUI and built in support for Docker.
+
+4. Selenium 4 IDE
+Selenium 4 IDE is available for firefox and chrome browser. It is more than just a record and playback testing tool. There is a SIDE Runner tool which allows us to run selenium tests parallely on local selenium grid and cloud based selenium grid.They have also improved the GUI for a better user experience. 
+
+5. Relative Locators
+Relative Locators (above, below, toRightof,toLeftof, near) have been introduced in Selenium 4 which help to identify elements ‘relative’ to a particular element in DOM. Unlike Selenium 3, we don’t have to use a series of findelement commands to locate the surrounding elements. 
+
+Selenium uses a javascript function getBoundingClientRect() to determine the size and positions of elements on the page and uses this information to locate the neighbouring elements.
+
+Above
+------
+By username = RelativeLocator.with(By.id("loginusername")).above(By.id("loginpassword"));
+driver.findElement(username).sendKeys("demouser");
+
+Below
+-----
+By pwd = RelativeLocator.with(By.id("loginpassword")).below(By.id("loginusername"));
+driver.findElement(pwd).sendKeys("test");
+
+LeftOf
+------
+By CloseBtn = RelativeLocator.with(By.tagName("button")).toLeftOf(By.xpath("//button[contains(text(),\"Log in\")]"));
+
+RightOf
+-------
+By LoginBtn = RelativeLocator.with(By.xpath("//button[contains(text(),\"Log in\")]")).toRightOf(By.tagName("button"));
+
+Near
+----
+By username = RelativeLocator.with(By.id("loginusername")).near(By.id("loginpassword"));
+
+6. Chrome DevTools
+This is a new feature in selenium 4 as some applications are difficult to automate as they have different functionalities across different locations.It is hard to emulate the geo-locations in a browser using selenium.
+
+Selenium 4 supports Chrome DevTools Protocol (CDP) with DevTools interface which helps to easily emulate such applications.This interface’s API’s help to diagnose issues and edit the pages on-the-fly very easily. These APIs also help testers for geolocation testing by replicating the geographical locations and also test under various network conditions like 2G, 3G,4G etc.
+
+For example:
+ChromeDriver driver = new ChromeDriver();
+DevTools devTools = driver.getDevTools();
+devTools.createSession();
+devTools.send(Emulation.setGeolocationOverride(Optional.of(52.5043),
+Optional.of(13.4501),
+Optional.of(1)));
+driver.get("https://my-location.org/");
+driver.quit();
+
+7. DesiredCapabilities
+In Selenium 4, DesiredCapabilities class has been replaced by Options class. Now we need to pass Options class object as a parameter to the driver constructor.
+
+For Example, FirefoxDriver(driver) will be FirefoxDriver(ChromeOptions).
+
+In Selenium 3 
+DesiredCapabilities caps = DesiredCapabilities.firefox();
+caps.setCapability("platform", "Windows 10");
+caps.setCapability("version", "92");
+caps.setCapability("build", myTestBuild);
+caps.setCapability("name", myTestName);
+WebDriver driver = new RemoteWebDriver(new URL(cloudUrl), caps);
+
+In Selenium 4 
+FirefoxOptions browserOptions = new FirefoxOptions();
+browserOptions.setPlatformName("Windows 10");
+browserOptions.setBrowserVersion("92");
+Map<String, Object> cloudOptions = new HashMap<>();
+cloudOptions.put("build", myTestBuild);
+cloudOptions.put("name", myTestName);
+browserOptions.setCapability("cloud:options", cloudOptions);
+WebDriver driver = new RemoteWebDriver(new URL(cloudUrl), browserOptions);
+
+8. Actions Class
+There are a few methods that are newly added to the actions class in Selenium 4 such as ContextClick(), Click(), ClickAndHold(), doubleClick(), and release().
