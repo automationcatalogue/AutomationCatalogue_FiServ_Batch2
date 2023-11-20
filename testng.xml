@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/AutomationCatalogue/Projects/AutomationCatalogue_FiServ_Batch2/src/test/java/tdd_testcases/DemoWebshopLogin.java">
+        <classes>
+            <class name="tdd_testcases.DemoWebshopLogin">
+                <methods>
+                    <include name="login_DemoWebshop"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="C:/AutomationCatalogue/Projects/AutomationCatalogue_FiServ_Batch2/src/test/java/tdd_testcases/OrangeHRMAddEmployee.java">
+        <classes>
+            <class name="tdd_testcases.OrangeHRMAddEmployee">
+                <methods>
+                    <include name="addEmployee_OrangeHRM"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="C:/AutomationCatalogue/Projects/AutomationCatalogue_FiServ_Batch2/src/test/java/tdd_testcases/OrangeHRMLogin.java">
+        <classes>
+            <class name="tdd_testcases.OrangeHRMLogin">
+                <methods>
+                    <include name="login_OrangeHRM"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
