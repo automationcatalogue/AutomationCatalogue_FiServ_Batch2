@@ -1,9 +1,9 @@
-@OrangeHRM
+@All @OrangeHRM
 Feature: To test the Orange HRM Application Login functionality
 
   @OrangeHRM_ValidLogin @OrangeHRMLogin
   Scenario: OrangeHRM Login with valid data
-    Given User is opened chrome browser
+    Given User is opened "chrome" browser
     Given User is opened Orange HRM Application URL
     When User is entered "Amanda" as UserName
     And User is entered "Admin@123" as Password

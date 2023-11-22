@@ -9,9 +9,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 public class OrangeHRMAddEmployeeSteps {
-
-
 
     @Given("User launches OrangeHRM application in {string} browser")
     public void user_launches_orange_hrm_application_in_chrome_browser(String browserName) {

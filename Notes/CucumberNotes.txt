@@ -1,0 +1,333 @@
+1. TDD --> Test Driven Development --> JUnit & TestNG
+2. BDD --> Behavioural Driven Development --> JBehave & Cucumber
+
+==> Both are used to maintain the Oragnizing the TestCases management
+
+==> TestCases management will be done throught Annotation
+==> Annotations will be started with "@" symbol
+
+TDD --> TestNG -->https://testng.org/doc/ --> Click on Documentation to all annotations
+BDD --> Cucumber --> https://cucumber.io/docs/bdd/
+
+1. Feature files
+2. Step Definitions
+3. Cucumber Runner Options
+
+==> In BDD, Gherkin language is used to develop the Scenarios
+==> These Gherking language is implemented with Gherkin keywords
+	Few Gherkin Keywords: Given, When, Then, And, But, As 
+	
+	By using these Gherking keywords, we are going to build the feature file scenarios
+	
+	
+
+						CUCUMBER - BDD Framework
+JUnit/TestNG is a TDD (Test Driven Development) framework
+Cucumber is a BDD (Behavioural Driven Development) framework
+
+In BDD, behaviour of a test case/ use case is going to define.
+Gherkin is the language used to define the BDD framework
+
+To achieve the BDD, either Cucumber/JBehave (Java Behave) can be used.
+JBehave -BDD is bit complex compared to Cucumber, that is the reason most of the organizations implement the BDD with cucumber.
+
+Cucumber with Java (JVM) & Cucumber with ruby is available
+BDD framework not only applicable for selenium automation, it can be used in development of the application code/writing the unit test cases/ web services automation / API automation etc.,
+
+There are three components
+1. feature files
+2. stepDefinition files
+3. Test Runner
+
+"Please refer the BDD components.png"
+
+feature files:
+--------------
+files will be saved with ".feature" extension and below are the Gherkin keywords used in feature file
+	a) Given
+	b) When
+	c) Then
+	d) And
+	e) But
+	f) As
+	e) *
+
+==> All these Gherkin keywords will be used as part of the scenario/scenario outline in a feature file.
+==> A group of scenarios can be written as part of the feature file
+
+stepDefinition files:
+---------------------
+In stepDefinition files, will write the actual implementation. i.e., Selenium + Java + Annotations
+
+TestRunner:
+-----------
+TestRunner with Junit
+TestRunner is used To run the feature file
+			(OR)
+	To generate the output (or) report
+				   
+Below are the Dependencies required:
+------------------------------------
+1. cucumber-java
+2. cucumber-jvm
+3. cucumber-junit
+4. cucumber-jvm-deps
+5. cucumber-reporting
+6. Gherkin
+7. Junit
+
+Also add the required selenium dependencies for the automation
+
+Plugins:
+--------
+1. Natural plugin should be installed in the eclipse for a good experience
+	a) It should be installed through the eclipse market place. search as "Natural" and install the plugin.
+	b) If Natural plugin is not listed in the search result, open the below URL
+		https://marketplace.eclipse.org/content/natural
+		(OR) search in google as "Natural BDD plugin in eclipse" and open the above url.
+	c) Drag and Drop the Install icon into the eclipse, eclipse will ask for the installation.
+2) Install the Eclipse plugin for Cucumber from the eclipse marketplace
+
+In Feature files:
+------------------
+1. Create the Feature and Scenario
+2. Under the Scenario, define the Test steps using Gherkin keywords
+3. Multiple Scenarios can be written under the same feature file
+Example: 
+
+	Feature: Profile Sign-In Scenario
+
+	Scenario: profile sign-in scenario 
+	Given application url is opened
+	When user enters the username and password
+	And click on Login button
+	Then user should land on the logged in page
+
+In StepDefinition files:
+-------------------------
+1. Write the implementation of a specific step
+2. Write the annotation begins with @ symbol and inside the braces, 
+	^ should be used before the actual step
+	$ should be used after the actual step
+	
+Example:
+
+	
+	@Given("^application url is opened$")
+	public void load_url(){
+		//Code Implementation
+	}
+	
+In TestRunner file:
+-------------------
+Write the below code before the starting the class, so that use cases can be executed with the help of Junit Test.
+
+import org.junit.runner.RunWith;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		features="<feature file path should be mentioned>",
+		glue={"<stepDefinition package need to be mentioned>"},
+		plugin={"pretty","html:test-output"}
+		)
+
+@RunWith is the Junit annotation --> That's reason able to run with the Run as Junit Test
+==> features and glue are the arguments in CucumberOptions annotation
+==> features value should be the path of feature files path
+==> glue value should be the stepDefinition package name
+
+==> plugin={"pretty","html:test-output"} --> This statement is used to generate the output in pretty format (it means more detailed info in the console and html file will be generated in the test-output folder)
+
+==> Open the above generated cucumber report in the browser.
+
+==> The disadvantage of BDD framework is, 
+1. It's a lengthy behaviour
+2. All the behaviour should be defined (so many Gherkin words and so many steps should be written)
+ whereas in TDD actual code implementation can be written directly.
+ 
+==> The Advantage of BDD framework is, anyone can contribute whoever having the application knowledge (like Business Analysts/Product Managers/Manual Testers/Dev Team/QA Team etc.,)
+
+								CUCUMBER Options
+Following are the different cucumber options available
+a) features
+b) glue
+c) dryRun
+d) tags
+e) plugin
+f) strict
+g) monoChrome
+
+features:
+---------
+Path of the feature files will be mentioned against to the features option. Cucumber will check for all the feature files from this location
+
+Note: To provide multiple feature file paths, values should be separated with , (comma)
+	  Ex: {"path1/abcd.feature","path2/xyz.feature"}
+	  
+glue:
+-----
+Path of the Step definitions will be mentioned against to the glue option. Cucumber will check for associated step definition code of each step from this location
+
+Note: To provide multiple stepDefinition file paths, values should be separated with , (comma)
+	  Ex: {"path1/abcd","path2/xyz"}
+
+dryRun:
+-------
+==> dryRun value should be provided either true or false
+
+==> If dryRun=true --> Cucumber will only checks the every step mentioned in the feature file has corresponding code in the step definition file or not. 
+	• In case if any functions are missed in the step definition file for a step, cucumber will give us the message that step definitions are missed for actual steps
+	
+==> If dryRun=false --> Cucumber will not check whether every step having the corresponding code in the step definition file, Executes the feature files
+
+Strict:
+-------
+==> Strict value should be provided either true or false
+	 
+==> If strict=true --> If Cucumber finds that any of the step is not having the corresponding code in the step definition file, undefined steps will be marked as Fail and Build is FAILURE
+
+==> If strict=false --> If cucumber finds that any of the step is not having the corresponding code in the step definition, undefined steps will be skipped and Build is SUCCESSFUL
+
+MonoChrome:
+-----------
+==> Monochrome value should be provided either true or false
+
+==> If monochrome=true --> Console output of the cucumber tests are much more readable
+==> If monochrome=false --> Console output of the cucumber tests is not readable as it should be 
+
+plugin:
+-------
+==> This cucumber option "plugin" is used to generate the cucumber reports in various formats
+==> plugin={"pretty","html:test-output",,"json:target/json-report","junit:target/cucumber-xml"}
+	
+	pretty is the one type of format to display the outline in the console with detailed steps
+	html:test-output --> html report will be generated in the test-output folder
+	json:target/json-report --> json-report will be generated in the target folder
+	junit:target/cucumber-xml --> cucumber-xml will be generated in the target folder. (This is much readable report which steps are passed and which steps are failed)
+	
+	
+					Data Driven Testing in Cucumber
+==> Data Driven Testing in Cucumber can be achieved in '3' ways
+1. Simple Data Driven - without Examples keyword
+2. With Examples keyword + Scenario Outline
+3. Using Data Tables
+
+==> When Data Driven Testing is implemented, there is no need of hard coding the values in the scripts (i.e., in stepDefinition files), values can be passed from the feature files
+
+1. Simple Data Driven - without Examples keyword:
+-------------------------------------------------
+==> Enter exact data in double quotation in the feature files like below
+Example: 
+
+	Feature: Profile Sign-In Scenario
+
+	Scenario: sign-in scenario 
+	Given application url is opened
+	When user enters the "abcd@gmail.comm" and "Admin@123"
+	And click on Login button
+	Then user should land on the logged in page
+	
+Now go to the stepDefinition file and go to the specific method, write the method implementation like below using the special regular expression \"(.*)\"   or   \"([^\"]*)\"
+
+Example:
+	
+	@When("^user enters the \"(.*)\" and \"(.*)\"$")
+	public void login(String username, String password){
+		----------
+		----------
+		----------
+	}
+
+==> Whenever you implement the above concept, very first time is always preferred to run the script with dryRun=true. Because if there is any problem in mapping between feature file and stepDefinition file will find.
+
+2. With Examples keyword + Scenario Outline:
+--------------------------------------------
+==> If "Examples" keyword is using in the feature file, then that should be written under the "Scenario Outline" instead of Scenario
+
+Q: What is the difference between Scenario and Scenario Outline?
+A: Scenario Outline exactly same as Scenario, but only difference is the provision of multiple inputs.
+	When Scenario outline is written, that all the steps of specific scenario will be executed multiple times with different sets of data based on Examples values.
+	
+Feature: Login - Profile Sign In Scenario
+
+Scenario Outline: profile sign-in scenario 
+Given application url is opened
+When user enters the "<username>" and "<password>"
+And click on Login button
+Then user should land in the my-account home page
+And close the browser
+
+Examples: 
+			| username                | password   |
+			| sagarch.aaro@gmail.com  | Admin@123456 |
+			| testabcd@gmail.com      | Test@1234  |
+
+==> Here data which is used in Scenaro Outline exactly should match with examples data.
+
+==> Whenever you implement the above concept, very first time is always preferred to run the script with dryRun=true. Because if there is any problem in mapping between feature file and stepDefinition file will find.
+
+==> In Examples can give the multiple values from more than one step, like below
+
+Feature: Login - Profile Sign In Scenario
+
+Scenario Outline: profile sign-in scenario 
+Given load the application url for "<environment>" environment
+When user enters the "<username>" and "<password>"
+And click on Login button
+Then user should land in the my-account home page
+And close the browser
+
+Examples: 
+			| username                | password     | environment |
+			| sagarch.aaro@gmail.com  | Admin@123456 | stage       |
+			| testabcd@gmail.com      | Test@1234    | test        |
+
+3. Data Driven Testing Using Data Tables:
+-----------------------------------------
+==> Whenever any specific step needs to execute with different sets of TestData, we should go for
+Data Tables concept in cucumber
+
+
+@All @DemoWebShop
+Feature: DemoWebShop Place Order with Multiple Items
+
+  @DemoWebShop_PlaceOrder
+  Scenario Outline: DemoWebShop PlaceOrder
+    Given User is opened "chrome" browser
+    Given User is opened "DemoWebShop" Application URL
+    When User enters "<UserName>" and "<Password>" in DemoWebShop Application
+    And User clicks on Login button in DemoWebShop Application
+    Then User validates email address in DemoWebShop Application
+    When User selects ProductCategory and added ProductName into Shopping Cart
+          | ProductCategory | ProductName |
+          | Books           | Computing and Internet |
+          | Apparel & Shoes | Blue Jeans             |
+          | Digital downloads | 3rd Album            |
+    And User clicks on Shopping Cart link in DemoWebShop Application
+    And User clicks on Checkout button by accepting terms
+    And User place order with default configuration in DemoWebShop Application
+    And User Logout from DemoWebShop Application
+
+    Examples:
+      | UserName | Password |
+      | aarosagarch@gmail.com | Admin@123 |
+      | GayathriTest@gmail.com | Test@123 |
+      | Srinath@gmail.com | Admin@123 |
+
+@When("User selects ProductCategory and added ProductName into Shopping Cart")
+    public void user_selects_product_category_and_added_product_name_into_shopping_cart(DataTable dataTable) {
+        WebDriver driver = BaseClass.getDriver();
+        String productCategory = "", productName = "";
+        List<Map<String, String>> list_TableData = dataTable.asMaps();
+        for(Map<String, String> mapData:list_TableData){
+            productCategory = mapData.get("ProductCategory");
+            productName = mapData.get("ProductName");
+
+            DemoWebShop_AddToCartPage.clickCategory(productCategory);
+            driver.findElement(By.xpath("(//h2//a[text()='"+productName+"'])[1]/../..//input")).click();
+            System.out.println(productName+ " is added into Shopping Cart");
+        }
+    }
