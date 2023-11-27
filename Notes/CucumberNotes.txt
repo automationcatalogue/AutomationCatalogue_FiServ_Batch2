@@ -331,3 +331,61 @@ Feature: DemoWebShop Place Order with Multiple Items
             System.out.println(productName+ " is added into Shopping Cart");
         }
     }
+
+Background Keyword:
+-------------------
+==> It is one of the Gherkin Keyword
+==> Steps which are part of Background will be executed before scenario of a specific feature file
+==> In general pre-requisites of scenario will be written in the Background
+
+Cucumber Hooks:
+--------------
+==> Cucumber Hooks block of code will be executed before every scenario and after every scenario
+==> There are '4' types of cucumber Hooks annotations are present
+1. @Before
+2. @After
+3. @BeforeStep
+4. @AfterStep
+
+
+@Before:
+-------
+==> Before annotation block of code will be executed before executing every scenario of all feature files
+==> In general, before annotation block of code will have pre-requisites of the scenario like
+reading the TestData file, opening the Database connection, Initializing the Log file or Initializing reports etc.,
+
+@After:
+-------
+==> After annotation block of code will be executed after executing every scenario of all feature files
+==> In general, after annotation block of code will have tearDown() activities,
+like closing a file, closing driver object, closing database connection/network connect etc.,
+==> After annotation block of code will always execute whether scenario is passed/failed
+
+
+@BeforeStep:
+-----------
+==> BeforeStep annotation block of code will be executed before every step of every scenario across
+all feature file
+
+
+@AfterStep:
+----------
+==> AfterStep annotation block of code will be executed after every step of every scenario across
+    all feature files
+    Example is: Capturing screenshots after every scenario step
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

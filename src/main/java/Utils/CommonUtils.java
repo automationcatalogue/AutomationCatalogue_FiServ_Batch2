@@ -9,11 +9,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class CommonUtils {
     private static WebDriver driver;
-
+    private static String dateTime;
     public static WebDriver launchBrowser(String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
@@ -47,5 +50,21 @@ public class CommonUtils {
                 break;
             }
         }
+    }
+
+    public static String generateFolderNameWithTmeStamp() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMMyyyy_HHmmss");
+        dateTime = now.format(formatter);
+        return dateTime;
+    }
+
+    public static String generateScreenshotsFolder(String projectPath) {
+        String dateTime = CommonUtils.generateFolderNameWithTmeStamp();
+        String screenshotsPath = projectPath + "\\screenshots\\" + dateTime;
+        File file = new File(screenshotsPath);
+        file.mkdir();
+        System.out.println("New Folder for Screenshots is created with timestamp " + dateTime);
+        return screenshotsPath;
     }
 }
